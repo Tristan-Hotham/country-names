@@ -1,0 +1,263 @@
+code,language,wikidata,speakers_wikidata_max,places_named,core,main_script
+zh-hans,Chinese (simplified),Q7850,1299877520,240,1,Han
+zh-hant,Chinese (traditional),Q7850,1299877520,240,1,Han
+en,English,Q1860,1132366680,242,1,Latin
+es,Spanish,Q1321,485000000,241,1,Latin
+ar,Arabic,Q13955,422000000,242,1,Arabic
+hi,Hindi,Q1568,341000000,242,1,Devanagari
+bn,Bengali,Q9610,300000000,240,1,Bengali
+pt,Portuguese,Q5146,254300000,241,1,Latin
+fr,French,Q150,208157220,242,1,Latin
+id,Indonesian,Q9240,198996550,241,1,Latin
+ru,Russian,Q7737,171428900,242,1,Cyrillic
+ja,Japanese,Q5287,128000000,242,1,Kana
+pnb,Punjabi (Shahmukhi script),Q58635,125000000,236,1,Arabic
+pa,Punjabi (Gurmukhi script),Q58635,125000000,237,1,Gurmukhi
+de,German,Q188,105000000,241,1,Latin
+arz,Egyptian Arabic,Q29919,100542400,237,1,Arabic
+ur,Urdu,Q1617,94022900,242,1,Arabic
+jv,Javanese,Q33549,84308740,233,1,Latin
+mr,Marathi,Q1571,83100000,242,1,Devanagari
+tr,Turkish,Q256,82231620,241,1,Latin
+te,Telugu,Q8097,82000000,240,1,Telugu
+wuu,Wu Chinese,Q34290,81400000,240,1,Han
+ko,Korean,Q9176,77300000,242,1,Hangul
+ms,Malay,Q9237,77000000,240,1,Latin
+vi,Vietnamese,Q9199,76000000,241,1,Latin
+ta,Tamil,Q5885,75000000,241,1,Tamil
+yue,Cantonese,Q9186,72893210,241,1,Han
+fa,Persian,Q9168,70000000,242,1,Arabic
+it,Italian,Q652,64819790,241,1,Latin
+gu,Gujarati,Q5137,56400000,236,1,Gujarati
+bho,Bhojpuri,Q33268,52200000,194,0,Devanagari
+nan,Southern Min (Hokkien),Q36495,50100000,237,1,Latin
+ps,Pashto,Q58680,50000000,231,1,Arabic
+hak,Hakka Chinese,Q33375,48200000,236,1,Latin
+rmy,Romani,Q13201,46000000,177,0,Latin
+tl,Tagalog,Q34057,45000000,235,1,Latin
+ha,Hausa,Q56475,43900000,212,1,Latin
+kn,Kannada,Q33673,43600000,238,1,Kannada
+pl,Polish,Q809,40200000,241,1,Latin
+yo,Yoruba,Q34311,40000000,238,1,Latin
+th,Thai,Q9217,40000000,242,1,Thai
+ml,Malayalam,Q36236,37100000,232,1,Malayalam
+om,Oromo,Q33864,36000000,188,0,Latin
+az,Azerbaijani,Q9292,35000000,240,1,Latin
+uk,Ukrainian,Q8798,34710100,242,1,Cyrillic
+or,Odia,Q33810,34500000,210,1,Oriya
+mai,Maithili,Q36109,33900000,127,0,Devanagari
+my,Burmese,Q9228,32900000,213,1,Myanmar
+su,Sundanese,Q34002,32400000,236,1,Latin
+ary,Moroccan Arabic,Q56426,27500000,210,1,Arabic
+uz,Uzbek,Q9264,27000000,234,1,Latin
+ig,Igbo,Q33578,27000000,141,0,Latin
+am,Amharic,Q28244,25000000,234,1,Ethiopic
+sd,Sindhi,Q33997,25000000,220,1,Arabic
+ro,Romanian,Q7913,24300000,240,1,Latin
+ne,Nepali,Q33823,24131000,220,1,Devanagari
+ff,Fula,Q33454,24000000,169,0,Latin
+nl,Dutch,Q7411,23100000,241,1,Latin
+awa,Awadhi,Q29579,22000000,114,0,Devanagari
+ckb,Kurdish (Sorani),Q36368,21000000,236,1,Arabic
+ln,Lingala,Q36217,20000000,194,0,Latin
+sh,Serbo-Croatian,Q9301,19000000,239,1,Latin
+mg,Malagasy,Q7930,18138380,215,1,Latin
+km,Khmer,Q9205,16600000,152,0,Khmer
+so,Somali,Q13275,16200000,209,1,Latin
+tk,Turkmen,Q9267,16000000,205,1,Latin
+za,Zhuang,Q13216,16000000,201,1,Latin
+ceb,Cebuano,Q33239,15900000,232,1,Latin
+zu,Zulu,Q10179,15700000,207,1,Latin
+sw,Swahili,Q7838,15437390,236,1,Latin
+si,Sinhala,Q13267,15300000,241,1,Sinhala
+as,Assamese,Q29401,15300000,116,0,Bengali
+azb,South Azerbaijani,Q3449805,15000000,233,1,Arabic
+ku,Kurdish (Kurmanji),Q36163,14600000,219,1,Latin
+bar,Bavarian,Q29540,14100000,210,1,Latin
+tg,Tajik,Q9260,14000000,219,1,Cyrillic
+syl,Sylheti,Q2044560,13980000,100,0,Syloti
+kk,Kazakh,Q9252,13161980,240,1,Cyrillic
+el,Greek,Q9129,13156880,242,1,Greek
+ts,Tsonga,Q34327,13000000,140,0,Latin
+hu,Hungarian,Q9067,12600000,241,1,Latin
+rw,Kinyarwanda,Q33573,12100000,231,1,Latin
+yi,Yiddish,Q8641,11000000,203,1,Hebrew
+cs,Czech,Q9056,10700000,240,1,Latin
+ug,Uyghur,Q13263,10400000,225,1,Arabic
+af,Afrikaans,Q14196,10300000,240,1,Latin
+cdo,Eastern Min,Q36455,10300000,236,1,Latin
+gsw,Alemannic,Q131339,10000000,224,1,Latin
+ht,Haitian Creole,Q33491,9600000,214,1,Latin
+he,Hebrew,Q9288,9303950,240,1,Hebrew
+knc,Central Kanuri,Q15637215,9270000,109,0,Latin
+sv,Swedish,Q9027,9244250,242,1,Latin
+ilo,Ilocano,Q35936,9100000,208,1,Latin
+sn,Shona,Q34004,9023000,208,1,Latin
+sr,Serbian,Q9299,9000000,241,1,Cyrillic
+bg,Bulgarian,Q7918,9000000,240,1,Cyrillic
+qu,Quechua,Q5218,8900000,213,1,Latin
+shi,Tashelhit,Q34152,8000000,115,0,Latin
+be,Belarusian,Q9091,7900000,241,1,Cyrillic
+la,Latin,Q397,7500000,237,1,Latin
+sat,Santali,Q33965,7200000,174,0,Ol Chiki
+hr,Croatian,Q6654,7000000,240,1,Latin
+mn,Mongolian,Q9246,7000000,219,1,Cyrillic
+tum,Tumbuka,Q34138,7000000,181,0,Latin
+ks,Kashmiri,Q33552,6900000,196,0,Arabic
+hy,Armenian,Q8785,6700000,238,1,Armenian
+ki,Gikuyu,Q33587,6623000,140,0,Latin
+sq,Albanian,Q8748,6200000,234,1,Latin
+sk,Slovak,Q9058,6000000,240,1,Latin
+da,Danish,Q9035,6000000,241,1,Latin
+st,Sesotho,Q34340,6000000,107,0,Latin
+kab,Kabyle,Q35853,5586000,191,0,Latin
+min,Minangkabau,Q13324,5530000,211,1,Latin
+tt,Tatar,Q25285,5427318,237,1,Cyrillic
+fi,Finnish,Q1412,5413380,241,1,Latin
+lo,Lao,Q9211,5225552,172,0,Lao
+ca,Catalan,Q7026,5100000,242,1,Latin
+kg,Kongo,Q33702,5016500,163,0,Latin
+nds,Low German,Q25433,5000000,215,1,Latin
+gpe,Ghanaian Pidgin English,Q5555465,5000000,197,0,Latin
+scn,Sicilian,Q33973,4700000,227,1,Latin
+ky,Kyrgyz,Q9255,4568480,237,1,Cyrillic
+gn,Guarani,Q35876,4500000,205,1,Latin
+nn,Norwegian (Nynorsk),Q25164,4320000,238,1,Latin
+bm,Bambara,Q33243,4200000,104,0,Latin
+nso,Northern Sotho,Q33890,4100000,102,0,Latin
+lg,Luganda,Q33368,4100000,117,0,Latin
+lt,Lithuanian,Q9083,4000000,242,1,Latin
+nb,Norwegian (Bokmål),Q25167,4000000,241,1,Latin
+tpi,Tok Pisin,Q34159,4000000,126,0,Latin
+ay,Aymara,Q4627,4000000,114,0,Latin
+lmo,Lombard,Q33754,3900000,218,1,Latin
+wo,Wolof,Q34257,3700000,226,1,Latin
+ka,Georgian,Q8108,3700000,241,1,Georgian
+gom,Goan Konkani,Q5575236,3633900,164,0,Devanagari
+bs,Bosnian,Q9303,3500000,238,1,Latin
+mzn,Mazanderani,Q13356,3270000,233,1,Arabic
+jam,Jamaican Patois,Q35939,3200000,211,1,Latin
+dag,Dagbanli,Q32238,3160000,200,1,Latin
+war,Waray,Q34279,3100000,238,1,Latin
+ee,Ewe,Q30005,3000000,164,0,Latin
+shn,Shan,Q56482,3000000,238,1,Myanmar
+tw,Twi,Q36850,3000000,122,0,Latin
+zgh,Standard Moroccan Tamazight,Q7598268,2700000,159,0,Tifinagh
+glk,Gilaki,Q33657,2550000,198,0,Arabic
+bcl,Central Bikol,Q33284,2500000,220,1,Latin
+sl,Slovene,Q9063,2400000,241,1,Latin
+gl,Galician,Q9307,2400000,240,1,Latin
+pam,Kapampangan,Q36121,2400000,205,1,Latin
+iba,Iban,Q33424,2300000,103,0,Latin
+ss,Swazi,Q34014,2034200,171,0,Latin
+vec,Venetian,Q32724,2000000,231,1,Latin
+eo,Esperanto,Q143,2000000,242,1,Latin
+mk,Macedonian,Q9296,2000000,241,1,Cyrillic
+pms,Piedmontese,Q15085,2000000,217,1,Latin
+nah,Nahuatl,Q13300,1925620,201,1,Latin
+diq,Zazaki,Q10199,1640000,217,1,Latin
+li,Limburgish,Q102172,1600000,234,1,Latin
+kbd,Kabardian,Q33522,1600000,131,0,Cyrillic
+lv,Latvian,Q9078,1500000,242,1,Latin
+sco,Scots,Q14549,1500000,234,1,Latin
+lrc,Northern Luri,Q19933293,1500000,157,0,Arabic
+mni,Meitei,Q33868,1470000,192,0,Meetei
+vls,West Flemish,Q100103,1400000,154,0,Latin
+hyw,Western Armenian,Q180945,1395240,169,0,Armenian
+ce,Chechen,Q33350,1393900,222,1,Cyrillic
+sc,Sardinian,Q33976,1300000,225,1,Latin
+cv,Chuvash,Q33348,1279650,188,0,Cyrillic
+et,Estonian,Q9072,1251770,241,1,Latin
+bo,Tibetan,Q34271,1200000,204,1,Tibetan
+ba,Bashkir,Q13389,1200000,232,1,Cyrillic
+ga,Irish,Q9142,1030000,238,1,Latin
+new,Newar,Q33979,1000000,189,0,Devanagari
+kbp,Kabiye,Q35475,1000000,160,0,Latin
+cy,Welsh,Q9309,977366,238,1,Latin
+fy,West Frisian,Q27175,845100,236,1,Latin
+nup,Nupe,Q36720,800000,118,0,Latin
+dty,Doteli,Q18415595,790000,201,1,Devanagari
+tly,Talysh,Q34318,764400,177,0,Latin
+eu,Basque,Q8752,750000,240,1,Latin
+anp,Angika,Q28378,740000,226,1,Devanagari
+pcd,Picard,Q34024,700000,154,0,Latin
+lez,Lezgian,Q31746,633610,129,0,Cyrillic
+rue,Rusyn,Q26245,610000,173,0,Cyrillic
+wa,Walloon,Q34219,600000,123,0,Latin
+os,Ossetian,Q33968,599250,235,1,Cyrillic
+kaa,Karakalpak,Q33541,583410,217,1,Latin
+ady,Adyghe,Q27776,575900,132,0,Cyrillic
+mt,Maltese,Q9166,570000,236,1,Latin
+crh,Crimean Tatar,Q33357,552740,208,1,Latin
+oc,Occitan,Q14185,542000,239,1,Latin
+lij,Ligurian,Q36106,500000,234,1,Latin
+sgs,Samogitian,Q213434,500000,204,1,Latin
+mhr,Meadow Mari,Q3906614,482000,198,0,Cyrillic
+tet,Tetum,Q34125,463500,143,0,Latin
+szl,Silesian,Q30319,457900,212,1,Latin
+ast,Asturian,Q29507,450000,240,1,Latin
+sah,Yakut,Q34299,450000,221,1,Cyrillic
+xal,Kalmyk,Q33634,431800,202,1,Cyrillic
+sm,Samoan,Q34011,415720,196,0,Latin
+lb,Luxembourgish,Q9051,391200,237,1,Latin
+hif,Fiji Hindi,Q46728,380000,218,1,Latin
+is,Icelandic,Q294,358000,238,1,Latin
+xmf,Mingrelian,Q13359,345530,236,1,Georgian
+dv,Maldivian,Q32656,340500,222,1,Thaana
+bxr,Buryat,Q33120,329000,200,1,Cyrillic
+udm,Udmurt,Q13238,324000,203,1,Cyrillic
+pap,Papiamento,Q33856,321300,222,1,Latin
+ann,Obolo,Q36614,318000,109,0,Latin
+krc,Karachay-Balkar,Q33714,310400,204,1,Cyrillic
+kcg,Tyap,Q3912765,255000,118,0,Latin
+dz,Dzongkha,Q33081,237080,182,0,Tibetan
+frp,Franco-Provençal language,Q15087,227000,222,1,Latin
+kv,Komi,Q36126,219100,126,0,Cyrillic
+ami,Amis,Q35132,215000,193,0,Latin
+mi,Māori,Q36451,213849,221,1,Latin
+br,Breton,Q12107,206000,239,1,Latin
+ext,Extremaduran,Q30007,201500,209,1,Latin
+ab,Abkhaz,Q5111,190110,198,0,Cyrillic
+to,Tongan,Q34094,186010,176,0,Latin
+nv,Navajo,Q13310,169369,155,0,Latin
+co,Corsican,Q33111,151000,207,1,Latin
+gag,Gagauz,Q33457,148720,233,1,Latin
+lad,Judaeo-Spanish,Q36196,137000,208,1,Latin
+bpy,Bishnupriya Manipuri,Q37059,117500,225,1,Bengali
+csb,Kashubian,Q33690,108000,147,0,Latin
+myv,Erzya,Q29952,96860,133,0,Cyrillic
+tay,Atayal,Q715766,80000,180,0,Latin
+fo,Faroese,Q25258,69150,228,1,Latin
+gd,Scottish Gaelic,Q9314,60130,214,1,Latin
+kl,Greenlandic,Q25355,56200,111,0,Latin
+sa,Sanskrit,Q11059,49736,185,0,Devanagari
+rm,Romansh,Q13199,40039,120,0,Latin
+olo,Livvi-Karelian,Q36584,30770,204,1,Latin
+mrj,Hill Mari,Q1776032,30000,126,0,Cyrillic
+lld,Ladin,Q36202,30000,218,1,Latin
+haw,Hawaiian,Q33569,27200,151,0,Latin
+se,Northern Sami,Q33947,25700,215,1,Latin
+an,Aragonese,Q8765,20000,238,1,Latin
+trv,Seediq,Q716686,20000,184,0,Latin
+mwl,Mirandese,Q13330,15000,161,0,Latin
+hsb,Upper Sorbian,Q13248,13300,213,1,Latin
+gv,Manx,Q12175,12350,216,1,Latin
+chr,Cherokee,Q33388,12300,169,0,Cherokee
+frr,North Frisian,Q28224,10000,236,1,Latin
+bi,Bislama,Q35452,10000,195,0,Latin
+na,Nauruan,Q13307,9300,190,0,Latin
+dsb,Lower Sorbian,Q13286,6670,210,1,Latin
+mdf,Moksha,Q13343,2025,191,0,Cyrillic
+vep,Veps,Q32747,1276,202,1,Latin
+stq,Saterland Frisian,Q27154,1000,160,0,Latin
+szy,Sakizaya,Q718269,958,190,0,Latin
+kw,Cornish,Q25289,600,231,1,Latin
+pih,Pitkern,Q36554,532,216,1,Latin
+sms,Skolt Sami,Q13271,420,201,1,Latin
+smn,Inari Sami,Q33462,300,210,1,Latin
+io,Ido,Q35224,150,235,1,Latin
+be-tarask,Belarusian (Taraškievica),,,240,1,Cyrillic
+lzh,Classical Chinese,,,214,1,Han
+ang,Old English,,,225,1,Latin
+pi,Pali,Q36727,,178,0,Devanagari
+bgn,Western Balochi,Q12645561,,110,0,Arabic

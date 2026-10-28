@@ -1,0 +1,1795 @@
+{
+ "meta": {
+  "places": 242,
+  "sovereign": 196,
+  "languages": 262,
+  "core_languages": 183,
+  "names": 54037,
+  "retrieved": "28 October 2026",
+  "langs_all_places": 18,
+  "langs_100m": 16,
+  "langs_10m": 72,
+  "langs_no_speakers": 5,
+  "scripts": 32,
+  "same_as_english": 11845,
+  "same_as_english_share": 0.2202
+ },
+ "scripts": [
+  {
+   "script": "Latin",
+   "names": 33658
+  },
+  {
+   "script": "Cyrillic",
+   "names": 6274
+  },
+  {
+   "script": "Arabic",
+   "names": 3434
+  },
+  {
+   "script": "Devanagari",
+   "names": 2269
+  },
+  {
+   "script": "Han",
+   "names": 1191
+  },
+  {
+   "script": "Bengali",
+   "names": 581
+  },
+  {
+   "script": "Georgian",
+   "names": 477
+  },
+  {
+   "script": "Myanmar",
+   "names": 449
+  },
+  {
+   "script": "Hebrew",
+   "names": 443
+  },
+  {
+   "script": "Armenian",
+   "names": 407
+  },
+  {
+   "script": "Tibetan",
+   "names": 384
+  },
+  {
+   "script": "Thai",
+   "names": 242
+  }
+ ],
+ "alike": {
+  "threshold": 0.6,
+  "lowest": [
+   {
+    "qid": "Q399",
+    "name": "Armenia",
+    "own": "Հայաստան",
+    "share": 0.0,
+    "n": 182,
+    "distinct": 94
+   },
+   {
+    "qid": "Q222",
+    "name": "Albania",
+    "own": "Shqipëria",
+    "share": 0.0,
+    "n": 182,
+    "distinct": 80
+   },
+   {
+    "qid": "Q917",
+    "name": "Bhutan",
+    "own": "འབྲུག་ཡུལ་",
+    "share": 0.0109,
+    "n": 183,
+    "distinct": 70
+   },
+   {
+    "qid": "Q826",
+    "name": "Maldives",
+    "own": "ދިވެހިރާއްޖެ",
+    "share": 0.0275,
+    "n": 182,
+    "distinct": 115
+   },
+   {
+    "qid": "Q41",
+    "name": "Greece",
+    "own": "Ελλάδα",
+    "share": 0.044,
+    "n": 182,
+    "distinct": 127
+   },
+   {
+    "qid": "Q230",
+    "name": "Georgia",
+    "own": "საქართველო",
+    "share": 0.0442,
+    "n": 181,
+    "distinct": 101
+   },
+   {
+    "qid": "Q148",
+    "name": "People's Republic of China",
+    "own": "中华人民共和国",
+    "share": 0.0442,
+    "n": 181,
+    "distinct": 143
+   },
+   {
+    "qid": "Q33",
+    "name": "Finland",
+    "own": "Suomi",
+    "share": 0.0497,
+    "n": 181,
+    "distinct": 103
+   },
+   {
+    "qid": "Q224",
+    "name": "Croatia",
+    "own": "Hrvatska",
+    "share": 0.0769,
+    "n": 182,
+    "distinct": 111
+   },
+   {
+    "qid": "Q236",
+    "name": "Montenegro",
+    "own": "Crna Gora",
+    "share": 0.0782,
+    "n": 179,
+    "distinct": 90
+   },
+   {
+    "qid": "Q17",
+    "name": "Japan",
+    "own": "日本",
+    "share": 0.0989,
+    "n": 182,
+    "distinct": 102
+   },
+   {
+    "qid": "Q668",
+    "name": "India",
+    "own": "भारत",
+    "share": 0.0994,
+    "n": 181,
+    "distinct": 92
+   },
+   {
+    "qid": "Q423",
+    "name": "North Korea",
+    "own": "조선민주주의인민공화국",
+    "share": 0.1044,
+    "n": 182,
+    "distinct": 154
+   },
+   {
+    "qid": "Q183",
+    "name": "Germany",
+    "own": "Deutschland",
+    "share": 0.1264,
+    "n": 182,
+    "distinct": 119
+   },
+   {
+    "qid": "Q884",
+    "name": "South Korea",
+    "own": "대한민국",
+    "share": 0.1271,
+    "n": 181,
+    "distinct": 151
+   },
+   {
+    "qid": "Q28",
+    "name": "Hungary",
+    "own": "Magyarország",
+    "share": 0.1648,
+    "n": 182,
+    "distinct": 122
+   },
+   {
+    "qid": "Q79",
+    "name": "Egypt",
+    "own": "مصر",
+    "share": 0.2308,
+    "n": 182,
+    "distinct": 114
+   },
+   {
+    "qid": "Q929",
+    "name": "Central African Republic",
+    "own": "République centrafricaine",
+    "share": 0.3132,
+    "n": 182,
+    "distinct": 164
+   },
+   {
+    "qid": "Q213",
+    "name": "Czech Republic",
+    "own": "Česko",
+    "share": 0.3791,
+    "n": 182,
+    "distinct": 139
+   },
+   {
+    "qid": "Q810",
+    "name": "Jordan",
+    "own": "الأردن",
+    "share": 0.3846,
+    "n": 182,
+    "distinct": 104
+   },
+   {
+    "qid": "Q55",
+    "name": "Netherlands",
+    "own": "Nederland",
+    "share": 0.4804,
+    "n": 179,
+    "distinct": 139
+   },
+   {
+    "qid": "Q262",
+    "name": "Algeria",
+    "own": "الجزائر",
+    "share": 0.5879,
+    "n": 182,
+    "distinct": 104
+   },
+   {
+    "qid": "Q40",
+    "name": "Austria",
+    "own": "Österreich",
+    "share": 0.6209,
+    "n": 182,
+    "distinct": 117
+   },
+   {
+    "qid": "Q766",
+    "name": "Jamaica",
+    "own": "Jamaica",
+    "share": 0.6354,
+    "n": 181,
+    "distinct": 76
+   },
+   {
+    "qid": "Q657",
+    "name": "Chad",
+    "own": "Tchad",
+    "share": 0.6464,
+    "n": 181,
+    "distinct": 71
+   }
+  ],
+  "highest_n": 120,
+  "median": 0.9726,
+  "n": 196,
+  "under_half": 21,
+  "under_quarter": 17,
+  "validation": {
+   "names": 3622,
+   "agree": 3471,
+   "share": 0.9583,
+   "false_alike": 53,
+   "missed_alike": 98
+  }
+ },
+ "distinct_top": [
+  {
+   "qid": "Q757",
+   "name": "Saint Vincent and the Grenadines",
+   "own": "Saint Vincent and the Grenadines",
+   "share": 1.0,
+   "n": 178,
+   "distinct": 168
+  },
+  {
+   "qid": "Q685",
+   "name": "Solomon Islands",
+   "own": "Solomon Islands",
+   "share": 0.9724,
+   "n": 181,
+   "distinct": 167
+  },
+  {
+   "qid": "Q30",
+   "name": "United States",
+   "own": "United States",
+   "share": 0.884,
+   "n": 181,
+   "distinct": 166
+  },
+  {
+   "qid": "Q221",
+   "name": "North Macedonia",
+   "own": "Македонија",
+   "share": 0.9061,
+   "n": 181,
+   "distinct": 166
+  },
+  {
+   "qid": "Q929",
+   "name": "Central African Republic",
+   "own": "République centrafricaine",
+   "share": 0.3132,
+   "n": 182,
+   "distinct": 164
+  },
+  {
+   "qid": "Q878",
+   "name": "United Arab Emirates",
+   "own": "الإمارات العربية المتحدة",
+   "share": 0.7582,
+   "n": 182,
+   "distinct": 164
+  },
+  {
+   "qid": "Q974",
+   "name": "Democratic Republic of the Congo",
+   "own": "République démocratique du Congo",
+   "share": 0.9615,
+   "n": 182,
+   "distinct": 163
+  },
+  {
+   "qid": "Q225",
+   "name": "Bosnia and Herzegovina",
+   "own": "Bosna i Hercegovina",
+   "share": 1.0,
+   "n": 180,
+   "distinct": 159
+  },
+  {
+   "qid": "Q709",
+   "name": "Marshall Islands",
+   "own": "Marshall Islands",
+   "share": 0.9887,
+   "n": 177,
+   "distinct": 158
+  },
+  {
+   "qid": "Q1039",
+   "name": "São Tomé and Príncipe",
+   "own": "São Tomé e Príncipe",
+   "share": 1.0,
+   "n": 181,
+   "distinct": 157
+  },
+  {
+   "qid": "Q423",
+   "name": "North Korea",
+   "own": "조선민주주의인민공화국",
+   "share": 0.1044,
+   "n": 182,
+   "distinct": 154
+  },
+  {
+   "qid": "Q145",
+   "name": "United Kingdom",
+   "own": "United Kingdom",
+   "share": 0.8418,
+   "n": 177,
+   "distinct": 153
+  }
+ ],
+ "families": {
+  "Q183": {
+   "country": "Germany",
+   "total": 261,
+   "families": [
+    {
+     "id": "diutisc",
+     "label": "Deutsch family",
+     "origin": "from Old High German diutisc, 'of the people'",
+     "n": 37,
+     "share": 0.1418,
+     "source": "Names of Germany",
+     "quote": "the German language endonym is Deutschland, from the Old High German diutisc, meaning \"of the people\"",
+     "examples": "Deutschland / דייטשלאנד / Đức / 德國 / 德国 / 德國 / Tyskland / Düütsklound"
+    },
+    {
+     "id": "nemets",
+     "label": "Niemcy family",
+     "origin": "from Slavic němьci, 'the mutes' or 'the speechless'",
+     "n": 18,
+     "share": 0.069,
+     "source": "Names of Germany",
+     "quote": "in Polish it is Niemcy, from the Proto-Slavic *němьcь, meaning speechless, since German is not mutually intelligible with Slavic languages",
+     "examples": "Mjymcy / Немачка / Німеччина / Нямеччына / Nemecko / Ниицәтә Немшин Орн / Nemčija / Njemačka"
+    },
+    {
+     "id": "saxon",
+     "label": "Saksa family",
+     "origin": "from the Saxon tribe",
+     "n": 5,
+     "share": 0.0192,
+     "source": "Names of Germany",
+     "quote": "in Finnish it is Saksa, from the name of the Saxon tribe",
+     "examples": "Saksamaa / Saksa / Saksanma / Saksa / Saksslajânnam"
+    },
+    {
+     "id": "baltic",
+     "label": "Vokietija family",
+     "origin": "Baltic, origin unclear, perhaps 'those who shout'",
+     "n": 3,
+     "share": 0.0115,
+     "source": "Names of Germany",
+     "quote": "in Lithuanian it is Vokietija, of unclear origin",
+     "examples": "Vokietija / Vācija / Vuokītėjė"
+    },
+    {
+     "id": "germania",
+     "label": "Germany family",
+     "origin": "from the Latin Germania",
+     "n": 137,
+     "share": 0.5249,
+     "source": "Names of Germany",
+     "quote": "in Italian it is Germania, from the Latin Germania",
+     "examples": "Germany / Germaniya / Jarimani / Ujerumani / Gjermania / Jérman / Zermània / Jẹ́mánì"
+    },
+    {
+     "id": "alemanni",
+     "label": "Allemagne family",
+     "origin": "from the Alamanni tribe",
+     "n": 58,
+     "share": 0.2222,
+     "source": "Names of Germany",
+     "quote": "the French exonym is Allemagne, from the name of the Alamanni tribe",
+     "examples": "Allemagne / Alemaañ / Олмон / Almanya / Alemanya / Alemanya / Alemania / Alemanya"
+    },
+    {
+     "id": "other",
+     "label": "Other names",
+     "origin": "other or unclear origins",
+     "n": 3,
+     "share": 0.0115,
+     "source": "",
+     "quote": "",
+     "examples": "Béésh Bichʼahii Bikéyah / Caama / ᎠᏛᏥ"
+    }
+   ]
+  },
+  "Q148": {
+   "country": "People's Republic of China",
+   "total": 259,
+   "families": [
+    {
+     "id": "zhongguo",
+     "label": "Zhongguo family",
+     "origin": "Zhongguo, 'Middle Kingdom' or 'Central Nation', read in each language",
+     "n": 17,
+     "share": 0.0656,
+     "source": "List of country-name etymologies",
+     "quote": "the most common endonym: originally meaning \"Central Demesne\", then \"Middle Kingdom\", now equivalent to \"Central Nation\"",
+     "examples": "Républik Rahayat Tiongkok / Trung Quốc / 中華人民共和國 / 中华人民共和国 / 中華人民共和國 / Tiong-hoâ Jîn-bîn Kiōng-hô-kok / جۇڭخۇا خەلق جۇمھۇرىيىتى / ཀྲུང་ཧྭ་མི་དམངས་སྤྱི་མཐུན་རྒྱལ་ཁབ།"
+    },
+    {
+     "id": "cathay",
+     "label": "Kitai family",
+     "origin": "Cathay, from the Khitan people",
+     "n": 32,
+     "share": 0.1236,
+     "source": "List of country-name etymologies",
+     "quote": "Cathay, a former & literary name: \"Khitai\", from Marco Polo's Italian Catai",
+     "examples": "Xitoy Xalq Respublikasi / Китайська Народна Республіка / Кітайская народная рэспубліка / Китдин Улс Орн / Кытай / Ljudska republika Kitajska / Китай / Кітай"
+    },
+    {
+     "id": "china",
+     "label": "China family",
+     "origin": "China, usually traced to the Qin state",
+     "n": 207,
+     "share": 0.7992,
+     "source": "List of country-name etymologies",
+     "quote": "Often said that the word \"China\" and its related terms are derived from the Qin state",
+     "examples": "People's Republic of China / République populaire de Chine / Volksrepublik China / Chińsko Ludowo Republika / China / Jamhuri ya Watu wa China / Kina / כינע"
+    },
+    {
+     "id": "other",
+     "label": "Other names",
+     "origin": "other or unclear origins",
+     "n": 3,
+     "share": 0.0116,
+     "source": "",
+     "quote": "",
+     "examples": "တရုတ်ပြည်သူ့သမ္မတနိုင်ငံ / မိူင်းၶႄႇ / ꯈꯥꯀꯤ ꯂꯩꯄꯥꯛ"
+    }
+   ]
+  },
+  "Q41": {
+   "country": "Greece",
+   "total": 258,
+   "families": [
+    {
+     "id": "hellas",
+     "label": "Hellas family",
+     "origin": "from Hellas, the Greeks' own name",
+     "n": 18,
+     "share": 0.0698,
+     "source": "List of country-name etymologies",
+     "quote": "Hellás, the local endonym",
+     "examples": "Hy Lạp / 希臘 / 希腊 / 希臘共和國 / Hi-lia̍p / Ελλάδα / Hî-lia̍p / Hellas"
+    },
+    {
+     "id": "yunan",
+     "label": "Yunan family",
+     "origin": "from the Ionians, via Old Persian Yauna",
+     "n": 42,
+     "share": 0.1628,
+     "source": "Names of Greece",
+     "quote": "It was derived from the Old Persian Yauna for the Ionian Greeks",
+     "examples": "Yunoniston / Yunani / Юнон / یونان / Yunanistan / اليونان / اليونان / Yunanıstan"
+    },
+    {
+     "id": "graeci",
+     "label": "Greece family",
+     "origin": "from the Latin Graecus, the Graikoi",
+     "n": 190,
+     "share": 0.7364,
+     "source": "List of country-name etymologies",
+     "quote": "From Old English Grecas and Crecas, from Latin Græcus, presumably from Greek Graikoí",
+     "examples": "Greece / Grèce / Griechenland / Grecyjŏ / Greece / Ugiriki / Greqia / גריכנלאנד"
+    },
+    {
+     "id": "other",
+     "label": "Other names",
+     "origin": "other or unclear origins",
+     "n": 8,
+     "share": 0.031,
+     "source": "",
+     "quote": "",
+     "examples": "Желтойчоь / საბერძნეთი / Dahojiyáanii Bikéyah / საბერძნეთი / Бырзентәыла / ᎪᎢᎯ / Урымые / Алыджей"
+    }
+   ]
+  },
+  "Q55": {
+   "country": "Netherlands",
+   "total": 258,
+   "families": [
+    {
+     "id": "low",
+     "label": "'Low countries' translated",
+     "origin": "a translation of 'low countries'",
+     "n": 42,
+     "share": 0.1628,
+     "source": "Names of the Netherlands",
+     "quote": "many languages have the same word for both the country of the Netherlands and the region of the Low Countries, e.g., French (les Pays-Bas), Spanish (los Países Bajos) and Portuguese (Países Baixos)",
+     "examples": "Pays-Bas / Paezi Basi / Países Bajos / Paesi Bassi / Países Baixos / Países Baxos / Izelvroioù / Països Baixos"
+    },
+    {
+     "id": "holland",
+     "label": "Holland family",
+     "origin": "from the province of Holland, 'wooded land'",
+     "n": 61,
+     "share": 0.2364,
+     "source": "List of country-name etymologies",
+     "quote": "Holland, a former name: From the region of Holland within the Netherlands, often used by metonymy for the country as a whole",
+     "examples": "Uholanzi / Holanda / האלאנד / Холандија / Hà Lan / 荷蘭 / Olaand / 荷蘭"
+    },
+    {
+     "id": "belanda",
+     "label": "Belanda",
+     "origin": "the Malay and Indonesian name (my sources do not trace its origin)",
+     "n": 6,
+     "share": 0.0233,
+     "source": "List of country-name etymologies",
+     "quote": "Hindia-Belanda, a former name: the Indonesian form of the Dutch name above",
+     "examples": "Walanda / Belanda / Walanda / Belanda / Belanda / Belanda"
+    },
+    {
+     "id": "nederland",
+     "label": "Nederland family",
+     "origin": "Nederland, 'low land', borrowed by sound",
+     "n": 142,
+     "share": 0.5504,
+     "source": "List of country-name etymologies",
+     "quote": "Netherlands literally means Low countries or Lowlands",
+     "examples": "Netherlands / Niederlande / Ńiderlandy / Niderlandlar / Netherlands / Нідерланди / Нідэрлянды / Nẹ́dálándì"
+    },
+    {
+     "id": "other",
+     "label": "Other names",
+     "origin": "other or unclear origins",
+     "n": 7,
+     "share": 0.0271,
+     "source": "",
+     "quote": "",
+     "examples": "IDashi / y Çheer Injil / Tsin Bikeeʼ Dineʼé Bikéyah / Felemenk / Eben Eyong / ᏛᏥᏱ / Aynacha Jach'a Markanaka"
+    }
+   ]
+  },
+  "Q28": {
+   "country": "Hungary",
+   "total": 256,
+   "families": [
+    {
+     "id": "magyar",
+     "label": "Magyar family",
+     "origin": "from Magyar, the Hungarians' own name",
+     "n": 38,
+     "share": 0.1484,
+     "source": "List of country-name etymologies",
+     "quote": "Magyarország (native name - \"land of the Magyars\")",
+     "examples": "Madźary / Mojariston / Мађарска / Maďarsko / Маҷористон / Macaristan / Маҗарстан / Madžarska"
+    },
+    {
+     "id": "ugry",
+     "label": "Węgry family",
+     "origin": "from Turkic on-ogur, 'ten arrows', Slavic forms",
+     "n": 23,
+     "share": 0.0898,
+     "source": "List of country-name etymologies",
+     "quote": "Turkic: on-ogur, \"(people of the) ten arrows\"",
+     "examples": "Угорщина / Вугоршчына / ۋېنگرىيە / Венгрия / Венгрыя / Венгри / Венгри / Vengriya"
+    },
+    {
+     "id": "hungary",
+     "label": "Hungary family",
+     "origin": "from Turkic on-ogur, 'ten arrows', with a nod to the Huns",
+     "n": 194,
+     "share": 0.7578,
+     "source": "List of country-name etymologies",
+     "quote": "The ethnonym Hunni (referring to the Huns) has influenced the Latin (and English) spelling",
+     "examples": "Hungary / Hongrie / Ungarn / Hungary / Hungaria / Hungaria / אונגארן / Hungaria"
+    },
+    {
+     "id": "other",
+     "label": "Other names",
+     "origin": "other or unclear origins",
+     "n": 1,
+     "share": 0.0039,
+     "source": "",
+     "quote": "",
+     "examples": "Azeedíchʼííʼ Dineʼé Bikéyah"
+    }
+   ]
+  },
+  "Q33": {
+   "country": "Finland",
+   "total": 260,
+   "families": [
+    {
+     "id": "suomi",
+     "label": "Suomi family",
+     "origin": "Suomi, the Finns' own name (origin uncertain)",
+     "n": 14,
+     "share": 0.0538,
+     "source": "Names of Finland",
+     "quote": "Suomi, used in Finnish and, in corresponding forms, in the other Finnic languages",
+     "examples": "Суһомудин Орн / Soome / Suomi / Suomija / Somija / Suopma / Suomėjė / Suomenma"
+    },
+    {
+     "id": "finland",
+     "label": "Finland family",
+     "origin": "Old Norse, 'land of the Finns'",
+     "n": 243,
+     "share": 0.9346,
+     "source": "Names of Finland",
+     "quote": "Finland, a name of Old Norse origin used in Swedish and, in various forms, in most other languages",
+     "examples": "Finland / Finlande / Finnland / Finlandyjo / Finlandiya / Finland / Ufini / Finlanda"
+    },
+    {
+     "id": "other",
+     "label": "Other names",
+     "origin": "other or unclear origins",
+     "n": 3,
+     "share": 0.0115,
+     "source": "",
+     "quote": "",
+     "examples": "Nahoditsʼǫʼłání Dineʼé Bikéyah / ប្រទេសហ្វាំងឡង់ / Lääʹddjânnam"
+    }
+   ]
+  },
+  "Q17": {
+   "country": "Japan",
+   "total": 260,
+   "families": [
+    {
+     "id": "nihon",
+     "label": "Nihon family",
+     "origin": "日本 'sun origin', read in each language",
+     "n": 21,
+     "share": 0.0808,
+     "source": "Names of Japan",
+     "quote": "The Japanese names for Japan are Nihon",
+     "examples": "Nhật Bản / 日本 / 日本 / 日本 / ประเทศญี่ปุ่น / Ниxуудин Нутг / Ji̍t-pún / རི་པིན།"
+    },
+    {
+     "id": "japan",
+     "label": "Japan family",
+     "origin": "Japan, via Marco Polo and Malay from a Chinese reading of 日本",
+     "n": 238,
+     "share": 0.9154,
+     "source": "Names of Japan",
+     "quote": "The word Japan is an exonym, and is used (in one form or another) by many languages",
+     "examples": "Japan / Japon / Japan / Japůńijo / Yaponiya / Japani / Japani / Japonia"
+    },
+    {
+     "id": "other",
+     "label": "Other names",
+     "origin": "other or unclear origins",
+     "n": 1,
+     "share": 0.0038,
+     "source": "",
+     "quote": "",
+     "examples": "Binaʼadaałtzózí Dinéʼiʼ Bikéyah"
+    }
+   ]
+  },
+  "Q79": {
+   "country": "Egypt",
+   "total": 260,
+   "families": [
+    {
+     "id": "misr",
+     "label": "Misr family",
+     "origin": "Misr, the ancient Semitic name",
+     "n": 67,
+     "share": 0.2577,
+     "source": "List of country-name etymologies",
+     "quote": "The current name of Egypt, Misr/Misir/Misru, stems from the Ancient Semitic name for it",
+     "examples": "Misr / Misri / Mesir / Миср / مصر / Mısır / Masar / مىسىر"
+    },
+    {
+     "id": "egypt",
+     "label": "Egypt family",
+     "origin": "from Greek Aigyptos, 'home of the ka of Ptah'",
+     "n": 192,
+     "share": 0.7385,
+     "source": "List of country-name etymologies",
+     "quote": "\"Home of the ka of Ptah\", from Latin Aegyptus, from Greek Aígyptos",
+     "examples": "Egypt / Égypte / Ägypten / Egipt / Egypt / Egjipti / עגיפטן / Египат"
+    },
+    {
+     "id": "other",
+     "label": "Other names",
+     "origin": "other or unclear origins",
+     "n": 1,
+     "share": 0.0038,
+     "source": "",
+     "quote": "",
+     "examples": "Ahidiitłʼintsoh Daʼííłʼíní Bikéyah"
+    }
+   ]
+  },
+  "Q230": {
+   "country": "Georgia",
+   "total": 251,
+   "families": [
+    {
+     "id": "sakartvelo",
+     "label": "Sakartvelo family",
+     "origin": "Sakartvelo, 'place for Kartvelians'",
+     "n": 7,
+     "share": 0.0279,
+     "source": "List of country-name etymologies",
+     "quote": "Sakartvelo, the local endonym: \"Place for Kartvelians\" in Georgian",
+     "examples": "Kartvelio / საქართველო / Sakartvelas / Kartulsuyu / საქორთუო / Қырҭтәыла / Kartulsuyu"
+    },
+    {
+     "id": "gurj",
+     "label": "Gurjistan and Gruzia family",
+     "origin": "from Persian Gurğ, the source of 'Georgia' too",
+     "n": 239,
+     "share": 0.9522,
+     "source": "List of country-name etymologies",
+     "quote": "Georgia\" seems to have been borrowed in the 11th or 12th century from the Syriac Gurz-ān or -iyān and Arabic Ĵurĵan or Ĵurzan, derived from the New Persian Gurğ or Gurğān",
+     "examples": "Georgia / Géorgie / Georgien / Gruzyjo / Gurjiston / Georgia / Georgia / Gjeorgjia"
+    },
+    {
+     "id": "other",
+     "label": "Other names",
+     "origin": "other or unclear origins",
+     "n": 5,
+     "share": 0.0199,
+     "source": "",
+     "quote": "",
+     "examples": "A' Chairtbheil / Վրաստան / Dził Daantsaaítah Bilagáana Bikéyah / Վրաստան / Хъырцей"
+    }
+   ]
+  },
+  "Q222": {
+   "country": "Albania",
+   "total": 261,
+   "families": [
+    {
+     "id": "shqip",
+     "label": "Shqipëria family",
+     "origin": "Shqipëri, 'land of the understanding'",
+     "n": 2,
+     "share": 0.0077,
+     "source": "List of country-name etymologies",
+     "quote": "Shqipëri, its modern endonym: \"Land of the Understanding\", from the Albanian adverb shqip, \"understanding each other\"",
+     "examples": "Shqipëria / Shkiperiya"
+    },
+    {
+     "id": "arnavut",
+     "label": "Arnavutluk family",
+     "origin": "Ottoman Turkish, from Byzantine Greek Arbanitai",
+     "n": 5,
+     "share": 0.0192,
+     "source": "List of country-name etymologies",
+     "quote": "Arnavutluk, its Ottoman Turkish name: \"Land of the Albanians\", a metathesis from Byzantine Greek Arbanitai",
+     "examples": "Арнгудин Орн / Arnavutluk / Arnawudiye / Arnavutlıq / Арнауыҭтәыла"
+    },
+    {
+     "id": "albania",
+     "label": "Albania family",
+     "origin": "'land of the Albanians', from Byzantine Greek Albania",
+     "n": 253,
+     "share": 0.9693,
+     "source": "List of country-name etymologies",
+     "quote": "\"Land of the Albanians\", Latinized from Byzantine Greek Albanía",
+     "examples": "Albania / Albanie / Albanien / Albanijŏ / Albaniya / Albania / Albania / אלבאניע"
+    },
+    {
+     "id": "other",
+     "label": "Other names",
+     "origin": "other or unclear origins",
+     "n": 1,
+     "share": 0.0038,
+     "source": "",
+     "quote": "",
+     "examples": "Dziłgaiiʼnii Bikéyah"
+    }
+   ]
+  },
+  "Q399": {
+   "country": "Armenia",
+   "total": 256,
+   "families": [
+    {
+     "id": "hayastan",
+     "label": "Hayastan family",
+     "origin": "Hayastan, from Hayk",
+     "n": 2,
+     "share": 0.0078,
+     "source": "List of country-name etymologies",
+     "quote": "The modern Armenian Hayastan () derives from earlier Armenian Hayk",
+     "examples": "Հայաստան / Հայաստան"
+    },
+    {
+     "id": "armenia",
+     "label": "Armenia family",
+     "origin": "'land of the Armenioi', from Old Persian Armina",
+     "n": 249,
+     "share": 0.9727,
+     "source": "List of country-name etymologies",
+     "quote": "Latinized from Greek Armenía (Ἀρμενία), \"Land of the Armenioi\"",
+     "examples": "Armenia / Arménie / Armenien / Armyńijo / Armaniston / Armenia / Armenia / Armenia"
+    },
+    {
+     "id": "other",
+     "label": "Other names",
+     "origin": "other or unclear origins",
+     "n": 5,
+     "share": 0.0195,
+     "source": "",
+     "quote": "",
+     "examples": "Хемшудин Орн / სომხეთი / Dziłkʼi Dah Názʼéelii Dineʼé Bikéyah / Сомих / სომხეთი"
+    }
+   ]
+  },
+  "Q159": {
+   "country": "Russia",
+   "total": 261,
+   "families": [
+    {
+     "id": "venaja",
+     "label": "Venäjä family",
+     "origin": "after the ancient Venedes",
+     "n": 4,
+     "share": 0.0153,
+     "source": "List of country-name etymologies",
+     "quote": "Vene or Venemaa (Estonian) and Venäjä (Finnish): after the ancient Venedes",
+     "examples": "Venemaa / Venäjä / Venäma / Ven'a"
+    },
+    {
+     "id": "krievija",
+     "label": "Krievija",
+     "origin": "after the ancient Krivichs",
+     "n": 1,
+     "share": 0.0038,
+     "source": "List of country-name etymologies",
+     "quote": "Krievija, named after the ancient Krivichs tribe",
+     "examples": "Krievija"
+    },
+    {
+     "id": "rus",
+     "label": "Rus family",
+     "origin": "from the Rus', named after Roslagen in Sweden",
+     "n": 250,
+     "share": 0.9579,
+     "source": "List of country-name etymologies",
+     "quote": "Generally agreed to be from a Varangian group known as the Rus', named after the Roslagen region in Sweden",
+     "examples": "Russia / Russie / Russland / Rusyjo / Rossiya / Russia / Urusi / Rusia"
+    },
+    {
+     "id": "other",
+     "label": "Other names",
+     "origin": "other or unclear origins",
+     "n": 6,
+     "share": 0.023,
+     "source": "",
+     "quote": "",
+     "examples": "Nga / Ngò-lò-sṳ̂ / Biʼééʼ Łichííʼí Bikéyah / Уӕрӕсе / Ngò̤-lò̤-sṳ̆ / ᏲᏂᏱ"
+    }
+   ]
+  },
+  "Q34": {
+   "country": "Sweden",
+   "total": 259,
+   "families": [
+    {
+     "id": "ruotsi",
+     "label": "Ruotsi family",
+     "origin": "after the Roslagen region, 'rowers'",
+     "n": 6,
+     "share": 0.0232,
+     "source": "List of country-name etymologies",
+     "quote": "Rootsi (Estonian) and Ruotsi (Finnish): named after the Roslagen region in Sweden",
+     "examples": "Rootsi / Ruotsi / Ruoŧŧa / Ruočči / Ruotâ / Ruõcc"
+    },
+    {
+     "id": "svea",
+     "label": "Sweden family",
+     "origin": "from the Swedes; Sverige is 'Swedish realm'",
+     "n": 245,
+     "share": 0.9459,
+     "source": "List of country-name etymologies",
+     "quote": "\"Swedes\", an old English plural form of Swede",
+     "examples": "Sweden / Suède / Schweden / Szwecyjo / Shvetsiya / Sweden / Uswidi / Suedia"
+    },
+    {
+     "id": "other",
+     "label": "Other names",
+     "origin": "other or unclear origins",
+     "n": 8,
+     "share": 0.0309,
+     "source": "",
+     "quote": "",
+     "examples": "瑞典 / 瑞典 / 瑞典 / Chʼah Bideeʼí Dineʼé Bikéyah / 瑞典 / 瑞典 / Ročinma / မိူင်းသုၺ်ႇတိၼ်ႇ"
+    }
+   ]
+  },
+  "Q38": {
+   "country": "Italy",
+   "total": 262,
+   "families": [
+    {
+     "id": "walh",
+     "label": "Włochy and Olaszország",
+     "origin": "from Gothic walh, 'foreigner', the root of Wales and Wallachia",
+     "n": 2,
+     "share": 0.0076,
+     "source": "List of country-name etymologies",
+     "quote": "Włochy (Polish) and Olaszország (Hungarian): from Gothic walh, the same root as in Valland and Wallachia",
+     "examples": "Olaszország / Włochy"
+    },
+    {
+     "id": "italia",
+     "label": "Italy family",
+     "origin": "from Latin Italia, from an early people of southern Italy",
+     "n": 260,
+     "share": 0.9924,
+     "source": "List of country-name etymologies",
+     "quote": "From Latin Ītalia, itself from Greek Ἰταλία",
+     "examples": "Italy / Italie / Italien / Italijo / Italiya / Ithali / Italia / Italia"
+    },
+    {
+     "id": "other",
+     "label": "Other names",
+     "origin": "other or unclear origins",
+     "n": 0,
+     "share": 0.0,
+     "source": "",
+     "quote": "",
+     "examples": ""
+    }
+   ]
+  }
+ },
+ "germany_check": {
+  "n": 109,
+  "ok": 99,
+  "mismatches": [
+   [
+    "nah",
+    "diutisc",
+    "alemanni"
+   ],
+   [
+    "nso",
+    "diutisc",
+    "germania"
+   ],
+   [
+    "ta",
+    "diutisc",
+    "germania"
+   ],
+   [
+    "kk",
+    "alemanni",
+    "germania"
+   ],
+   [
+    "la",
+    "alemanni",
+    "germania"
+   ],
+   [
+    "pms",
+    "alemanni",
+    "germania"
+   ],
+   [
+    "tt",
+    "alemanni",
+    "germania"
+   ],
+   [
+    "rmy",
+    "saxon",
+    "germania"
+   ],
+   [
+    "be",
+    "nemets",
+    "germania"
+   ],
+   [
+    "bg",
+    "nemets",
+    "germania"
+   ]
+  ]
+ },
+ "germany": {
+  "diutisc": 37,
+  "nemets": 18,
+  "saxon": 5,
+  "baltic": 3,
+  "germania": 137,
+  "alemanni": 58,
+  "other": 3,
+  "total": 261,
+  "n_families": 6
+ },
+ "finland": {
+  "finland": 243,
+  "suomi": 14,
+  "total": 260
+ },
+ "etymology": {
+  "n": 193,
+  "kinds": {
+   "description": 60,
+   "people": 47,
+   "place": 42,
+   "uncertain": 16,
+   "person": 11,
+   "saint": 9,
+   "state": 6,
+   "other": 2
+  },
+  "examples": {
+   "place": [
+    "Zimbabwe",
+    "Zambia",
+    "Vatican City",
+    "Uruguay",
+    "Tunisia",
+    "Tanzania",
+    "Taiwan",
+    "Switzerland",
+    "Senegal",
+    "Qatar",
+    "Portugal",
+    "Paraguay"
+   ],
+   "uncertain": [
+    "Yemen",
+    "Syria",
+    "Serbia",
+    "Peru",
+    "Oman",
+    "Malta",
+    "Lithuania",
+    "Guinea-Bissau",
+    "Guinea",
+    "Georgia",
+    "Cyprus",
+    "Cuba"
+   ],
+   "people": [
+    "Vietnam",
+    "Uzbekistan",
+    "Turkmenistan",
+    "Turkey",
+    "Thailand",
+    "Tajikistan",
+    "Sweden",
+    "Eswatini",
+    "Suriname",
+    "Sudan",
+    "Somalia",
+    "Slovakia"
+   ],
+   "description": [
+    "Venezuela",
+    "Federated States of Micronesia",
+    "United States",
+    "United Kingdom",
+    "United Arab Emirates",
+    "Ukraine",
+    "Tonga",
+    "Togo",
+    "East Timor",
+    "South Sudan",
+    "Sri Lanka",
+    "Spain"
+   ],
+   "person": [
+    "Marshall Islands",
+    "Solomon Islands",
+    "Seychelles",
+    "Saudi Arabia",
+    "Philippines",
+    "Mauritius",
+    "Liechtenstein",
+    "Kiribati",
+    "Colombia",
+    "Bolivia",
+    "Azerbaijan"
+   ],
+   "state": [
+    "Uganda",
+    "North Korea",
+    "Mali",
+    "Ghana",
+    "People's Republic of China",
+    "Angola"
+   ],
+   "saint": [
+    "Trinidad and Tobago",
+    "São Tomé and Príncipe",
+    "San Marino",
+    "Saint Vincent and the Grenadines",
+    "Saint Lucia",
+    "Saint Kitts and Nevis",
+    "El Salvador",
+    "Dominica",
+    "Antigua and Barbuda"
+   ],
+   "other": [
+    "Nepal",
+    "Israel"
+   ]
+  }
+ },
+ "chinese": {
+  "n": 196,
+  "kinds": {
+   "sound": 163,
+   "own name": 6,
+   "sound and meaning": 20,
+   "short form": 5,
+   "translation": 2
+  },
+  "sound_share": 0.8316,
+  "chars": 702
+ },
+ "japanese": {
+  "n": 196,
+  "katakana": 168,
+  "with_abbr": [
+   "United States",
+   "South Africa",
+   "Russia",
+   "Philippines",
+   "Iceland",
+   "Germany",
+   "Australia"
+  ],
+  "katakana_share": 0.8571
+ },
+ "sino": {
+  "ko": 10,
+  "vi": 17,
+  "list": [
+   {
+    "qid": "Q881",
+    "country": "Vietnam",
+    "lang": "vi",
+    "name": "Việt Nam",
+    "chars": "越南"
+   },
+   {
+    "qid": "Q30",
+    "country": "United States",
+    "lang": "ko",
+    "name": "미국",
+    "chars": "美国"
+   },
+   {
+    "qid": "Q145",
+    "country": "United Kingdom",
+    "lang": "ko",
+    "name": "영국",
+    "chars": "英国"
+   },
+   {
+    "qid": "Q43",
+    "country": "Turkey",
+    "lang": "vi",
+    "name": "Thổ Nhĩ Kỳ",
+    "chars": "土耳其"
+   },
+   {
+    "qid": "Q869",
+    "country": "Thailand",
+    "lang": "ko",
+    "name": "태국",
+    "chars": "泰國"
+   },
+   {
+    "qid": "Q865",
+    "country": "Taiwan",
+    "lang": "ko",
+    "name": "중화민국",
+    "chars": "中華民國"
+   },
+   {
+    "qid": "Q865",
+    "country": "Taiwan",
+    "lang": "vi",
+    "name": "Đài Loan",
+    "chars": "台湾"
+   },
+   {
+    "qid": "Q39",
+    "country": "Switzerland",
+    "lang": "vi",
+    "name": "Thụy Sĩ",
+    "chars": "瑞士"
+   },
+   {
+    "qid": "Q34",
+    "country": "Sweden",
+    "lang": "vi",
+    "name": "Thụy Điển",
+    "chars": "瑞典"
+   },
+   {
+    "qid": "Q29",
+    "country": "Spain",
+    "lang": "vi",
+    "name": "Tây Ban Nha",
+    "chars": "西班牙"
+   },
+   {
+    "qid": "Q884",
+    "country": "South Korea",
+    "lang": "ko",
+    "name": "대한민국",
+    "chars": "大韓民国"
+   },
+   {
+    "qid": "Q258",
+    "country": "South Africa",
+    "lang": "vi",
+    "name": "Nam Phi",
+    "chars": "南非"
+   },
+   {
+    "qid": "Q45",
+    "country": "Portugal",
+    "lang": "vi",
+    "name": "Bồ Đào Nha",
+    "chars": "葡萄牙"
+   },
+   {
+    "qid": "Q36",
+    "country": "Poland",
+    "lang": "vi",
+    "name": "Ba Lan",
+    "chars": "波蘭"
+   },
+   {
+    "qid": "Q20",
+    "country": "Norway",
+    "lang": "vi",
+    "name": "Na Uy",
+    "chars": "挪威"
+   },
+   {
+    "qid": "Q423",
+    "country": "North Korea",
+    "lang": "ko",
+    "name": "조선민주주의인민공화국",
+    "chars": "朝鮮民主主義人民共和国"
+   },
+   {
+    "qid": "Q55",
+    "country": "Netherlands",
+    "lang": "vi",
+    "name": "Hà Lan",
+    "chars": "荷蘭"
+   },
+   {
+    "qid": "Q17",
+    "country": "Japan",
+    "lang": "ko",
+    "name": "일본",
+    "chars": "日本"
+   },
+   {
+    "qid": "Q17",
+    "country": "Japan",
+    "lang": "vi",
+    "name": "Nhật Bản",
+    "chars": "日本"
+   },
+   {
+    "qid": "Q668",
+    "country": "India",
+    "lang": "ko",
+    "name": "인도",
+    "chars": "印度"
+   },
+   {
+    "qid": "Q668",
+    "country": "India",
+    "lang": "vi",
+    "name": "Ấn Độ",
+    "chars": "印度"
+   },
+   {
+    "qid": "Q41",
+    "country": "Greece",
+    "lang": "vi",
+    "name": "Hy Lạp",
+    "chars": "希臘"
+   },
+   {
+    "qid": "Q183",
+    "country": "Germany",
+    "lang": "ko",
+    "name": "독일",
+    "chars": "独逸"
+   },
+   {
+    "qid": "Q142",
+    "country": "France",
+    "lang": "vi",
+    "name": "Pháp",
+    "chars": "法"
+   },
+   {
+    "qid": "Q79",
+    "country": "Egypt",
+    "lang": "vi",
+    "name": "Ai Cập",
+    "chars": "埃及"
+   },
+   {
+    "qid": "Q35",
+    "country": "Denmark",
+    "lang": "vi",
+    "name": "Đan Mạch",
+    "chars": "丹麥"
+   },
+   {
+    "qid": "Q148",
+    "country": "People's Republic of China",
+    "lang": "ko",
+    "name": "중화인민공화국",
+    "chars": "中華人民共和國"
+   }
+  ]
+ },
+ "lang_alike": {
+  "lowest": [
+   {
+    "code": "zh-hant",
+    "name": "Chinese (traditional)",
+    "n": 194,
+    "share": 0.6649,
+    "speakers": 1299877520.0
+   },
+   {
+    "code": "lzh",
+    "name": "Classical Chinese",
+    "n": 195,
+    "share": 0.6667,
+    "speakers": null
+   },
+   {
+    "code": "yue",
+    "name": "Cantonese",
+    "n": 196,
+    "share": 0.6684,
+    "speakers": 72893210.0
+   },
+   {
+    "code": "zh-hans",
+    "name": "Chinese (simplified)",
+    "n": 194,
+    "share": 0.6804,
+    "speakers": 1299877520.0
+   },
+   {
+    "code": "wuu",
+    "name": "Wu Chinese",
+    "n": 196,
+    "share": 0.6888,
+    "speakers": 81400000.0
+   },
+   {
+    "code": "mi",
+    "name": "Māori",
+    "n": 194,
+    "share": 0.6959,
+    "speakers": 213849.0
+   },
+   {
+    "code": "gv",
+    "name": "Manx",
+    "n": 196,
+    "share": 0.7041,
+    "speakers": 12350.0
+   },
+   {
+    "code": "ta",
+    "name": "Tamil",
+    "n": 194,
+    "share": 0.7268,
+    "speakers": 75000000.0
+   },
+   {
+    "code": "my",
+    "name": "Burmese",
+    "n": 195,
+    "share": 0.7487,
+    "speakers": 32900000.0
+   },
+   {
+    "code": "gn",
+    "name": "Guarani",
+    "n": 194,
+    "share": 0.7629,
+    "speakers": 4500000.0
+   },
+   {
+    "code": "bo",
+    "name": "Tibetan",
+    "n": 195,
+    "share": 0.7692,
+    "speakers": 1200000.0
+   },
+   {
+    "code": "za",
+    "name": "Zhuang",
+    "n": 196,
+    "share": 0.7755,
+    "speakers": 16000000.0
+   }
+  ],
+  "highest": [
+   {
+    "code": "min",
+    "name": "Minangkabau",
+    "n": 196,
+    "share": 0.9031,
+    "speakers": 5530000.0
+   },
+   {
+    "code": "id",
+    "name": "Indonesian",
+    "n": 195,
+    "share": 0.9026,
+    "speakers": 198996550.0
+   },
+   {
+    "code": "su",
+    "name": "Sundanese",
+    "n": 196,
+    "share": 0.898,
+    "speakers": 32400000.0
+   },
+   {
+    "code": "sn",
+    "name": "Shona",
+    "n": 195,
+    "share": 0.8923,
+    "speakers": 9023000.0
+   },
+   {
+    "code": "sco",
+    "name": "Scots",
+    "n": 195,
+    "share": 0.8923,
+    "speakers": 1500000.0
+   },
+   {
+    "code": "kw",
+    "name": "Cornish",
+    "n": 195,
+    "share": 0.8923,
+    "speakers": 600.0
+   },
+   {
+    "code": "ilo",
+    "name": "Ilocano",
+    "n": 195,
+    "share": 0.8923,
+    "speakers": 9100000.0
+   },
+   {
+    "code": "dag",
+    "name": "Dagbanli",
+    "n": 196,
+    "share": 0.8878,
+    "speakers": 3160000.0
+   }
+  ],
+  "median": 0.8622,
+  "big": [
+   {
+    "code": "zh-hant",
+    "name": "Chinese (traditional)",
+    "n": 194,
+    "share": 0.6649,
+    "speakers": 1299877520.0
+   },
+   {
+    "code": "zh-hans",
+    "name": "Chinese (simplified)",
+    "n": 194,
+    "share": 0.6804,
+    "speakers": 1299877520.0
+   },
+   {
+    "code": "arz",
+    "name": "Egyptian Arabic",
+    "n": 196,
+    "share": 0.8112,
+    "speakers": 100542400.0
+   },
+   {
+    "code": "hi",
+    "name": "Hindi",
+    "n": 195,
+    "share": 0.8308,
+    "speakers": 341000000.0
+   },
+   {
+    "code": "ar",
+    "name": "Arabic",
+    "n": 171,
+    "share": 0.8363,
+    "speakers": 422000000.0
+   },
+   {
+    "code": "fr",
+    "name": "French",
+    "n": 166,
+    "share": 0.8434,
+    "speakers": 208157220.0
+   },
+   {
+    "code": "es",
+    "name": "Spanish",
+    "n": 174,
+    "share": 0.8448,
+    "speakers": 485000000.0
+   },
+   {
+    "code": "ja",
+    "name": "Japanese",
+    "n": 194,
+    "share": 0.8454,
+    "speakers": 128000000.0
+   },
+   {
+    "code": "en",
+    "name": "English",
+    "n": 135,
+    "share": 0.8519,
+    "speakers": 1132366680.0
+   },
+   {
+    "code": "pa",
+    "name": "Punjabi (Gurmukhi script)",
+    "n": 196,
+    "share": 0.852,
+    "speakers": 125000000.0
+   },
+   {
+    "code": "de",
+    "name": "German",
+    "n": 190,
+    "share": 0.8526,
+    "speakers": 105000000.0
+   },
+   {
+    "code": "bn",
+    "name": "Bengali",
+    "n": 195,
+    "share": 0.8564,
+    "speakers": 300000000.0
+   },
+   {
+    "code": "ru",
+    "name": "Russian",
+    "n": 191,
+    "share": 0.8639,
+    "speakers": 171428900.0
+   },
+   {
+    "code": "pt",
+    "name": "Portuguese",
+    "n": 187,
+    "share": 0.8663,
+    "speakers": 254300000.0
+   },
+   {
+    "code": "pnb",
+    "name": "Punjabi (Shahmukhi script)",
+    "n": 196,
+    "share": 0.8724,
+    "speakers": 125000000.0
+   },
+   {
+    "code": "id",
+    "name": "Indonesian",
+    "n": 195,
+    "share": 0.9026,
+    "speakers": 198996550.0
+   }
+  ]
+ },
+ "iran": {
+  "n": 256,
+  "persia": [
+   [
+    "am",
+    "ፋርስ"
+   ],
+   [
+    "ang",
+    "Persealand"
+   ]
+  ],
+  "persia_n": 2
+ },
+ "big_languages": [
+  {
+   "code": "zh-hans",
+   "name": "Chinese (simplified)",
+   "speakers": 1299877520.0,
+   "n": 240
+  },
+  {
+   "code": "zh-hant",
+   "name": "Chinese (traditional)",
+   "speakers": 1299877520.0,
+   "n": 240
+  },
+  {
+   "code": "en",
+   "name": "English",
+   "speakers": 1132366680.0,
+   "n": 242
+  },
+  {
+   "code": "es",
+   "name": "Spanish",
+   "speakers": 485000000.0,
+   "n": 241
+  },
+  {
+   "code": "ar",
+   "name": "Arabic",
+   "speakers": 422000000.0,
+   "n": 242
+  },
+  {
+   "code": "hi",
+   "name": "Hindi",
+   "speakers": 341000000.0,
+   "n": 242
+  },
+  {
+   "code": "bn",
+   "name": "Bengali",
+   "speakers": 300000000.0,
+   "n": 240
+  },
+  {
+   "code": "pt",
+   "name": "Portuguese",
+   "speakers": 254300000.0,
+   "n": 241
+  },
+  {
+   "code": "fr",
+   "name": "French",
+   "speakers": 208157220.0,
+   "n": 242
+  },
+  {
+   "code": "id",
+   "name": "Indonesian",
+   "speakers": 198996550.0,
+   "n": 241
+  },
+  {
+   "code": "ru",
+   "name": "Russian",
+   "speakers": 171428900.0,
+   "n": 242
+  },
+  {
+   "code": "ja",
+   "name": "Japanese",
+   "speakers": 128000000.0,
+   "n": 242
+  },
+  {
+   "code": "pnb",
+   "name": "Punjabi (Shahmukhi script)",
+   "speakers": 125000000.0,
+   "n": 236
+  },
+  {
+   "code": "pa",
+   "name": "Punjabi (Gurmukhi script)",
+   "speakers": 125000000.0,
+   "n": 237
+  },
+  {
+   "code": "de",
+   "name": "German",
+   "speakers": 105000000.0,
+   "n": 241
+  },
+  {
+   "code": "arz",
+   "name": "Egyptian Arabic",
+   "speakers": 100542400.0,
+   "n": 237
+  },
+  {
+   "code": "ur",
+   "name": "Urdu",
+   "speakers": 94022900.0,
+   "n": 242
+  },
+  {
+   "code": "jv",
+   "name": "Javanese",
+   "speakers": 84308740.0,
+   "n": 233
+  },
+  {
+   "code": "mr",
+   "name": "Marathi",
+   "speakers": 83100000.0,
+   "n": 242
+  },
+  {
+   "code": "tr",
+   "name": "Turkish",
+   "speakers": 82231620.0,
+   "n": 241
+  }
+ ]
+}

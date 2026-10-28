@@ -1,0 +1,243 @@
+wikidata,name,iso2,iso3,sovereign,continent,main_language,own_name,core_languages,share_alike_own_name,distinct_names
+Q954,Zimbabwe,ZW,ZWE,1,Africa,en,Zimbabwe,181,0.8674,76
+Q953,Zambia,ZM,ZMB,1,Africa,en,Zambia | Republic of Zambia,182,0.8956,69
+Q805,Yemen,YE,YEM,1,Asia,ar,اليمن | الجمهوريّة اليمنية,182,0.9835,74
+Q881,Vietnam,VN,VNM,1,Asia,vi,Việt Nam,182,0.978,85
+Q717,Venezuela,VE,VEN,1,South America,es,Venezuela,182,0.9945,87
+Q237,Vatican City,VA,VAT,1,Europe,it,Città del Vaticano,180,0.9833,115
+Q686,Vanuatu,VU,VUT,1,Oceania,bi,Vanuatu | Ripablik blong Vanuatu,180,0.9944,61
+Q265,Uzbekistan,UZ,UZB,1,Asia,uz,Oʻzbekiston | Oʻzbekiston Respublikasi,182,0.8242,98
+Q77,Uruguay,UY,URY,1,South America,es,Uruguay | República Oriental del Uruguay,182,0.8956,74
+Q702,Federated States of Micronesia,FM,FSM,1,Oceania,en,Federated States of Micronesia,174,0.9828,139
+Q709,Marshall Islands,MH,MHL,1,Oceania,en,Marshall Islands,177,0.9887,158
+Q16644,Northern Mariana Islands,MP,MNP,0,Oceania,en,Northern Mariana Islands,134,0.9478,124
+Q11703,United States Virgin Islands,VI,VIR,0,North America,en,United States Virgin Islands,138,0.6812,134
+Q16635,Guam,GU,GUM,0,Oceania,en,Guam,151,0.9338,45
+Q16641,American Samoa,AS,ASM,0,Oceania,en,American Samoa,138,0.971,109
+Q1183,Puerto Rico,PR,PRI,0,North America,es,Puerto Rico,162,1.0,75
+Q30,United States,US,USA,1,North America,en,United States | United States of America,181,0.884,166
+Q35086,South Georgia and the South Sandwich Islands,GS,SGS,0,Seven seas (open ocean),en,South Georgia and the South Sandwich Islands,120,0.95,119
+Q43448,British Indian Ocean Territory,IO,IOT,0,Seven seas (open ocean),en,British Indian Ocean Territory,105,0.9905,100
+Q34497,Saint Helena,SH,SHN,0,Seven seas (open ocean),en,Saint Helena,126,0.9921,88
+Q35672,Pitcairn Islands,PN,PCN,0,Oceania,pih,Pitkern Ailen,134,0.9925,109
+Q25228,Anguilla,AI,AIA,0,North America,en,Anguilla,138,0.9058,56
+Q9648,Falkland Islands,FK,FLK,0,South America,en,Falkland Islands,151,0.7483,137
+Q5785,Cayman Islands,KY,CYM,0,North America,en,Cayman Islands,143,0.993,131
+Q23635,Bermuda,BM,BMU,0,North America,en,Bermuda,148,1.0,66
+Q25305,British Virgin Islands,VG,VGB,0,North America,en,British Virgin Islands,138,0.9348,131
+Q18221,Turks and Caicos Islands,TC,TCA,0,North America,en,Turks and Caicos Islands,131,0.9924,121
+Q13353,Montserrat,MS,MSR,0,North America,en,Montserrat,133,1.0,48
+Q785,Jersey,JE,JEY,0,Europe,en,Jersey,79,0.7342,61
+Q25230,Guernsey,GG,GGY,0,Europe,en,Guernsey,124,0.9758,55
+Q9676,Isle of Man,IM,IMN,0,Europe,en,Isle of Man,142,0.9859,110
+Q145,United Kingdom,GB,GBR,1,Europe,en,United Kingdom | United Kingdom of Great Britain and Northern Ireland,177,0.8418,153
+Q878,United Arab Emirates,AE,ARE,1,Asia,ar,الإمارات العربية المتحدة | الإِمَارات العربِيَّة المُتَّحِدة,182,0.7582,164
+Q212,Ukraine,UA,UKR,1,Europe,uk,Україна,182,0.8901,87
+Q1036,Uganda,UG,UGA,1,Africa,en,Uganda | Republic of Uganda,181,0.884,62
+Q874,Turkmenistan,TM,TKM,1,Asia,tk,Türkmenistan | Türkmenistan Respublikasi,182,0.9835,95
+Q43,Turkey,TR,TUR,1,Asia,tr,Türkiye | Türkiye Cumhuriyeti,182,0.989,121
+Q948,Tunisia,TN,TUN,1,Africa,ar,تونس | الجمهورية التونسية,181,0.9945,85
+Q754,Trinidad and Tobago,TT,TTO,1,North America,en,Trinidad and Tobago | Republic of Trinidad and Tobago,181,0.9834,136
+Q678,Tonga,TO,TON,1,Oceania,to,Tonga,181,0.9503,58
+Q945,Togo,TG,TGO,1,Africa,fr,Togo,182,0.9835,57
+Q574,East Timor,TL,TLS,1,Asia,tet,Timor-Leste | Repúblika Demokrátika Timor-Leste,182,0.9066,151
+Q869,Thailand,TH,THA,1,Asia,th,ประเทศไทย | ราชอาณาจักรไทย,182,0.989,104
+Q924,Tanzania,TZ,TZA,1,Africa,sw,Tanzania | Jamhuri ya Muungano wa Tanzania,181,0.9724,76
+Q863,Tajikistan,TJ,TJK,1,Asia,tg,Тоҷикистон | Ҷумҳурии Тоҷикистон,181,1.0,100
+Q865,Taiwan,TW,TWN,1,Asia,zh-hant,中華民國 | 臺灣 | 台灣,180,0.7,111
+Q858,Syria,SY,SYR,1,Asia,ar,سوريا | الجمهورية العربية السورية,182,0.9505,88
+Q39,Switzerland,CH,CHE,1,Europe,de,Schweiz | Schweizerische Eidgenossenschaft,180,0.8889,134
+Q34,Sweden,SE,SWE,1,Europe,sv,Sverige,180,0.7611,120
+Q1050,Eswatini,SZ,SWZ,1,Africa,en,Eswatini,181,0.9503,88
+Q730,Suriname,SR,SUR,1,South America,nl,Suriname | Republiek Suriname,182,0.9835,56
+Q958,South Sudan,SS,SDS,1,Africa,en,South Sudan | Republic of South Sudan,174,0.931,148
+Q1049,Sudan,SD,SDN,1,Africa,ar,السودان | جمهورية السودان,181,0.9834,60
+Q854,Sri Lanka,LK,LKA,1,Asia,si,ශ්‍රී ලංකාව | ශ්‍රී ලංකා ප්‍රජාතාන්ත්‍රික සමාජවාදී ජනරජය,181,0.9834,67
+Q29,Spain,ES,ESP,1,Europe,es,España | Reino de España,178,0.9382,110
+Q884,South Korea,KR,KOR,1,Asia,ko,대한민국 | Hanguk,181,0.1271,151
+Q258,South Africa,ZA,ZAF,1,Africa,en,South Africa,180,0.8444,150
+Q1045,Somalia,SO,SOM,1,Africa,so,Soomaaliya | Jamhuuriyadda Federaalka Soomaaliya | 𐒈𐒝𐒑𐒛𐒐𐒘𐒕𐒖,181,0.9834,71
+Q34754,Somaliland,,SOL,0,Africa,so,Somaliland | Jamhuuriyadda Somaliland | JSL,140,0.9857,71
+Q685,Solomon Islands,SB,SLB,1,Oceania,en,Solomon Islands,181,0.9724,167
+Q214,Slovakia,SK,SVK,1,Europe,sk,Slovensko | Slovenská republika,182,0.978,108
+Q215,Slovenia,SI,SVN,1,Europe,sl,Slovenija,180,0.9778,105
+Q334,Singapore,SG,SGP,1,Asia,en,Singapore | Republic of Singapore,180,0.9,75
+Q1044,Sierra Leone,SL,SLE,1,Africa,en,Sierra Leone | Republic of Sierra Leone,182,0.9945,84
+Q1042,Seychelles,SC,SYC,1,Seven seas (open ocean),fr,Seychelles | République des Seychelles,181,0.9834,120
+Q403,Serbia,RS,SRB,1,Europe,sr,Србија,182,0.989,84
+Q1041,Senegal,SN,SEN,1,Africa,fr,Sénégal,181,0.9834,67
+Q851,Saudi Arabia,SA,SAU,1,Asia,ar,السعودية | المملكة العربية السعودية,182,0.9945,137
+Q1039,São Tomé and Príncipe,ST,STP,1,Africa,pt,São Tomé e Príncipe | República Democrática de São Tomé e Príncipe,181,1.0,157
+Q238,San Marino,SM,SMR,1,Europe,it,San Marino | Repubblica di San Marino | San Marco,182,1.0,63
+Q683,Samoa,WS,WSM,1,Oceania,en,Samoa | Independent State of Samoa | Western Samoa,180,0.9833,51
+Q757,Saint Vincent and the Grenadines,VC,VCT,1,North America,en,Saint Vincent and the Grenadines,178,1.0,168
+Q760,Saint Lucia,LC,LCA,1,North America,en,Saint Lucia,180,0.9778,96
+Q763,Saint Kitts and Nevis,KN,KNA,1,North America,en,Saint Kitts and Nevis | Federation of Saint Kitts and Nevis,178,1.0,150
+Q1037,Rwanda,RW,RWA,1,Africa,rw,Rwanda | Repubulika y'u Rwanda,178,1.0,56
+Q159,Russia,RU,RUS,1,Europe,ru,Россия | Российская Федерация,170,0.9529,101
+Q218,Romania,RO,ROU,1,Europe,ro,România,182,0.9945,102
+Q846,Qatar,QA,QAT,1,Asia,ar,قطر,181,0.989,58
+Q45,Portugal,PT,PRT,1,Europe,pt,Portugal | República Portuguesa,182,0.989,93
+Q36,Poland,PL,POL,1,Europe,pl,Polska | Rzeczpospolita Polska,179,0.9888,105
+Q928,Philippines,PH,PHL,1,Asia,tl,Pilipinas,181,0.9834,124
+Q419,Peru,PE,PER,1,South America,es,Perú | República del Perú,181,0.9724,61
+Q733,Paraguay,PY,PRY,1,South America,es,Paraguay | República del Paraguay,181,0.9945,75
+Q691,Papua New Guinea,PG,PNG,1,Oceania,en,Papua New Guinea | Independent State of Papua New Guinea,181,1.0,148
+Q804,Panama,PA,PAN,1,North America,es,Panamá | República de Panamá,182,1.0,47
+Q695,Palau,PW,PLW,1,Oceania,en,Palau | Republic of Palau,179,0.9944,51
+Q843,Pakistan,PK,PAK,1,Asia,ur,پاکستان,180,0.9944,67
+Q842,Oman,OM,OMN,1,Asia,ar,سلطنة عمان | سلطنة عُمان,182,0.956,54
+Q20,Norway,NO,NOR,1,Europe,nb,Norge | Kongeriket Norge,181,0.9006,118
+Q423,North Korea,KP,PRK,1,Asia,ko-kp,조선민주주의인민공화국 | Choson,182,0.1044,154
+Q1033,Nigeria,NG,NGA,1,Africa,en,Nigeria,182,0.9945,89
+Q1032,Niger,NE,NER,1,Africa,ha,Nijar,182,0.9725,84
+Q811,Nicaragua,NI,NIC,1,North America,es,Nicaragua | República de Nicaragua,180,0.9944,65
+Q664,New Zealand,NZ,NZL,1,Oceania,en,New Zealand,181,0.8177,142
+Q34020,Niue,NU,NIU,0,Oceania,en,Niue,145,1.0,51
+Q26988,Cook Islands,CK,COK,0,Oceania,en,Cook Islands,149,0.8054,129
+Q55,Netherlands,NL,NLD,1,Europe,nl,Nederland | Koninkrijk der Nederlanden,179,0.4804,139
+Q21203,Aruba,AW,ABW,0,North America,nl,Aruba,148,1.0,39
+Q25279,Curaçao,CW,CUW,0,North America,nl,Curaçao,126,1.0,53
+Q837,Nepal,NP,NPL,1,Asia,ne,नेपाल,180,0.9778,53
+Q697,Nauru,NR,NRU,1,Oceania,na,Naoero | Ripublik Naoero,181,1.0,55
+Q1030,Namibia,NA,NAM,1,Africa,en,Namibia | Republic of Namibia,181,0.9945,67
+Q1029,Mozambique,MZ,MOZ,1,Africa,pt,Moçambique | República de Moçambique,182,0.8736,82
+Q1028,Morocco,MA,MAR,1,Africa,ar,المغرب | المملكة المغربية,182,0.9725,86
+Q6250,Western Sahara,EH,SAH,0,Africa,ar,الصحراء الغربية,152,0.2368,132
+Q236,Montenegro,ME,MNE,1,Europe,sr,Crna Gora,179,0.0782,90
+Q711,Mongolia,MN,MNG,1,Asia,mn,Монгол Улс | ᠮᠣᠩᠭᠣᠯ ᠤᠯᠤᠰ,182,0.989,96
+Q217,Moldova,MD,MDA,1,Europe,ro,Moldova | Republica Moldova,182,1.0,96
+Q235,Monaco,MC,MCO,1,Europe,fr,Monaco | Principauté de Monaco,182,1.0,62
+Q96,Mexico,MX,MEX,1,North America,es,México,181,0.9779,89
+Q1027,Mauritius,MU,MUS,1,Seven seas (open ocean),en,Mauritius,181,0.9945,93
+Q1025,Mauritania,MR,MRT,1,Africa,ar,موريتانيا | الجمهورية الإسلامية الموريتانية,181,0.989,93
+Q233,Malta,MT,MLT,1,Europe,mt,Malta,181,0.9945,56
+Q912,Mali,ML,MLI,1,Africa,bm,Mali,183,0.9945,47
+Q826,Maldives,MV,MDV,1,Seven seas (open ocean),dv,ދިވެހިރާއްޖެ | ދިވެހިރާއްޖޭގެ ޖުމުހޫރިއްޔާ,182,0.0275,115
+Q833,Malaysia,MY,MYS,1,Asia,ms,Malaysia,182,0.989,94
+Q1020,Malawi,MW,MWI,1,Africa,en,Malawi | Republic of Malawi,182,0.9945,58
+Q1019,Madagascar,MG,MDG,1,Africa,mg,Madagasikara | Repoblikan'i Madagaskar,181,0.989,66
+Q221,North Macedonia,MK,MKD,1,Europe,mk,Македонија | Република Северна Македонија,181,0.9061,166
+Q32,Luxembourg,LU,LUX,1,Europe,lb,Lëtzebuerg,180,0.6667,103
+Q37,Lithuania,LT,LTU,1,Europe,lt,Lietuva,182,0.9945,89
+Q347,Liechtenstein,LI,LIE,1,Europe,de,Liechtenstein | Fürstentum Liechtenstein,182,0.989,83
+Q1016,Libya,LY,LBY,1,Africa,ar,ليبيا | دولة ليبيا,182,1.0,75
+Q1014,Liberia,LR,LBR,1,Africa,en,Liberia | Republic of Liberia,182,1.0,77
+Q1013,Lesotho,LS,LSO,1,Africa,en,Lesotho,182,0.9835,58
+Q822,Lebanon,LB,LBN,1,Asia,ar,لبنان | الجمهورية اللبنانية,181,0.989,81
+Q211,Latvia,LV,LVA,1,Europe,lv,Latvija,182,0.9945,89
+Q819,Laos,LA,LAO,1,Asia,lo,ປະເທດລາວ | ສາທາລະນະລັດ ປະຊາທິປະໄຕ ປະຊາຊົນລາວ | Lao,183,0.9891,64
+Q813,Kyrgyzstan,KG,KGZ,1,Asia,ky,Кыргызстан,181,0.9282,115
+Q817,Kuwait,KW,KWT,1,Asia,ar,الكويت,181,0.9945,83
+Q1246,Kosovo,XK,KOS,1,Europe,sq,Kosovë | Republika e Kosovës,166,0.9819,66
+Q710,Kiribati,KI,KIR,1,Oceania,en,Kiribati | Republic of Kiribati,180,0.9667,61
+Q114,Kenya,KE,KEN,1,Africa,sw,Kenya | Jamhuri ya Kenya,181,0.9834,70
+Q232,Kazakhstan,KZ,KAZ,1,Asia,kk,Қазақстан | Қазақстан Республикасы | قزاقستان,181,0.9448,101
+Q810,Jordan,JO,JOR,1,Asia,ar,الأردن | االْمَمْلَكَةُ الْأُرْدُنِيَةُ الْهَاشِمِيَة,182,0.3846,104
+Q17,Japan,JP,JPN,1,Asia,ja,日本 | Nippon | Nihon,182,0.0989,102
+Q766,Jamaica,JM,JAM,1,North America,en,Jamaica,181,0.6354,76
+Q38,Italy,IT,ITA,1,Europe,it,Italia | Repubblica Italiana,182,0.978,94
+Q801,Israel,IL,ISR,1,Asia,he,ישראל | מְדִינַת יִשְׂרָאֵל,180,0.9222,88
+Q23792,Palestine,PS,PSX,0,Asia,ar,فلسطين,127,0.9843,64
+Q27,Ireland,IE,IRL,1,Europe,ga,Éire,179,0.9665,114
+Q796,Iraq,IQ,IRQ,1,Asia,ar,العراق | جمهورية العراق,181,0.9779,65
+Q794,Iran,IR,IRN,1,Asia,fa,ایران,182,0.9835,64
+Q252,Indonesia,ID,IDN,1,Asia,id,Indonesia | Negara Kesatuan Republik Indonesia | Republik Indonesia,182,0.9615,98
+Q668,India,IN,IND,1,Asia,hi,भारत,181,0.0994,92
+Q189,Iceland,IS,ISL,1,Europe,is,Ísland,182,0.8516,98
+Q28,Hungary,HU,HUN,1,Europe,hu,Magyarország,182,0.1648,122
+Q783,Honduras,HN,HND,1,North America,es,Honduras | República de Honduras,181,0.7845,74
+Q790,Haiti,HT,HTI,1,North America,fr,Haïti,180,0.8667,69
+Q734,Guyana,GY,GUY,1,South America,en,Guyana | Co-operative Republic of Guyana,182,0.9231,75
+Q1007,Guinea-Bissau,GW,GNB,1,Africa,pt,Guiné-Bissau | República da Guiné-Bissau,182,0.967,102
+Q1006,Guinea,GN,GIN,1,Africa,fr,Guinée | République de Guinée,182,0.9176,82
+Q774,Guatemala,GT,GTM,1,North America,es,Guatemala | República de Guatemala,181,0.9669,66
+Q769,Grenada,GD,GRD,1,North America,en,Grenada | State of Grenada,181,0.9779,68
+Q41,Greece,GR,GRC,1,Europe,el,Ελλάδα | Ελλάς | Ελληνική Δημοκρατία,182,0.044,127
+Q117,Ghana,GH,GHA,1,Africa,en,Ghana,182,0.9725,51
+Q183,Germany,DE,DEU,1,Europe,de,Deutschland | Bundesrepublik Deutschland,182,0.1264,119
+Q230,Georgia,GE,GEO,1,Asia,ka,საქართველო,181,0.0442,101
+Q1005,The Gambia,GM,GMB,1,Africa,en,The Gambia | Republic of The Gambia,182,0.967,72
+Q1000,Gabon,GA,GAB,1,Africa,fr,Gabon | République gabonaise,182,0.9396,64
+Q142,France,FR,FRA,1,Europe,fr,France | République française,182,0.9066,124
+Q34617,Saint Pierre and Miquelon,PM,SPM,0,North America,fr,Saint-Pierre-et-Miquelon,126,1.0,105
+Q35555,Wallis and Futuna,WF,WLF,0,Oceania,fr,Wallis-et-Futuna | Territoire des îles Wallis-et-Futuna,126,1.0,95
+Q126125,Saint Martin,MF,MAF,0,North America,fr,Saint-Martin | Collectivité de Saint-Martin,98,0.9592,50
+Q25362,Saint Barthélemy,BL,BLM,0,North America,fr,Saint-Barthélemy,108,1.0,62
+Q30971,French Polynesia,PF,PYF,0,Oceania,fr,Polynésie française,138,0.971,120
+Q33788,New Caledonia,NC,NCL,0,Oceania,fr,Nouvelle-Calédonie | Kanaky | Calédonie,146,0.9932,122
+Q129003,French Southern and Antarctic Lands,TF,ATF,0,Seven seas (open ocean),fr,Terres australes et antarctiques françaises,86,0.9884,84
+Q5689,Åland,AX,ALD,0,Europe,sv,Åland,136,0.9412,97
+Q33,Finland,FI,FIN,1,Europe,fi,Suomi,181,0.0497,103
+Q712,Fiji,FJ,FJI,1,Oceania,en,Fiji | Republic of Fiji,180,0.6944,79
+Q115,Ethiopia,ET,ETH,1,Africa,am,ኢትዮጵያ | የኢትዮጵያ ፌዴራላዊ ዲሞክራሲያዊ ሪፐብሊክ,182,0.8132,93
+Q191,Estonia,EE,EST,1,Europe,et,Eesti | Eesti Vabariik,181,0.9337,90
+Q986,Eritrea,ER,ERI,1,Africa,ti,ኤርትራ,181,0.989,79
+Q983,Equatorial Guinea,GQ,GNQ,1,Africa,es,Guinea Ecuatorial | República de Guinea Ecuatorial,180,0.9278,152
+Q792,El Salvador,SV,SLV,1,North America,es,El Salvador | República de El Salvador,181,0.9448,79
+Q79,Egypt,EG,EGY,1,Africa,ar,مصر | جُمهورِيّةُ مِصرَ العَرَبيّةِ,182,0.2308,114
+Q736,Ecuador,EC,ECU,1,South America,es,Ecuador | República del Ecuador,182,0.9835,82
+Q786,Dominican Republic,DO,DOM,1,North America,es,República Dominicana,182,0.978,152
+Q784,Dominica,DM,DMA,1,North America,en,Dominica | Commonwealth of Dominica,181,0.9834,59
+Q977,Djibouti,DJ,DJI,1,Africa,fr,Djibouti | République de Djibouti,181,0.674,89
+Q223,Greenland,GL,GRL,0,North America,kl,Kalaallit Nunaat,170,0.9588,101
+Q4628,Faroe Islands,FO,FRO,0,Europe,fo,Føroyar,159,0.9748,138
+Q35,Denmark,DK,DNK,1,Europe,da,Danmark | Kongeriget Danmark | Danmarks Rige,182,0.9945,96
+Q213,Czech Republic,CZ,CZE,1,Europe,cs,Česko | Česká republika,182,0.3791,139
+Q23681,Turkish Republic of Northern Cyprus,,CYN,0,Asia,tr,Kuzey Kıbrıs | Kuzey Kıbrıs Türk Cumhuriyeti,148,0.8311,138
+Q229,Cyprus,CY,CYP,1,Asia,el,Κύπρος | Κυπριακή Δημοκρατία,180,0.6556,104
+Q241,Cuba,CU,CUB,1,North America,es,Cuba | República de Cuba,182,0.9945,58
+Q224,Croatia,HR,HRV,1,Europe,hr,Hrvatska,182,0.0769,111
+Q1008,Ivory Coast,CI,CIV,1,Africa,fr,Côte d'Ivoire | République de Côte d'Ivoire,182,0.6538,145
+Q800,Costa Rica,CR,CRI,1,North America,es,Costa Rica | República de Costa Rica,182,0.9945,68
+Q974,Democratic Republic of the Congo,CD,COD,1,Africa,fr,République démocratique du Congo,182,0.9615,163
+Q971,Republic of the Congo,CG,COG,1,Africa,fr,République du Congo,182,0.9396,145
+Q970,Comoros,KM,COM,1,Africa,ar,جزر القمر | الاتحاد القمري,180,0.9778,115
+Q739,Colombia,CO,COL,1,South America,es,Colombia,182,0.989,83
+Q148,People's Republic of China,CN,CHN,1,Asia,zh-hans,中华人民共和国 | 中華人民共和國 | 中国 | 中國,181,0.0442,143
+Q14773,Macau,MO,MAC,0,Asia,zh-hant,澳門 | 澳門特別行政區 | 澳门,154,0.0649,55
+Q8646,Hong Kong,HK,HKG,0,Asia,zh-hant,香港,172,0.6977,72
+Q298,Chile,CL,CHL,1,South America,es,Chile | República de Chile,182,0.6703,79
+Q657,Chad,TD,TCD,1,Africa,fr,Tchad | République du Tchad,181,0.6464,71
+Q929,Central African Republic,CF,CAF,1,Africa,fr,République centrafricaine | Republique Centrafricaine,182,0.3132,164
+Q1011,Cape Verde,CV,CPV,1,Africa,pt,Cabo Verde | República de Cabo Verde,182,0.9066,112
+Q16,Canada,CA,CAN,1,North America,en,Canada,181,0.9613,67
+Q1009,Cameroon,CM,CMR,1,Africa,fr,Cameroun | République du Cameroun,181,1.0,73
+Q424,Cambodia,KH,KHM,1,Asia,km,កម្ពុជា,183,0.9454,100
+Q836,Myanmar,MM,MMR,1,Asia,my,မြန်မာ | ပြည်ထောင်စု သမ္မတ မြန်မာနိုင်ငံတော် | မြန်မာနိုင်ငံ | မြန်မာပြည်,182,0.989,79
+Q967,Burundi,BI,BDI,1,Africa,rn,Uburundi,180,0.9944,60
+Q965,Burkina Faso,BF,BFA,1,Africa,mos,Burkina Faso,183,0.9727,74
+Q219,Bulgaria,BG,BGR,1,Europe,bg,България,182,0.9945,101
+Q921,Brunei,BN,BRN,1,Asia,ms,Brunei | Negara Brunei Darussalam | Brunei Darussalam,179,0.9888,73
+Q155,Brazil,BR,BRA,1,South America,pt,Brasil | República Federativa do Brasil,182,0.967,92
+Q963,Botswana,BW,BWA,1,Africa,en,Botswana,182,0.9725,61
+Q225,Bosnia and Herzegovina,BA,BIH,1,Europe,bs,Bosna i Hercegovina,180,1.0,159
+Q750,Bolivia,BO,BOL,1,South America,es,Bolivia | Estado Plurinacional de Bolivia,180,1.0,79
+Q917,Bhutan,BT,BTN,1,Asia,dz,འབྲུག་ཡུལ་,183,0.0109,70
+Q962,Benin,BJ,BEN,1,Africa,fr,Bénin,182,0.989,60
+Q242,Belize,BZ,BLZ,1,North America,en,Belize,182,0.989,71
+Q31,Belgium,BE,BEL,1,Europe,nl,België | Koninkrijk België,180,0.9944,109
+Q184,Belarus,BY,BLR,1,Europe,be,Беларусь | Рэспубліка Беларусь,180,0.9444,107
+Q244,Barbados,BB,BRB,1,North America,en,Barbados,182,0.9231,58
+Q902,Bangladesh,BD,BGD,1,Asia,bn,বাংলাদেশ | গণপ্রজাতন্ত্রী বাংলাদেশ,182,0.9066,86
+Q398,Bahrain,BH,BHR,1,Asia,ar,البحرين,182,0.9945,76
+Q778,The Bahamas,BS,BHS,1,North America,en,The Bahamas | Commonwealth of the Bahamas,182,0.9835,95
+Q227,Azerbaijan,AZ,AZE,1,Asia,az,Azərbaycan | Azərbaycan Respublikası,182,0.8462,119
+Q40,Austria,AT,AUT,1,Europe,de,Österreich | Republik Österreich,182,0.6209,117
+Q408,Australia,AU,AUS,1,Oceania,en,Australia,182,0.7088,102
+Q4824275,Australian Indian Ocean Territories,AU,IOA,0,Asia,en,Australian Indian Ocean Territories,44,1.0,42
+Q131198,Heard Island and McDonald Islands,HM,HMD,0,Seven seas (open ocean),en,Heard Island and McDonald Islands,94,0.9362,91
+Q31057,Norfolk Island,NF,NFK,0,Oceania,en,Norfolk Island,124,0.9919,96
+Q133888,Ashmore and Cartier Islands,AU,ATC,0,Oceania,en,Ashmore and Cartier Islands,82,0.9878,78
+Q399,Armenia,AM,ARM,1,Asia,hy,Հայաստան,182,0.0,94
+Q414,Argentina,AR,ARG,1,South America,es,Argentina | República Argentina,182,0.8901,99
+Q781,Antigua and Barbuda,AG,ATG,1,North America,en,Antigua and Barbuda,181,1.0,135
+Q916,Angola,AO,AGO,1,Africa,pt,Angola | República de Angola,182,0.9396,61
+Q228,Andorra,AD,AND,1,Europe,ca,Andorra,182,0.9615,60
+Q262,Algeria,DZ,DZA,1,Africa,ar,الجزائر | الجمهورية الجزائرية الديمقراطية الشعبية,182,0.5879,104
+Q222,Albania,AL,ALB,1,Europe,sq,Shqipëria | Republika e Shqipërisë,182,0.0,80
+Q889,Afghanistan,AF,AFG,1,Asia,ps,افغانستان,179,0.9777,86
+Q333946,Siachen Glacier,,KAS,0,Asia,ur,سیاچن گلیشیر,54,0.8704,48
+Q51,Antarctica,AQ,ATA,0,Antarctica,en,Antarctica,179,0.8436,100
+Q26273,Sint Maarten,SX,SXM,0,North America,nl,Sint Maarten,112,1.0,46
+Q672,Tuvalu,TV,TUV,1,Oceania,en,Tuvalu,180,0.9944,52
