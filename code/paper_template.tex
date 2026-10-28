@@ -1,0 +1,252 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Pagella}
+\newfontfamily\headfont{Inter}[UprightFont=*-ExtraBold,BoldFont=*-ExtraBold,Extension=.otf,Path=/usr/share/fonts/opentype/inter/]
+\newfontfamily\cjk{Noto Serif CJK SC}
+\newfontfamily\uni{DejaVu Serif}[Scale=0.92]
+\newcommand{\zh}[1]{{\cjk #1}}
+\newcommand{\un}[1]{{\uni #1}}
+\usepackage[a4paper,margin=2.3cm]{geometry}
+\usepackage{graphicx,booktabs,float,caption,array,longtable}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xurl}
+\usepackage{titlesec}
+\usepackage{setspace}
+\setstretch{1.05}
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\textfraction}{0.1}
+\renewcommand{\floatpagefraction}{0.75}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\titleformat{\section}{\headfont\Large}{\thesection}{0.8em}{}
+\titleformat{\subsection}{\headfont\large}{\thesubsection}{0.8em}{}
+\captionsetup{font=small,labelfont=bf}
+\urlstyle{same}
+\hypersetup{pdftitle={What the World Calls Each Other: Country Names in 262 Languages, and What They Mean},pdfauthor={Tristan Hotham}}
+
+\begin{document}
+\begin{center}
+{\Large\bfseries What the World Calls Each Other\\[2pt] Country Names in {{meta.languages|int}} Languages, and What They Mean\par}
+\vspace{1.2em}
+{\large Tristan Hotham\par}
+\vspace{0.3em}
+{\small Independent researcher\\
+ORCID: 0000-0003-4931-9349\\
+DOI: \href{https://doi.org/10.5281/zenodo.23739847}{https://doi.org/10.5281/zenodo.23739847}\par}
+\vspace{0.8em}
+2026
+\end{center}
+
+\begin{quote}
+\small
+\begin{center}\textbf{Abstract}\end{center}
+Countries are known abroad by names that often differ from their own: Deutschland is Allemagne, Niemcy and Saksa, Suomi is Finland, Hellas is Yunan. I assemble the Wikidata labels of all {{meta.places|int}} countries and territories on the Natural Earth world map in the {{meta.languages|int}} languages that name at least 100 of them, {{meta.names|int}} names in all, and ask how often the world echoes a country's own name, which countries and languages depart from it most, and what the names mean where published sources say so. A simple test on the first consonant sounds of romanised names, which agrees with hand-built name families for {{alike.validation.share|pct1}} of {{alike.validation.names|int}} checked names, finds that the typical sovereign state is called by a name like its own in {{alike.median|pct}} of other languages, but {{alike.under_quarter|int}} states, among them Germany, Greece, Finland, Japan, Hungary and China, are echoed by fewer than a quarter. For fourteen countries I sort every name into families documented in Wikipedia, with each family's source sentence checked word for word: Germany's {{germany.total|int}} names fall into six families, led by forms of Latin Germania ({{germany.germania|int}}) and of French Allemagne ({{germany.alemanni|int}}), with only {{germany.diutisc|int}} echoing Deutsch. Among large languages, Chinese departs most from countries' own names; of {{chinese.n|int}} Chinese names for sovereign states, {{chinese.kinds.sound|int}} are pure sound transcriptions, and only {{chinese.kinds.translation|int}} are translations. Of the {{etymology.n|int}} sovereign states with an entry in Wikipedia's list of country-name etymologies, {{etymology.kinds.description|int}} are named with a description, {{etymology.kinds.people|int}} after a people and {{etymology.kinds.place|int}} after a place. An interactive map lets readers label the world in any of the languages, or see what every language calls a chosen country.
+
+\textbf{Keywords:} toponymy; exonyms; endonyms; country names; Wikidata; etymology; Chinese characters; Japanese; multilingual data; open data
+\end{quote}
+
+\section{Introduction}
+
+Every country has at least two kinds of name: the one its people use, the endonym, and the ones used by everybody else, the exonyms. Often the two are close: Kenya, Peru and Canada are called much the same in most languages. Sometimes they are far apart. The Germans call their country Deutschland, but the French say Allemagne, the Poles Niemcy, the Finns Saksa and the Lithuanians Vokietija, and each of those names records an old encounter with a different group of Germanic speakers (Wikipedia contributors 2026b). Greece calls itself Hellas, but much of Asia says Yunan, from the Old Persian name for the Ionians (Wikipedia contributors 2026c). Chinese writes foreign names with characters that each have a meaning, so that Germany, \zh{德国} Déguó, can be read as ``virtue country'' and the United States, \zh{美国} Měiguó, as ``beautiful country'', although both are abbreviated sound transcriptions (Wikipedia contributors 2026e).
+
+These stories are well told one country at a time. My aim here is to look at all of them at once, with open data, so that a reader can choose any language and see what it calls the whole world, or choose any country and see what the whole world calls it. I ask four questions. How often do the world's languages echo a country's own name, and which countries are most often called something else? Which languages depart most from countries' own names? For countries whose many names are well documented, how are the families of names spread across languages? And what do the names mean, as far as published sources say?
+
+The answers are presented in an interactive map at \url{https://tristan-hotham.github.io/country-names/}; this note documents the data, methods and results.
+
+\section{Data}
+
+\subsection{Countries and names}
+
+The countries are the {{meta.places|int}} countries and territories of Natural Earth's 1:50m admin 0 map (Natural Earth 2026), which gives each its Wikidata identifier. {{meta.sovereign|int}} are sovereign states: those Wikidata classes as ``sovereign state'', plus Denmark, which Natural Earth splits from Greenland and the Faroe Islands.
+
+For each country I took its Wikidata labels (Wikidata contributors 2026), retrieved on {{meta.retrieved}}. A label is the main name of an item in a given language, written by volunteers; for countries it is usually the standard short name. I kept every Wikimedia language code with labels for at least 100 of the {{meta.places|int}} places, after dropping the multilingual code and the mixed-script Chinese code in favour of the simplified and traditional versions. This leaves {{meta.languages|int}} languages, {{meta.core_languages|int}} of which (``core'' languages) name 200 places or more, and {{meta.names|int}} names. Speaker numbers come from the Wikidata items of the languages; {{meta.langs_100m|int}} languages have 100 million speakers or more and {{meta.langs_no_speakers|int}} have no figure. The names are written in {{meta.scripts|int}} scripts; {{meta.same_as_english|int}} of the non-English names ({{meta.same_as_english_share|pct}}) are spelled exactly as in English.
+
+``Language'' here means a Wikimedia language edition, not a speech community. Old English, Latin and Cornish count once each, as do Spanish and Hindi, so counts of languages must not be read as counts of people.
+
+\subsection{Meanings}
+
+Meanings come from English Wikipedia, retrieved on the same day, under CC BY-SA 4.0: the ``List of country-name etymologies'' for the origin of every country's English name and, where given, of its own name (Wikipedia contributors 2026a), and the articles on the names of Germany, China, Greece, the Netherlands, Finland, Japan, Wales, Iran and the United States, ``Japanese exonyms'', ``Ateji'', ``Chinese exonyms'' and ``Transcription into Chinese characters'' (Wikipedia contributors 2026b to 2026i). For character glosses I used two open dictionaries: CC-CEDICT for Chinese (MDBG 2026) and KANJIDIC2 for Japanese kanji, with its Korean and Vietnamese readings (EDRDG 2026), both under CC BY-SA 4.0.
+
+\section{Methods}
+
+\subsection{A country's own name, and names that sound like it}
+
+A country's own name is its Wikidata label in its main official language (the first official language with a Wikimedia code, with a short list of fixes, for example Urdu for Pakistan and Tagalog for the Philippines), plus its Wikidata native label, and for Japan, the two Koreas and Laos the usual romanised forms (Nippon, Nihon, Hanguk, Choson, Lao). All names were romanised with anyascii (Bhatt 2026).
+
+To decide whether a name ``sounds like'' the country's own name, I reduce each word to a skeleton of consonant classes (b, p, v, f and w together; d and t; g, k, c, q and x; s and z; and so on), drop vowels, generic words such as ``republic'', ``kingdom'' and ``islands'' and the ``country'' prefixes that Thai, Lao, Khmer, Shan and Burmese attach without a space, and compare the first three consonant classes of the best-matching pair of words. Two names count as alike if the first class matches and the similarity of the first three is at least {{alike.threshold|f1}}. The test is deliberately crude: it captures borrowing by sound (Kenya, Kenia, \un{Кения}) and misses shared roots spelled with different first consonants. I checked it against the hand-built families described below, treating a name as truly alike when it belongs to the family of the country's own name: the test agrees for {{alike.validation.agree|int}} of {{alike.validation.names|int}} names ({{alike.validation.share|pct1}}), with {{alike.validation.false_alike|int}} false matches and {{alike.validation.missed_alike|int}} misses.
+
+For each sovereign state I compute the share of core languages, other than the state's own official languages, whose name is alike. For each core language I compute the same share across sovereign states, again leaving out states where the language is official.
+
+\subsection{Families of names}
+
+For fourteen countries whose many names are documented in Wikipedia (Germany, China, Greece, the Netherlands, Hungary, Finland, Japan, Egypt, Georgia, Albania, Armenia, Russia, Sweden and Italy), I defined families of names, each with a short label, an origin as stated by the source, and a quoted sentence from that source. The build script checks every quotation word for word against the article text and stops if one is missing. Names are assigned to families by regular expressions on their romanised forms, tried in order; names that match none are ``other''. For Germany I also checked the assignment against the lists of languages in ``Names of Germany'': of the {{germany_check.n|int}} languages that the article lists under a family and that have a Wikidata label, {{germany_check.ok|int}} are assigned to the same family. In the ten others the Wikidata label and the article point to different names; Bulgarian and Belarusian, for example, are listed in the article's Niemcy family, but their Wikidata labels are \un{Германия} and \un{Германія}.
+
+For the interactive reverse view, each country is coloured by the family of the name used for the chosen country in its own main language. For countries without hand-built families, names are grouped automatically by their first two consonant classes. These automatic groups gather spellings, not origins, and the page says so.
+
+\subsection{Kinds of origin}
+
+I read each entry in the list of country-name etymologies and sorted the origin of the English name into rough kinds: a description (``rich coast'', ``black mountain'', ``united states''), a people, a place (a river, city, island or other feature), a person, a saint or Christ, an older state or dynasty, uncertain, and other. A first pass used keyword rules; I then corrected the kinds by hand (the corrections are listed in the code). The boundaries are fuzzy, and a name can fit more than one kind.
+
+\subsection{Chinese, Japanese, Korean and Vietnamese}
+
+For each Chinese (simplified) name I took the pinyin and a short gloss of every character from CC-CEDICT, preferring the reading that matches the word, and tagged each character as sound or meaning. Meaning elements are a short explicit list: suffixes such as \zh{国} country, \zh{岛} island, \zh{共和国} republic and \zh{群岛} islands, prefixes such as \zh{南} south, \zh{北} north, \zh{新} new and \zh{圣} saint where the name is a translation of such a word, and a few hand-checked whole names: the translations \zh{冰岛} (Iceland) and \zh{黑山} (Montenegro), the countries' own names written in characters (\zh{中国}, \zh{日本}, \zh{越南} and others), and five short forms whose first character abbreviates an older transcription (\zh{德国}, \zh{美国}, \zh{英国}, \zh{法国}, \zh{泰国}), each with its source. A name is then ``sound'', ``sound and meaning'', ``short form'', ``translation'' or ``own name''. The gloss of a sound character is what the character means on its own, not the meaning of the name.
+
+For Japanese, a name written wholly in katakana is sound only. Kanji forms and abbreviations come from the tables of ``Japanese exonyms'', merged across the article's several tables, and kanji meanings from KANJIDIC2. Korean and Vietnamese names were matched to Chinese characters when the name equals a sequence of the KANJIDIC2 Korean or Vietnamese readings of the characters of the Chinese or Japanese name; for Korean only a short list of names known to be Sino-Korean was tested, since Hangul transcriptions of foreign sounds can match by chance.
+
+\section{Results}
+
+\subsection{How often the world echoes a country's own name}
+
+For the typical sovereign state, {{alike.median|pct}} of the other core languages use a name that sounds like the state's own name, and {{alike.highest_n|int}} of the {{alike.n|int}} states are echoed by 95\% of languages or more. But {{alike.under_half|int}} states are echoed by fewer than half and {{alike.under_quarter|int}} by fewer than a quarter (Figure~\ref{fig:renamed}). At the very bottom are Armenia, whose own name is Hayastan, and Albania, Shqipëria, which no core language echoes; then Bhutan (Druk Yul), the Maldives (Dhivehi Raajje), Greece, Georgia (Sakartvelo), China (Zhongguo) and Finland (Suomi), all below 6\%. The list continues with Croatia, Montenegro, Japan, India (Bharat), the two Koreas, Germany, Hungary and Egypt (Misr).
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.86\linewidth]{fig_renamed.png}
+\caption{Share of the other core languages whose name for the country sounds like the country's own name: the 22 lowest of {{alike.n|int}} sovereign states. Dark bars: below 25\%. The own name is shown in brackets in a readable romanisation.}
+\label{fig:renamed}
+\end{figure}
+
+A few results in the low range reflect spelling more than history. Jordan (al-Urdun), the Czech Republic (Česko against Tschechien and Czech) and the Central African Republic (where ``central'' is spelled with c, z and ts) sit between 30\% and 40\% partly because the test misses shared roots with different first letters. The seventeen states below a quarter are, by contrast, genuine cases where most of the world uses a different name.
+
+\subsection{Families of names}
+
+Germany has the most varied set of names among the fourteen countries with hand-built families (Figure~\ref{fig:germany}, Table~\ref{tab:germany}). {{germany.germania|int}} of its {{germany.total|int}} names are forms of Latin Germania, among them English, Russian, Hindi and Indonesian. {{germany.alemanni|int}} follow French Allemagne, from the Alamanni, including Spanish, Portuguese, Arabic and Turkish, so that most of Latin America, North Africa and the Middle East use this family. {{germany.diutisc|int}} use forms of Deutsch: the Germans' neighbours to the north and west (Dutch, the Scandinavian languages, Frisian) and, through the character \zh{德} and the Japanese Doitsu, Chinese, Japanese, Korean and Vietnamese. {{germany.nemets|int}} Slavic and neighbouring languages use the Niemcy family, {{germany.saxon|int}} Finnic and Sami languages the Saksa family, and {{germany.baltic|int}} Baltic languages Vokietija and Vācija.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{fig_germany_map.png}
+\caption{What the world calls Germany. Each country is labelled with the name for Germany in its main official language and coloured by family. Non-Latin names other than Chinese, Japanese and Korean are shown romanised. Antarctica omitted; Equal Earth projection.}
+\label{fig:germany}
+\end{figure}
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{The six families of names for Germany, as described in ``Names of Germany'', with the number of the {{germany.total|int}} Wikidata names in each.}
+\label{tab:germany}
+\begin{tabular}{p{3.0cm}p{6.4cm}r}
+\toprule
+Family & Origin (as stated in the source) & Names \\
+\midrule
+/*TAB_GERMANY*/
+\bottomrule
+\end{tabular}
+\end{table}
+
+The other countries' families (Figure~\ref{fig:families}) show several patterns. In some, the world almost unanimously uses an outsiders' name: Finland ({{finland.finland|int}} of {{finland.total|int}} names; only {{finland.suomi|int}} echo Suomi, among them Estonian, Sami and other Uralic languages and the neighbouring Lithuanian and Latvian), Japan ({{families.Q17.families.1.n|int}} forms of Japan against {{families.Q17.families.0.n|int}} readings of \zh{日本}), Armenia, Albania and Georgia. In others, a second name holds a large region: Cathay, from the Khitan people, survives in {{families.Q148.families.1.n|int}} languages for China, among them Russian and many languages of Central Asia; Yunan in {{families.Q41.families.1.n|int}} for Greece; Misr in {{families.Q79.families.0.n|int}} for Egypt; and Magyar in {{families.Q28.families.0.n|int}} for Hungary, from Czech and Croatian to Turkish, Arabic and Persian. The Netherlands is split three ways: {{families.Q55.families.3.n|int}} languages borrow Nederland, {{families.Q55.families.0.n|int}} translate ``low countries'' and {{families.Q55.families.1.n|int}} use Holland, the name of one region, for the whole country. Two languages, Polish (Włochy) and Hungarian (Olaszország), call Italy by a name from the Germanic word for ``foreigner'' that also gave English its ``Wales'' (Wikipedia contributors 2026f).
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{fig_families.png}
+\caption{Share of each country's Wikidata names by family of name, for the fourteen countries with hand-built families. Grey: other or unclear. Families and origins from Wikipedia.}
+\label{fig:families}
+\end{figure}
+
+Some names have nearly vanished. In 1935 the Shah of Iran asked foreign delegates to use ``Iran'' rather than ``Persia'' in formal correspondence (Wikipedia contributors 2026g); of {{iran.n|int}} Wikidata labels for Iran today, only {{iran.persia_n|int}} still resemble Persia, in Amharic and Old English.
+
+\subsection{Which languages rename the world}
+
+Among the {{lang_alike.big|len}} languages with 100 million speakers or more, the share of country names that sound like the countries' own names ranges from {{lang_alike.big.0.share|pct}} in traditional Chinese and {{lang_alike.big.1.share|pct}} in simplified Chinese to {{lang_alike.big.15.share|pct}} in Indonesian, against a median of {{lang_alike.median|pct}} for all {{meta.core_languages|int}} core languages (Figure~\ref{fig:languages}). The Chinese varieties (Cantonese, Wu, Classical Chinese) are at the bottom of the whole list of core languages. Part of the reason is that Chinese writes foreign sounds with its own syllables and abbreviates long transcriptions to one character, so that Germany becomes Dé, America Měi and England Yīng.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.82\linewidth]{fig_languages.png}
+\caption{Share of sovereign states whose name in each language sounds like the state's own name, for the languages with 100 million speakers or more (Wikidata). Dashed line: median of the core languages.}
+\label{fig:languages}
+\end{figure}
+
+\subsection{Sound and meaning in Chinese and Japanese}
+
+Of the {{chinese.n|int}} Chinese names for sovereign states, {{chinese.kinds.sound|int}} ({{chinese.sound_share|pct}}) are made only of sound characters, {{chinese.kinds.sound and meaning|int}} combine sound with a meaning element such as \zh{南} south or \zh{岛} island, {{chinese.kinds.short form|int}} are short forms, {{chinese.kinds.translation|int}} are translations and {{chinese.kinds.own name|int}} are the countries' own names in characters (Figure~\ref{fig:chinese}, Table~\ref{tab:chinese}). The flattering readings that circulate online (``beautiful country'', ``virtue country'', ``hero country'') belong to the short forms, whose first character abbreviates an older transcription: \zh{美} from \zh{美利堅}, an early transcription of America, \zh{德} from \zh{德意志}, a transcription of Deutsch, and \zh{英} from \zh{英吉利}, ``English'' (Wikipedia contributors 2026e). The source notes that some transcriptions are meant to have, or happen to have, positive connotations.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{fig_chinese_map.png}
+\caption{Chinese names for countries, coloured by how the name was made, with the CC-CEDICT gloss of each character in italics. For sound characters the gloss is only what the character means on its own. Long glosses are cut.}
+\label{fig:chinese}
+\end{figure}
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Chinese short forms and translations, and Japanese kanji short forms, with character glosses from CC-CEDICT and KANJIDIC2.}
+\label{tab:chinese}
+\begin{tabular}{p{2.8cm}p{2.4cm}p{3.6cm}p{5.6cm}}
+\toprule
+Country & Name & Kind & Characters \\
+\midrule
+/*TAB_CHINESE*/
+\bottomrule
+\end{tabular}
+\end{table}
+
+Japanese mostly avoids the question: {{japanese.katakana|int}} of {{japanese.n|int}} sovereign states ({{japanese.katakana_share|pct}}) are written in katakana, which records sound only. Kanji short forms survive for a few, and ``Ateji'' notes that \zh{米国} Beikoku ``literally translates to `rice country''', the \zh{米} being taken from the old transcription \zh{亜米利加} (Wikipedia contributors 2026h). I matched {{sino.ko|int}} Korean and {{sino.vi|int}} Vietnamese names to the characters they read, for example Korean \zh{미국} Miguk and \zh{독일} Dogil to \zh{美國} and \zh{獨逸}, and Vietnamese Đức to \zh{德} and Hà Lan to \zh{荷蘭}.
+
+\subsection{What countries' own names mean}
+
+The list of country-name etymologies has an entry for {{etymology.n|int}} of the {{meta.sovereign|int}} sovereign states (Figure~\ref{fig:etymology}). The largest group, {{etymology.kinds.description|int}}, are descriptions, from ``united states'' and ``united kingdom'' to Costa Rica (``rich coast''), Montenegro (``black mountain''), Ecuador (``equator'') and Ukraine (``edge, borderland''). {{etymology.kinds.people|int}} are named after a people (Poland after the Polans, France after the Franks, Finland after the Finns), and {{etymology.kinds.place|int}} after a place, such as India after the Indus, Zambia after the Zambezi and Zimbabwe after the stone houses of Great Zimbabwe. {{etymology.kinds.person|int}} are named after a person, among them Colombia (Columbus), Bolivia (Simón Bolívar), the Philippines (Philip II of Spain) and Saudi Arabia (the House of Saud); {{etymology.kinds.saint|int}} after a saint or Christ, such as El Salvador; and {{etymology.kinds.state|int}} after an older state or dynasty, such as Ghana and Mali. For {{etymology.kinds.uncertain|int}}, among them Peru, Cuba and Syria, the origin is given as uncertain.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\linewidth]{fig_etymology.png}
+\caption{Sovereign states by the kind of origin of their English name, sorted by the author from the entries in Wikipedia's ``List of country-name etymologies''.}
+\label{fig:etymology}
+\end{figure}
+
+\section{Discussion}
+
+Three findings stand out. First, borrowing by sound is the rule: for most countries, nearly every language uses some version of the local name. The exceptions are concentrated among old and well-connected countries of Europe and Asia whose names reached other languages through intermediaries long before modern contact: Germany through the Romans, the French and the Slavs; Greece through Latin and Persian; China through the Qin and the Khitan; Japan through Chinese, Malay and Portuguese. The families of names preserve those routes, and the reverse map shows them as regions: the Allemagne family across the Spanish, Portuguese and Arabic-speaking worlds, Kitai across Russian and the languages of Central Asia, Yunan from Turkey to Indonesia.
+
+Second, the scripts matter. The languages that depart most from countries' own names are the Chinese varieties, which must fit foreign names into Chinese syllables and characters and often shorten them. The literal readings that make Chinese country names so appealing are, in all but a handful of cases, readings of sound characters. The honest way to show them, as the interactive map does, is to give the gloss and say plainly that it is a gloss.
+
+Third, what countries call themselves is most often a description, a people or a place, and much less often a person. The person-named states are a mixed group: explorers and their patrons (Colombia, the Philippines, Mauritius, the Seychelles, the Marshall Islands), a liberator (Bolivia) and ruling houses (Saudi Arabia, Liechtenstein).
+
+\section{Limitations}
+
+Wikidata gives one label per language, and many languages have several names for a country, formal and informal, old and new. Labels are written by volunteers and occasionally use an older, rarer or official form. The language list mixes national languages with historic and minority ones, so counts of languages are not counts of people. The reverse map assigns one main language to each country, which hides multilingual countries. The romanisation is automatic and loses vowels in scripts that do not write them. The sound-alike test is crude and wrong for about one name in twenty-five in the checked set; it is used for broad patterns, not single cases. The families are assigned by spelling rules, which can misplace a name whose spelling resembles another family. The kinds of origin are my reading of the etymology list, and the list itself summarises a scholarly literature that I have not checked independently. The character glosses are dictionary meanings, not etymologies.
+
+\section{Conclusion}
+
+Country names are a small, open record of how peoples met. With {{meta.names|int}} Wikidata labels, a handful of Wikipedia articles and two open dictionaries, it is possible to map that record for the whole world and every major language, while keeping each claimed meaning tied to a source. The typical country is called by a name like its own almost everywhere, but a group of old countries, Germany above all, are known to most of the world by names their own people do not use.
+
+\section*{Data and code availability}
+
+Data and code: \url{https://github.com/Tristan-Hotham/country-names}. Interactive map: \url{https://tristan-hotham.github.io/country-names/}. Archived release: \url{https://doi.org/10.5281/zenodo.23739847}. The derived data, which include text from Wikipedia and glosses from CC-CEDICT and KANJIDIC2, are released under CC BY-SA 4.0; the code under the MIT licence.
+
+\section*{AI statement}
+
+I wrote the text, with drafting and editing assistance from Claude (Anthropic), which also helped prepare the analysis code. I reviewed and checked all text and results.
+
+\section*{References}
+\small
+Bhatt, H. (2026) anyascii: Unicode to ASCII transliteration. \url{https://github.com/anyascii/anyascii} (ISC licence).
+
+EDRDG (2026) KANJIDIC2. Electronic Dictionary Research and Development Group. CC BY-SA 4.0. \url{https://www.edrdg.org/wiki/index.php/KANJIDIC_Project} (via the kanjidic2-json 0.1.0 package).
+
+MDBG (2026) CC-CEDICT Chinese-English dictionary. CC BY-SA 4.0. \url{https://www.mdbg.net/chinese/dictionary?page=cc-cedict} (via the cc-cedict 1.1.1 package).
+
+Natural Earth (2026) Admin 0 countries, 1:50m. Public domain. \url{https://www.naturalearthdata.com}
+
+Šavrič, B., Patterson, T. and Jenny, B. (2019) The Equal Earth map projection. International Journal of Geographical Information Science 33(3), 454 to 465.
+
+Wikidata contributors (2026) Wikidata. CC0. \url{https://www.wikidata.org}
+
+Wikipedia contributors (2026a) List of country-name etymologies. \url{https://en.wikipedia.org/wiki/List_of_country-name_etymologies}
+
+Wikipedia contributors (2026b) Names of Germany. \url{https://en.wikipedia.org/wiki/Names_of_Germany}
+
+Wikipedia contributors (2026c) Names of Greece. \url{https://en.wikipedia.org/wiki/Names_of_Greece}
+
+Wikipedia contributors (2026d) Names of China; Names of Japan; Names of the Netherlands; Names of Finland; Names of the United States. \url{https://en.wikipedia.org}
+
+Wikipedia contributors (2026e) Transcription into Chinese characters; Chinese exonyms. \url{https://en.wikipedia.org/wiki/Transcription_into_Chinese_characters}
+
+Wikipedia contributors (2026f) Names of Wales. \url{https://en.wikipedia.org/wiki/Names_of_Wales}
+
+Wikipedia contributors (2026g) Names of Iran. \url{https://en.wikipedia.org/wiki/Names_of_Iran}
+
+Wikipedia contributors (2026h) Ateji; Japanese exonyms. \url{https://en.wikipedia.org/wiki/Ateji}
+
+All Wikipedia articles retrieved {{meta.retrieved}}, text under CC BY-SA 4.0.
+\end{document}

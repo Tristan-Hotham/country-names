@@ -1,0 +1,732 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>What the World Calls Each Other</title>
+<meta name="description" content="An interactive world map of country names: pick any of {{meta.languages|int}} languages to see what it calls every country, or pick a country to see what the world calls it, with the meanings where the sources support them.">
+<meta property="og:title" content="What the world calls each other">
+<meta property="og:description" content="{{meta.names|int}} country names in {{meta.languages|int}} languages, mapped. Seventeen countries are called by a name unlike their own in more than three languages out of four, and {{chinese.sound_share|pct}} of Chinese country names are chosen for their sound.">
+<meta property="og:image" content="https://tristan-hotham.github.io/country-names/header.png">
+<meta property="og:url" content="https://tristan-hotham.github.io/country-names/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800;9..144,900&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+/* Paper, ink and seal red: a name sounds like the country's own (jade) or does not (vermilion). */
+:root{
+  --bg:#F6F2EA; --panel:#EDE7DB; --fg:#1F1C26; --muted:#655E66; --rule:#DCD4C4; --card:#FCFAF5; --border:#CBC1AE;
+  --seal:#B8361E; --jade:#2C7A6E; --gold:#C08A1E; --plum:#4B2A5C; --sea:#E2E8EA; --none:#E4DED3;
+  --alike:#A9D3C8; --unlike:#EBA58A; --home:#E8C766;
+  --display:"Fraunces",Georgia,"Times New Roman",serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman","Noto Serif","Noto Serif CJK SC",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --label:system-ui,-apple-system,"Segoe UI","Noto Sans","Noto Sans CJK SC","Noto Sans Arabic",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#17151B; --panel:#221F26; --fg:#EFEAF0; --muted:#A99FAA; --rule:#36313B; --card:#211E25; --border:#4A4451;
+  --seal:#EE7A5C; --jade:#5FB8A8; --gold:#E5B54E; --plum:#C9A2D6; --sea:#1C2226; --none:#2E2B33;
+  --alike:#2F6B61; --unlike:#8E4532; --home:#8B6E1E; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#17151B; --panel:#221F26; --fg:#EFEAF0; --muted:#A99FAA; --rule:#36313B; --card:#211E25; --border:#4A4451;
+  --seal:#EE7A5C; --jade:#5FB8A8; --gold:#E5B54E; --plum:#C9A2D6; --sea:#1C2226; --none:#2E2B33;
+  --alike:#2F6B61; --unlike:#8E4532; --home:#8B6E1E; color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 18px/1.62 var(--body);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));overflow-x:hidden}
+.wrap{max-width:680px;margin:0 auto;padding-block:28px 64px}
+.wrap .bleed{width:min(1180px,calc(100vw - 32px));margin-left:calc((100% - min(1180px,100vw - 32px))/2);margin-right:0}
+a{color:inherit;text-decoration-color:var(--seal);text-underline-offset:3px}
+.kicker{font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.kicker b{background:var(--seal);color:#fff;padding:5px 8px;font-weight:500}
+header.hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px 24px;align-items:end;border-bottom:6px double var(--fg);padding-bottom:22px;margin-top:18px}
+h1{font:900 clamp(44px,10.5vw,92px)/.92 var(--display);letter-spacing:-.02em;margin:0;text-wrap:balance}
+h1 em{font-style:normal;color:var(--seal)}
+.mark{font:400 15px/1.18 var(--label);text-align:right;color:var(--muted);white-space:nowrap}
+.mark b{display:block;color:var(--fg);font:900 30px/1 var(--display)}
+.mark span{display:block}
+.dek{grid-column:1/-1;font-size:21px;line-height:1.42;margin:8px 0 0;max-width:50ch}
+.byline{font:400 13px/1.4 var(--mono);color:var(--muted);margin-top:14px}
+h2{font:800 34px/1.04 var(--display);letter-spacing:-.01em;margin:56px 0 10px;text-wrap:balance}
+h2 .n{font:500 13px/1 var(--mono);color:var(--seal);display:block;letter-spacing:.1em;margin-bottom:10px}
+h3{font:600 20px/1.25 var(--display);margin:28px 0 6px}
+p{margin:0 0 16px}
+.lede::first-letter{font:900 72px/.8 var(--display);float:left;margin:6px 10px 0 0;color:var(--seal)}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:26px 0 8px}
+.stats div{background:var(--card);padding:14px 12px}
+.stats b{display:block;font:900 clamp(26px,5.6vw,38px)/1 var(--display)}
+.stats b.r{color:var(--seal)} .stats b.j{color:var(--jade)}
+.stats span{font:400 12px/1.35 var(--mono);color:var(--muted);display:block;margin-top:6px}
+@media (max-width:600px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.figure{margin:26px 0 30px}
+.fig-h{font:600 19px/1.25 var(--display);margin:0 0 4px}
+.fig-sub{font:400 13px/1.45 var(--mono);color:var(--muted);margin:0 0 12px}
+.src{font:400 12px/1.45 var(--mono);color:var(--muted);margin-top:10px}
+.chart{width:100%;position:relative}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+svg text{font-family:var(--mono)}
+svg text:not([fill]){fill:var(--fg)}
+.tip{position:absolute;pointer-events:none;background:var(--fg);color:var(--bg);font:400 12px/1.45 var(--mono);padding:8px 10px;border-radius:3px;max-width:300px;z-index:1000;transform:translate(-50%,calc(-100% - 12px));display:none}
+.tip b{font-weight:500;font-family:var(--label);font-size:14px}
+.controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:0 0 10px}
+.controls label.l{font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-right:2px}
+.btn{font:500 12px/1 var(--mono);background:var(--card);color:var(--fg);border:1px solid var(--border);border-radius:3px;padding:8px 10px;cursor:pointer;min-height:36px}
+.btn[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.btn:disabled{opacity:.4;cursor:default}
+.btn:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid var(--seal);outline-offset:2px}
+.seg{display:inline-flex;border:1px solid var(--border);border-radius:3px;overflow:hidden;max-width:100%;flex-wrap:wrap}
+.seg .btn{border:0;border-radius:0;border-right:1px solid var(--border)}
+.seg .btn:last-child{border-right:0}
+.tabs{display:flex;gap:0;margin:0 0 12px;border-bottom:2px solid var(--fg);flex-wrap:wrap}
+.tabs button{font:600 15px/1.2 var(--display);background:none;border:0;border-bottom:4px solid transparent;color:var(--muted);padding:10px 14px 8px;cursor:pointer;margin-bottom:-2px}
+.tabs button[aria-selected="true"]{color:var(--fg);border-bottom-color:var(--seal)}
+select{font:500 12px/1 var(--mono);background:var(--card);color:var(--fg);border:1px solid var(--border);border-radius:3px;padding:8px 8px;min-height:36px}
+.searchbox{position:relative;flex:1 1 260px;min-width:0}
+input[type=search]{font:400 15px/1 var(--mono);background:var(--card);color:var(--fg);border:1px solid var(--border);border-radius:3px;padding:10px 11px;min-height:40px;width:100%}
+.suggest{position:absolute;left:0;right:0;top:100%;margin:2px 0 0;padding:0;list-style:none;background:var(--card);border:1px solid var(--border);z-index:1001;font:400 13px/1.3 var(--mono);display:none;max-height:360px;overflow:auto}
+.suggest li{padding:7px 10px;cursor:pointer;border-bottom:1px solid var(--rule)}
+.suggest li.grp{cursor:default;background:var(--panel);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:5px 10px}
+.suggest li span{color:var(--muted)}
+.suggest li[aria-selected="true"],.suggest li:not(.grp):hover{background:var(--panel)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 10px}
+.chip{font:500 12px/1 var(--mono);background:none;border:1px solid var(--border);border-radius:14px;padding:6px 10px;cursor:pointer;color:var(--fg)}
+.chip[aria-pressed="true"]{background:var(--seal);border-color:var(--seal);color:#fff}
+.now{font:800 clamp(22px,4.4vw,30px)/1.1 var(--display);margin:4px 0 4px}
+.now span{font:400 13px/1.3 var(--mono);color:var(--muted);display:block;margin-top:4px}
+.mapgrid{display:grid;grid-template-columns:minmax(0,1fr) 350px;gap:18px;align-items:start}
+@media (max-width:940px){.mapgrid{grid-template-columns:1fr}}
+#lmap{height:640px;border:1px solid var(--border);background:var(--sea);border-radius:2px}
+@media (max-width:940px){#lmap{height:560px}}
+@media (max-width:600px){#lmap{height:470px}}
+.leaflet-container{font:400 12px/1.4 var(--mono);background:var(--sea)}
+.leaflet-bar a,.leaflet-bar a:hover{background:var(--card);color:var(--fg);border-bottom-color:var(--border)}
+.leaflet-control-attribution{background:color-mix(in srgb,var(--card) 85%,transparent)!important;color:var(--muted)}
+.leaflet-control-attribution a{color:var(--fg)}
+@media (max-width:600px){.leaflet-control-attribution{font-size:10px;line-height:1.25}}
+.nm{white-space:nowrap;text-align:center;pointer-events:none;color:var(--fg);text-shadow:0 0 3px var(--bg),0 0 3px var(--bg),0 0 2px var(--bg);transform:translate(-50%,-50%);line-height:1.08}
+.nm b{display:block;font:600 12px/1.1 var(--label)}
+.nm.r1 b{font-size:14px}.nm.r3 b{font-size:11px}.nm.r5 b{font-size:10px}
+.nm i{display:block;font:400 9.5px/1.15 var(--mono);color:var(--muted);font-style:normal}
+.nm em{display:block;font:italic 400 10px/1.15 var(--body);color:var(--seal)}
+.nm.sel b{text-decoration:underline;text-decoration-thickness:2px;text-decoration-color:var(--seal)}
+.lyrBtn{background:var(--card);color:var(--fg);border:1px solid var(--border);border-radius:3px;font:600 12px/1 var(--mono);padding:8px 10px;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.12)}
+.lyrBtn[aria-expanded="true"]{background:var(--fg);color:var(--bg)}
+.lyrPanel{background:var(--card);color:var(--fg);border:1px solid var(--border);border-radius:3px;padding:10px 12px 8px;margin-top:6px;width:246px;box-shadow:0 2px 10px rgba(0,0,0,.15);font:400 12px/1.3 var(--mono)}
+.lyrPanel[hidden]{display:none}
+.lyrPanel .row{display:grid;grid-template-columns:auto 1fr;gap:4px 8px;align-items:center;margin:0 0 9px}
+.lyrPanel label{display:flex;gap:6px;align-items:center;cursor:pointer;font-weight:600}
+.lyrPanel input[type=range]{width:100%;accent-color:var(--fg)}
+.lyrPanel select{font:400 12px var(--mono);background:var(--bg);color:var(--fg);border:1px solid var(--border);border-radius:2px;padding:2px 4px;width:100%;min-height:0}
+.lyrPanel .sub{grid-column:1/-1;display:flex;gap:6px;align-items:center;color:var(--muted);font-size:11px}
+.lyrPanel .sub span{flex:0 0 58px}
+.lyrPanel .reset{font:400 11px var(--mono);color:var(--muted);background:none;border:0;padding:0;cursor:pointer;text-decoration:underline}
+.side{background:var(--card);border:1px solid var(--border);padding:14px 14px 10px;font:400 13px/1.45 var(--mono)}
+.side h4{font:500 11px/1.2 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+.key{display:grid;grid-template-columns:16px 1fr auto;gap:5px 8px;align-items:center;margin:0 0 10px}
+.key .sw{width:16px;height:14px;border:1px solid var(--border)}
+.key .c{text-align:right;color:var(--muted)}
+.key .o{grid-column:2/-1;font-size:11.5px;color:var(--muted);margin-top:-4px;line-height:1.35}
+.fam{cursor:pointer}
+.card{border-top:1px solid var(--rule);padding-top:10px;margin-top:6px}
+.card .t{font:800 23px/1.1 var(--display);margin:0 0 2px}
+.card .own{font:400 16px/1.3 var(--label)}
+.card .ety{font:400 14.5px/1.45 var(--body);margin:8px 0}
+.card .tag{display:inline-block;font:500 10.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;background:var(--panel);border:1px solid var(--rule);padding:4px 6px;margin:0 4px 4px 0}
+.card table{width:100%;border-collapse:collapse;margin-top:6px}
+.card td{border-bottom:1px solid var(--rule);padding:4px 4px 4px 0;vertical-align:top;font-size:12px}
+.card td.n{font:500 14px/1.25 var(--label)}
+.card td.n small{display:block;font:400 10.5px/1.2 var(--mono);color:var(--muted)}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:4px;vertical-align:0}
+.hz{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0}
+.hz span{display:inline-flex;flex-direction:column;align-items:center;border:1px solid var(--rule);padding:4px 6px;min-width:52px;background:var(--bg)}
+.hz span b{font:500 24px/1.1 var(--label)}
+.hz span small{font:400 10.5px/1.2 var(--mono);color:var(--muted);text-align:center;max-width:110px}
+.hz span.s b{color:var(--muted)} .hz span.m b{color:var(--seal)}
+#hov{font:400 12.5px/1.45 var(--mono);min-height:40px;border-top:1px solid var(--rule);padding-top:8px;margin-top:8px}
+.pull{font:600 26px/1.25 var(--display);border-left:6px solid var(--seal);padding:4px 0 4px 18px;margin:30px 0}
+.note{background:var(--panel);border:1px solid var(--rule);padding:14px 16px;font-size:16px;margin:22px 0}
+.note h3{margin-top:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin:12px 0}
+.zc{background:var(--card);border:1px solid var(--border);padding:8px 8px 6px;cursor:pointer}
+.zc .ch{font:500 26px/1.15 var(--label);letter-spacing:.02em}
+.zc .ch .s{color:var(--muted)} .zc .ch .m{color:var(--seal)} .zc .ch .a{color:var(--gold)}
+.zc .py{font:400 11px/1.2 var(--mono);color:var(--muted)}
+.zc .gl{font:italic 400 13px/1.3 var(--body);margin-top:3px}
+.zc .en{font:500 11px/1.2 var(--mono);margin-top:4px}
+.stories{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0}
+@media (max-width:640px){.stories{grid-template-columns:1fr}}
+.story{background:var(--card);border:1px solid var(--border);border-top:6px solid var(--seal);padding:12px 14px;font:400 15px/1.5 var(--body)}
+.story h3{margin:0 0 6px;font-size:19px}
+.story .big{font:500 20px/1.25 var(--label);margin:2px 0 6px}
+.story .src{margin-top:6px}
+.story button{margin-top:6px}
+table.t{width:100%;border-collapse:collapse;font:400 13px/1.35 var(--mono)}
+table.t th{text-align:left;font-weight:500;color:var(--muted);border-bottom:2px solid var(--fg);padding:6px 8px 6px 0}
+table.t td{border-bottom:1px solid var(--rule);padding:7px 8px 7px 0;vertical-align:top}
+table.t td.num,table.t th.num{text-align:right;white-space:nowrap}
+table.t td.ety{font:400 14px/1.45 var(--body)}
+table.t tr.go{cursor:pointer}
+table.t tr.go:hover td{background:var(--panel)}
+.tablewrap{overflow-x:auto;max-height:620px;overflow-y:auto;border-bottom:1px solid var(--rule)}
+@media (max-width:600px){table.t .wide{display:none}}
+details{margin:14px 0}
+summary{font:500 13px/1.4 var(--mono);cursor:pointer;color:var(--fg);padding:8px 0}
+ul.plain{padding-left:20px}
+footer{border-top:6px double var(--fg);margin-top:56px;padding-top:16px;font:400 13px/1.55 var(--mono);color:var(--muted)}
+footer p{margin:0 0 10px}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}
+.cta a{font:500 13px/1 var(--mono);text-decoration:none;border:1px solid var(--fg);padding:11px 14px;border-radius:3px}
+.cta a.p{background:var(--seal);border-color:var(--seal);color:#fff}
+.theme{position:fixed;right:12px;bottom:12px;z-index:1002}
+.loading{font:400 12px/1.4 var(--mono);color:var(--muted)}
+@media print{.theme,.controls{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="kicker"><b>Data study</b><span>Language</span><span>{{meta.places|int}} countries and territories, {{meta.languages|int}} languages</span></div>
+<header class="hero">
+  <h1>What the world <em>calls</em> each other</h1>
+  <div class="mark" aria-hidden="true"><b>Germany</b><span>Deutschland</span><span>Allemagne</span><span>Niemcy</span><span>Saksa</span><span>Vokietija</span><span>德国</span></div>
+  <p class="dek">Pick a language and see what it calls every country on Earth. Pick a country and see what the world calls it. And, where the sources allow, what those names actually mean.</p>
+</header>
+<div class="byline">Dr Tristan Hotham, Independent researcher · October 2026 · Data: Wikidata (CC0); Wikipedia, CC-CEDICT and KANJIDIC2 (CC BY-SA 4.0); Natural Earth</div>
+<div class="stats">
+  <div><b>{{meta.names|int}}</b><span>country names, one for each pair of {{meta.places|int}} countries and territories and {{meta.languages|int}} languages that Wikidata covers</span></div>
+  <div><b class="j">{{alike.median|pct}}</b><span>for the typical country, the share of the world's languages that call it something that sounds like its own name</span></div>
+  <div><b class="r">{{alike.under_quarter|int}}</b><span>countries whose own name is echoed by fewer than a quarter of languages, among them Germany, Greece, Finland, Japan and China</span></div>
+  <div><b class="r">{{chinese.sound_share|pct}}</b><span>of Chinese names for countries are chosen for their sound, not their meaning ({{chinese.kinds.sound|int}} of {{chinese.n|int}})</span></div>
+</div>
+<p class="lede">Germans call their country Deutschland. The French call it Allemagne, the Poles Niemcy, the Finns Saksa, the Lithuanians Vokietija and the Chinese Déguó, which, read character by character, comes out as "virtue country". Each of those names is a small piece of history: who met whom first, through which neighbours, and what they thought of each other. I wanted a map where you can see all of it at once.</p>
+<p>Wikidata, the open database behind Wikipedia, stores the name of every country in hundreds of languages. I took the names of all {{meta.places|int}} countries and territories on the Natural Earth world map in every language that names at least 100 of them: {{meta.languages|int}} languages and {{meta.scripts|int}} writing systems. For the meanings I used Wikipedia's list of country-name etymologies and its articles on the names of Germany, China, Greece, Japan and others, and two open dictionaries for the Chinese and Japanese characters. Nothing here is my own etymology. Where no source gives a meaning, the page shows the name and its sound, nothing more.</p>
+
+<h2><span class="n">01 · The map</span>Pick a language, or pick a country</h2>
+<p>Choose a language to label the whole world in it. Countries in jade are called something that sounds like their own name; those in vermilion are called something else entirely. Switch to "Pick a country" to turn it round: each country is then labelled with what its own main language calls the country you chose, coloured by the family the name belongs to. Click any country for its card: its name in the twenty biggest languages and what it means.</p>
+<div class="figure bleed">
+  <div class="tabs" role="tablist"><button role="tab" id="tabLang" aria-selected="true">Pick a language</button><button role="tab" id="tabCountry" aria-selected="false">Pick a country</button></div>
+  <div id="langCtl">
+    <div class="controls">
+      <div class="searchbox"><input type="search" id="lq" placeholder="Search {{meta.languages|int}} languages, e.g. Welsh, Swahili, Japanese" autocomplete="off" aria-label="Search for a language" role="combobox" aria-expanded="false" aria-controls="lsug"><ul class="suggest" id="lsug" role="listbox"></ul></div>
+      <label class="l">Colour by</label>
+      <div class="seg" role="group" aria-label="Colour by" id="colSeg"><button class="btn" data-c="alike" aria-pressed="true">Like the country's own name?</button><button class="btn" data-c="how" aria-pressed="false">Sound or meaning (Chinese, Japanese)</button></div>
+    </div>
+    <div class="chips" id="langChips"></div>
+  </div>
+  <div id="ctyCtl" hidden>
+    <div class="controls"><div class="searchbox"><input type="search" id="cq" placeholder="Search a country, in any language, e.g. Germany, Saksa, Hellas" autocomplete="off" aria-label="Search for a country" role="combobox" aria-expanded="false" aria-controls="csug"><ul class="suggest" id="csug" role="listbox"></ul></div></div>
+    <div class="chips" id="ctyChips"></div>
+  </div>
+  <div class="now" id="nowTitle">Loading the names...</div>
+  <div class="mapgrid">
+    <div id="lmap" role="application" aria-label="World map labelled with country names in the chosen language"></div>
+    <div class="side" id="side"><p class="loading">Loading...</p></div>
+  </div>
+  <div id="hov">Hover over or tap a country to read its name.</div>
+  <div class="src">Names: Wikidata labels, retrieved {{meta.retrieved}}. "Sounds like its own name" is a rough automatic test on romanised spellings (first consonant sounds), checked against hand-built name families ({{alike.validation.share|pct1}} agreement); a few calls are wrong either way. A country's language on the reverse map is its main official language in Wikidata, so the map shows one name per country even where several languages are spoken. Romanisations under non-Latin names are rough and automatic. Map outlines: Natural Earth.</div>
+</div>
+
+<h2><span class="n">02 · Turning it round</span>What does the world call Germany?</h2>
+<p>Germany is the champion of many names. I sorted its {{germany.total|int}} Wikidata names into the six families described in Wikipedia's article on the names of Germany. Most languages, {{germany.germania|int}} of them, use a form of the Latin <i>Germania</i>, the Romans' word for the tribes beyond the Rhine. {{germany.alemanni|int}} follow the French <i>Allemagne</i>, from the Alamanni tribe: Spanish <i>Alemania</i>, Arabic <i>Almānyā</i>, Turkish <i>Almanya</i>. Only {{germany.diutisc|int}} use a form of the Germans' own word, <i>Deutsch</i>, from Old High German <i>diutisc</i>, "of the people": Dutch <i>Duitsland</i>, the Scandinavian <i>Tyskland</i>, Japanese ドイツ Doitsu, Korean 독일 Dogil, Vietnamese Đức and Chinese 德国 Déguó. {{germany.nemets|int}} Slavic and neighbouring languages say <i>Niemcy</i> or <i>Nemačka</i>, from a Slavic word for the speechless or "the mute ones": people whose language the Slavs could not understand. Finnish (<i>Saksa</i>), Estonian and three smaller Finnic and Sami languages, {{germany.saxon|int}} in all, call Germany after the Saxons, and Lithuanian and Latvian have a word of their own, <i>Vokietija</i> and <i>Vācija</i>, of unclear origin.</p>
+<div class="cta" id="revBtns"></div>
+<p>The families are not my invention: each comes with a quoted sentence from its Wikipedia source, and the build checks every quote word for word. For the {{germany_check.n|int}} languages that the article names under a family, my spelling rules put {{germany_check.ok|int}} in the article's family. The ten that differ are cases where the Wikidata label and the article point to different names: Bulgarian and Belarusian, for example, are listed in the article's Niemcy family, but their Wikidata labels are Германия and Германія, <i>Germania</i> forms.</p>
+
+<h2><span class="n">03 · Families of names</span>Fourteen countries, many names</h2>
+<p>Germany is not alone. I built the same kind of families for thirteen more countries with well documented names. The bars show the share of the {{meta.languages|int}} languages using each family. Click a bar to map it.</p>
+<div class="figure">
+  <div class="fig-h">Which name does the world use?</div>
+  <div class="fig-sub">Share of each country's Wikidata names in {{meta.languages|int}} languages, by family of name, in the same colours as the map. Grey: other or unclear. Hover for the origin and examples.</div>
+  <div class="chart" id="famChart"></div>
+  <div class="src">Families and their origins as described in Wikipedia: "Names of Germany", "Names of Greece", "Names of the Netherlands", "Names of Finland", "Names of Japan" and "List of country-name etymologies" (CC BY-SA 4.0). Names are sorted by spelling rules on their romanised forms (see methods).</div>
+</div>
+<p>Some patterns jump out. Finland calls itself <i>Suomi</i>, but {{finland.finland|int}} of its {{finland.total|int}} names are forms of the Old Norse "Finland"; only {{finland.suomi|int}}, echo Suomi, among them Estonian, Sami, Mari, Mordvin and Komi, its Uralic relatives, and the neighbouring Lithuanian and Latvian. Hungary is <i>Magyarország</i> at home, "land of the Magyars", and {{families.Q28.families.0.n|int}} languages follow it, from Czech and Croatian to Turkish (<i>Macaristan</i>), Arabic and Persian, while {{families.Q28.families.2.n|int}} use forms of Hungary, from a Turkic phrase for "ten arrows". The Netherlands is a tug of war: {{families.Q55.families.3.n|int}} languages borrow <i>Nederland</i> by sound, {{families.Q55.families.0.n|int}} translate it as "low countries" (<i>Pays-Bas</i>, <i>Países Bajos</i>) and {{families.Q55.families.1.n|int}} still call the whole country after one of its provinces, Holland. Egypt splits between the Greek <i>Aigyptos</i>, "home of the ka of Ptah" ({{families.Q79.families.1.n|int}} languages), and the ancient Semitic <i>Misr</i> ({{families.Q79.families.0.n|int}}), the name Egyptians use themselves.</p>
+
+<h2><span class="n">04 · Virtue country, beautiful country</span>What the characters say, and what they don't</h2>
+<p>Chinese writes foreign names with characters, and every character has a meaning. So it is tempting to read 美国, the United States, as "beautiful country", and 德国, Germany, as "virtue country". That reading is real, in the sense that a Chinese reader sees those meanings, but it is not where the names come from. 美 is short for 美利堅 Měilìjiān, an early transcription of "America"; 德 is short for 德意志 Déyìzhì, a transcription of "Deutsch". The characters were chosen for their sound, and often for being pleasant to read, which is why so many foreign names in Chinese sound flattering.</p>
+<p>I tagged every character in every Chinese country name as either sound or meaning. Of {{chinese.n|int}} sovereign countries, {{chinese.kinds.sound|int}} have names made purely of sound characters, {{chinese.kinds.sound and meaning|int}} mix sound with a meaning element such as 南 south, 新 new or 岛 island, {{chinese.kinds.short form|int}} are short forms like 德国 and 美国, and only {{chinese.kinds.translation|int}} are true translations: 冰岛 Iceland, "ice island", and 黑山 Montenegro, "black mountain". {{chinese.kinds.own name|int}} are the countries' own names written in characters, such as 日本 and 越南. The glosses below are what each character means on its own, from the CC-CEDICT dictionary: for sound characters, a fun reading, not the name's origin.</p>
+<div class="figure">
+  <div class="controls"><div class="seg" role="group" aria-label="Which Chinese names" id="zhSeg"><button class="btn" data-k="best" aria-pressed="true">Short forms and translations</button><button class="btn" data-k="mix" aria-pressed="false">Sound and meaning</button><button class="btn" data-k="sound" aria-pressed="false">Sound only</button></div></div>
+  <div class="fig-sub">Characters in vermilion carry meaning in the name; gold ones are the first syllable of an older sound transcription; grey ones were chosen for their sound, and their glosses are only what they would mean on their own. Click a card to see the country on the map.</div>
+  <div class="grid" id="zhGrid"></div>
+  <div class="src">Names: Wikidata (simplified Chinese). Glosses: CC-CEDICT, MDBG, CC BY-SA 4.0. Short forms explained in Wikipedia, "Transcription into Chinese characters" (CC BY-SA 4.0).</div>
+</div>
+<p>Japanese mostly sidesteps the question. {{japanese.katakana|int}} of {{japanese.n|int}} countries ({{japanese.katakana_share|pct}}) are written in katakana, a script that records sound only: ドイツ Doitsu for Germany, イギリス Igirisu for Britain, from the Portuguese <i>inglês</i>. But older kanji forms survive as short forms, and those do carry meanings: 米国 Beikoku for the United States, which Wikipedia notes "literally translates to 'rice country'" (米 is taken from 亜米利加 A-me-ri-ka), 独 for Germany, 露国 for Russia, 豪州 for Australia, 比島 for the Philippines and 氷島 for Iceland, "ice island" again. Korean and Vietnamese often read the same characters in their own way: Korean 미국 Miguk and 독일 Dogil are 美國 and 獨逸; Vietnamese Đức (Germany) is 德, and Hà Lan (the Netherlands) is 荷蘭. I matched {{sino.ko|int}} Korean and {{sino.vi|int}} Vietnamese names to their characters this way, using KANJIDIC2's readings.</p>
+<div class="figure">
+  <div class="fig-h">Japanese abbreviations with kanji</div>
+  <div class="fig-sub">Abbreviations and kanji forms listed in Wikipedia's "Japanese exonyms", with KANJIDIC2 meanings of each character.</div>
+  <div id="jaList"></div>
+</div>
+
+<h2><span class="n">05 · Your own name</span>What does your country's name mean?</h2>
+<p>Turn from what others call a country to what it calls itself. Wikipedia's list of country-name etymologies gives an origin for {{etymology.n|int}} of the {{meta.sovereign|int}} sovereign states on the map. I sorted them, by reading each entry, into rough kinds. The largest group, {{etymology.kinds.description|int}}, are descriptions: "united states", "rich coast" (Costa Rica), "black mountain" (Montenegro), "equator" (Ecuador), "edge, borderland" (Ukraine). {{etymology.kinds.people|int}} are named after a people: Poland after the Polans, France after the Franks, Finland after the Finns. {{etymology.kinds.place|int}} take the name of a river, city or other place: India from the Indus, Zambia from the Zambezi, Zimbabwe from the stone houses of Great Zimbabwe. {{etymology.kinds.person|int}} are named after a person, such as Colombia (Columbus), Bolivia (Simón Bolívar), the Philippines (Philip II of Spain) and Saudi Arabia (the House of Saud), and {{etymology.kinds.saint|int}} after a saint or Christ, such as El Salvador, "the Saviour". For {{etymology.kinds.uncertain|int}}, among them Peru, Cuba and Syria, the list says the origin is uncertain.</p>
+<div class="figure">
+  <div class="fig-h">Where country names come from</div>
+  <div class="fig-sub">Sovereign states by the kind of origin of their English name, as described in Wikipedia's "List of country-name etymologies". My sorting; boundaries between kinds are fuzzy.</div>
+  <div class="chart" id="etyChart"></div>
+</div>
+<div class="controls"><div class="searchbox"><input type="search" id="eq" placeholder="Filter, e.g. river, silver, Saint" autocomplete="off" aria-label="Filter the etymology table"></div><select id="ek" aria-label="Kind of origin"><option value="">All kinds</option></select></div>
+<div class="tablewrap"><table class="t" id="etyTable"></table></div>
+<div class="src">Etymologies quoted or lightly shortened from Wikipedia, "List of country-name etymologies" (CC BY-SA 4.0). Click a row to show the country on the map.</div>
+
+<h2><span class="n">06 · Stories</span>Old names that refuse to die</h2>
+<div class="stories" id="stories">
+  <div class="story"><h3>China, Cathay and Zhongguo</h3><div class="big">China · Kitai · 中国</div>Most of the world, {{families.Q148.families.2.n|int}} languages, says some form of "China", often traced to the Qin state, which went on to unify China. But {{families.Q148.families.1.n|int}} languages, Russian (<i>Kitai</i>) and many in Central Asia among them, still use the name of the Khitan people, the "Cathay" of Marco Polo. {{families.Q148.families.0.n|int}} echo China's own <i>Zhongguo</i>, "Middle Kingdom".<div class="src">List of country-name etymologies; Names of China.</div><button class="btn" data-rev="Q148">Map China's names</button></div>
+  <div class="story"><h3>Greece, Hellas and Yunan</h3><div class="big">Greece · Yunanistan · Ελλάδα</div>The Greeks call their country Hellas (Ελλάδα), but only {{families.Q41.families.0.n|int}} languages follow them. {{families.Q41.families.2.n|int}} use the Latin <i>Graecia</i>. {{families.Q41.families.1.n|int}}, from Arabic and Turkish to Hindi, say <i>Yunan</i>, from the Old Persian <i>Yauna</i> for the Ionian Greeks.<div class="src">Names of Greece; List of country-name etymologies.</div><button class="btn" data-rev="Q41">Map Greece's names</button></div>
+  <div class="story"><h3>Wales and the foreigners</h3><div class="big">Wales · Wallonia · Wallachia · Włochy</div>"Wales" comes from the Old English <i>Wēalas</i>, from a Germanic word, <i>*Walhaz</i>, first used for a Gaulish people and then for anyone from the Roman world. The same root names Wallonia, Wallachia and Włochy, the Polish name for Italy. In my data, {{families.Q38.families.0.n|int}} languages call Italy by a form of it: Polish <i>Włochy</i> and Hungarian <i>Olaszország</i>.<div class="src">Names of Wales; List of country-name etymologies.</div><button class="btn" data-rev="Q38">Map Italy's names</button></div>
+  <div class="story"><h3>Persia becomes Iran</h3><div class="big">Persia → Iran · ایران</div>Iranians have long called their country Iran. In 1935 Reza Shah asked foreign delegates to use "Iran", not Persia, in formal correspondence. The change stuck: of {{iran.n|int}} Wikidata names for Iran, only {{iran.persia_n|int}} still look like Persia: Amharic (ፋርስ, Fars) and Old English.<div class="src">Names of Iran.</div><button class="btn" data-rev="Q794">Map Iran's names</button></div>
+  <div class="story"><h3>Holland or the Netherlands?</h3><div class="big">Nederland · Holland · Pays-Bas</div>Holland is one region of the Netherlands, yet {{families.Q55.families.1.n|int}} of {{families.Q55.total|int}} languages use it for the whole country, from Japanese オランダ Oranda to Chinese 荷兰 Hélán. Indonesian and Malay say <i>Belanda</i>.<div class="src">Names of the Netherlands; List of country-name etymologies.</div><button class="btn" data-rev="Q55">Map the Netherlands' names</button></div>
+  <div class="story"><h3>Nippon, Cipangu, Japan</h3><div class="big">日本 · Nihon · Japan</div>日本 means "sun origin", the land where the sun rises, seen from China. Marco Polo recorded a Chinese pronunciation of it as <i>Cipangu</i> around 1300; later, Portuguese traders in Malacca heard the Malay <i>Jepang</i> and carried the word west, where it became "Japan". {{families.Q17.families.1.n|int}} languages use a form of Japan; {{families.Q17.families.0.n|int}}, mostly in East and South East Asia, read the characters 日本 their own way.<div class="src">Names of Japan; List of country-name etymologies.</div><button class="btn" data-rev="Q17">Map Japan's names</button></div>
+  <div class="story"><h3>Named after people</h3><div class="big">Colombia · Bolivia · the Philippines</div>Colombia is the "land of Columbus" and Bolivia the "land of Bolívar". The Philippines honour Philip II of Spain and Saudi Arabia the House of Saud. America itself is named after the explorer Amerigo Vespucci, on a map of 1507 by Martin Waldseemüller.<div class="src">List of country-name etymologies; Names of the United States.</div><button class="btn" data-q="Q739">Colombia's card</button></div>
+  <div class="story"><h3>Named after the land</h3><div class="big">Montenegro · Iceland · Argentina</div>Montenegro is "black mountain" in Venetian, for Mount Lovćen and its dark forests; Iceland is "land of ice"; Ecuador is the equator; Argentina comes from the Italian for "of silver"; Costa Rica is the "rich coast"; Cameroon is named after the shrimp of the Wouri river.<div class="src">List of country-name etymologies.</div><button class="btn" data-q="Q236">Montenegro's card</button></div>
+</div>
+
+<h2><span class="n">07 · Called by another name</span>Which countries does the world rename?</h2>
+<p>For most countries the world simply borrows the local name and bends it to its own sounds: Kenya, Peru, Canada. For the typical country, {{alike.median|pct}} of the other languages use a name that starts with the same consonant sounds as its own, and {{alike.highest_n|int}} of the {{alike.n|int}} sovereign states are echoed by 95% or more. But {{alike.under_half|int}} are called something different by more than half the world, and {{alike.under_quarter|int}} by more than three quarters. Among them: Armenia (Hayastan), Albania (Shqipëria), Bhutan (Druk Yul), Greece (Hellas), Georgia (Sakartvelo), Finland (Suomi), Croatia (Hrvatska), Montenegro (Crna Gora), Japan (Nihon), India (Bharat), Germany (Deutschland), Hungary (Magyarország) and Egypt (Misr).</p>
+<div class="figure">
+  <div class="fig-h">The countries the world calls something else</div>
+  <div class="fig-sub">Share of the other core languages (those naming 200 or more places) whose name for the country sounds like the country's own name. The 22 lowest of {{alike.n|int}} sovereign states.</div>
+  <div class="chart" id="lowChart"></div>
+  <div class="src">A few results reflect spelling more than history: Jordan (al-Urdun), the Czech Republic (Česko, Tschechien) and the Central African Republic (Centrafrique, Zentralafrika) sit low partly because the automatic test misses their shared roots.</div>
+</div>
+<p>Turn the question round and ask which languages rename the world most. Among the {{lang_alike.big|len}} languages with 100 million speakers or more, Chinese stands out: in its traditional and simplified forms, only {{lang_alike.big.0.share|pct}} and {{lang_alike.big.1.share|pct}} of its country names start with the same sounds as the country's own name, against a median of {{lang_alike.median|pct}} for all core languages. Part of the reason is that Chinese writes foreign sounds with its own syllables and shortens long names: Germany becomes Dé, America Měi, England Yīng. Indonesian is at the other end of the big languages ({{lang_alike.big.15.share|pct}}).</p>
+
+<h2><span class="n">08 · Methods</span>How I did this, and what to watch for</h2>
+<div class="note">
+<h3>In short</h3>
+<ul class="plain">
+<li><b>Countries.</b> The {{meta.places|int}} countries and territories of Natural Earth's 1:50m map, of which {{meta.sovereign|int}} are sovereign states (Wikidata "sovereign state", plus Denmark). Each is matched to its Wikidata item by the identifier Natural Earth provides.</li>
+<li><b>Names.</b> The Wikidata label of each country in each language. I kept the {{meta.languages|int}} language codes with names for at least 100 of the {{meta.places|int}} places; {{meta.core_languages|int}} "core" languages name 200 or more. Wikidata labels are written by volunteers; they are usually the standard modern name, but occasionally an older, rarer or full official form. The language list includes historic and minority languages (Old English, Latin, Cornish) alongside national ones, because they are in Wikidata; speaker numbers come from Wikidata too and are missing for {{meta.langs_no_speakers|int}}.</li>
+<li><b>Own name.</b> The label in the country's main official language (Wikidata, with a few fixes listed in the code), plus its native label. "Sounds like its own name" compares the first consonant sounds of the romanised names, after dropping words like "republic" and "kingdom". It is crude: it is right for {{alike.validation.share|pct1}} of the {{alike.validation.names|int}} names that I also sorted by hand into families ({{alike.validation.false_alike|int}} false matches, {{alike.validation.missed_alike|int}} misses).</li>
+<li><b>Families.</b> For fourteen countries, families of names and their origins are taken from Wikipedia, each with a quoted sentence that the build checks word for word; names are assigned to families by spelling rules on their romanised forms, and the rest go to "other". On the reverse map, countries without hand-built families are grouped automatically by the first two consonant sounds of the name, which gathers spellings but says nothing about origins.</li>
+<li><b>Meanings.</b> English-name and own-name etymologies come from Wikipedia's "List of country-name etymologies"; the kinds (description, people, place, person, saint, state, uncertain) are my sorting after reading every entry. Chinese characters are glossed with CC-CEDICT and tagged as sound or meaning using a short list of meaning elements and hand-checked whole names; Japanese kanji are glossed with KANJIDIC2. A gloss of a sound character is what the character means on its own, not the meaning of the name.</li>
+</ul>
+<h3>Caveats</h3>
+<ul class="plain">
+<li>One label per language hides variety: many languages have several names for a country, formal and informal, old and new.</li>
+<li>"Language" here means a Wikimedia language edition, not a population: Old English counts once, like Spanish. Read the counts as counts of languages, not of people.</li>
+<li>The main-language map assigns one language per country, so multilingual countries (India, Switzerland, much of Africa) show only one of their languages.</li>
+<li>Romanisations are automatic (anyascii) and rough, especially for Arabic and other scripts that do not write vowels.</li>
+</ul>
+</div>
+<details><summary>Sources and licences</summary>
+<ul class="plain" style="font-size:15px">
+<li>Wikidata, labels, native labels, official languages and speaker numbers, retrieved {{meta.retrieved}}: CC0.</li>
+<li>Wikipedia: "List of country-name etymologies", "Names of Germany", "Names of China", "Names of Greece", "Names of the Netherlands", "Names of Finland", "Names of Japan", "Names of Wales", "Names of Iran", "Names of the United States", "Japanese exonyms", "Ateji", "Chinese exonyms", "Transcription into Chinese characters": CC BY-SA 4.0. Quoted and shortened passages are from these articles.</li>
+<li>CC-CEDICT Chinese-English dictionary, MDBG: CC BY-SA 4.0 (version 1.1.1 of the cc-cedict npm package).</li>
+<li>KANJIDIC2, Electronic Dictionary Research and Development Group (EDRDG): CC BY-SA 4.0 (kanjidic2-json 0.1.0).</li>
+<li>Natural Earth admin 0 countries, 1:50m: public domain. Romanisation: anyascii (ISC licence).</li>
+<li>Map tiles, when shown: Esri. Map library: Leaflet.</li>
+</ul></details>
+<div class="cta"><a class="p" href="https://doi.org/10.5281/zenodo.23739847">Read the paper</a><a href="https://github.com/Tristan-Hotham/country-names">Data and code</a><a href="https://blog.tristanhotham.com/">More studies</a></div>
+<footer>
+  <p>Dr Tristan Hotham, Independent researcher. ORCID 0000-0003-4931-9349. Cite as: Hotham, T. (2026) What the world calls each other: country names in {{meta.languages|int}} languages, and what they mean. https://doi.org/10.5281/zenodo.23739847</p>
+  <p>I wrote the text, with drafting and editing assistance from Claude (Anthropic), which also helped prepare the analysis code. I reviewed and checked all text and results.</p>
+  <p>Names: Wikidata (CC0). Meanings: English Wikipedia (CC BY-SA 4.0); CC-CEDICT, MDBG (CC BY-SA 4.0); KANJIDIC2, Electronic Dictionary Research and Development Group (CC BY-SA 4.0). Map: Natural Earth (public domain); tiles © Esri. Data files and text: CC BY-SA 4.0. Code: MIT.</p>
+  <p>Other studies: <a href="https://tristan-hotham.github.io/dale-down-fell-beck/">Beck, brook or burn?</a>, <a href="https://tristan-hotham.github.io/bloody-place-names/">Bloody place names</a>, <a href="https://tristan-hotham.github.io/sun-and-rain/">Sun and rain</a>, <a href="https://blog.tristanhotham.com/">all posts</a>.</p>
+</footer>
+</div>
+<div class="tip" id="tip"></div>
+<button class="btn theme" id="theme" aria-label="Toggle dark mode">◐</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+const R = /*RESULTS*/;
+const NS = "http://www.w3.org/2000/svg";
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const pct = v => Math.round(v * 100) + "%";
+const fmtN = v => Math.round(v).toLocaleString("en-GB");
+const spk = v => v >= 1e9 ? (v / 1e9).toFixed(1) + " billion" : v >= 1e6 ? Math.round(v / 1e6) + " million" : fmtN(v);
+const tip = document.getElementById("tip");
+function showTip(h, x, y) { tip.innerHTML = h; tip.style.display = "block"; const w = tip.offsetWidth; x = Math.max(w / 2 + 8, Math.min(innerWidth - w / 2 - 8, x)); tip.style.left = x + scrollX + "px"; tip.style.top = y + scrollY + "px"; }
+function hideTip() { tip.style.display = "none"; }
+const isDark = () => document.documentElement.dataset.theme === "dark" || (!document.documentElement.dataset.theme && matchMedia("(prefers-color-scheme: dark)").matches);
+const redraws = [];
+document.getElementById("theme").onclick = () => { document.documentElement.dataset.theme = isDark() ? "light" : "dark"; redraws.forEach(f => f()); };
+function resp(box, render) { let last = 0; const go = force => { const w = Math.max(280, Math.round(box.clientWidth)); if (!force && Math.abs(w - last) < 4) return; last = w; box.innerHTML = ""; render(w, w < 560); }; new ResizeObserver(() => go()).observe(box); go(); redraws.push(() => go(true)); }
+function svgEl(t, a, p) { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); if (p) p.appendChild(e); return e; }
+function txt(p, x, y, s, a) { const t = svgEl("text", Object.assign({ x, y }, a || {}), p); t.textContent = s; return t; }
+
+/* ===== state and data ===== */
+const S = { mode: "lang", lang: "zh-hans", col: "alike", target: "Q183", sel: null };
+let D = null, WORLD = null, CI = {}, LI = {}, ORDER = [];
+const KIND_ZH = { "sound": "sound only", "sound and meaning": "sound and meaning", "short form": "short form", "translation": "translation", "own name": "own name in characters" };
+const FAMC = ["#B8361E", "#2C7A6E", "#C08A1E", "#4B6FB0", "#8E4E9E", "#5E8A2E", "#C2627F"];
+const KINDS = { description: "a description", people: "a people", place: "a place, river or city", person: "a person", saint: "a saint or Christ", state: "an older state or dynasty", uncertain: "uncertain", other: "other" };
+const BIG20 = () => D.langs.filter(l => !["zh-hant", "pnb", "lzh", "arz"].includes(l.c)).slice(0, 20);
+const nameOf = (code, qi) => (D.names[code] || [])[qi] || "";
+const romOf = (code, qi) => (D.rom[code] || [])[qi] || "";
+function zhGloss(q, short) {
+  const z = D.zh[q]; if (!z) return "";
+  return z.p.map(([c, role, g]) => (g || "").split(",")[0].trim()).filter(Boolean).join(short ? " " : " · ");
+}
+function jaGloss(q) {
+  const j = D.ja[q]; if (!j || j.s.startsWith("katakana")) return "";
+  return [...j.n].map(ch => (j.g[ch] || "").split(",")[0]).filter(Boolean).join(" ");
+}
+
+/* ===== map ===== */
+const ESRI = "https://server.arcgisonline.com/ArcGIS/rest/services/";
+const ESRI_ATT = "Tiles &copy; Esri";
+const LY = { base: "plain", hills: false, hillK: 45, refs: true, refK: 70, names: true, nameLvl: 1, lines: true, lineK: 55, colour: 85 };
+const LYDEF = { ...LY };
+try { Object.assign(LY, JSON.parse(localStorage.getItem("cn_layers") || "{}")); } catch (e) {}
+const saveLY = () => { try { localStorage.setItem("cn_layers", JSON.stringify(LY)); } catch (e) {} };
+let lmap, base = null, hills = null, refs = null, geo = null, nameL = null;
+const cvR = window.L ? L.canvas({ padding: .4 }) : null;
+const mctx = document.createElement("canvas").getContext("2d");
+function textW(s, px, wt) { mctx.font = `${wt || 600} ${px}px system-ui, sans-serif`; return mctx.measureText(s).width; }
+
+function fillOf(qi) {
+  const c = D.countries[qi], q = c.q;
+  if (S.mode === "lang") {
+    const n = nameOf(S.lang, qi); if (!n) return css("--none");
+    const home = c.lang === S.lang || (c.off || []).includes(S.lang);
+    if (S.col === "how" && (S.lang.startsWith("zh") || S.lang === "ja" || S.lang === "yue" || S.lang === "lzh")) {
+      if (S.lang === "ja") { const j = D.ja[q]; if (!j) return css("--none"); return j.s.startsWith("katakana") ? "#CFC8BA" : css("--seal"); }
+      const z = D.zh[q]; if (!z) return css("--none");
+      return { "sound": "#CFC8BA", "sound and meaning": "#E7A98F", "short form": "#C96A4E", "translation": css("--seal"), "own name": css("--plum") }[z.k] || css("--none");
+    }
+    if (home) return css("--home");
+    return D.alike[S.lang][qi] === "1" ? css("--alike") : css("--unlike");
+  }
+  const t = famInfo(S.target), li = LI[c.lang];
+  if (li == null || !nameOf(c.lang, CI[S.target])) return css("--none");
+  const k = t.of[li];
+  if (k === " " ) return css("--none");
+  if (k === "x" || k == null) return "#BDB6A8";
+  const f = t.f[+k]; if (f && f.id === "other") return "#BDB6A8";
+  return FAMC[+k % FAMC.length];
+}
+function famInfo(q) {
+  if (D.fam[q]) return { hand: true, f: D.fam[q].f, of: D.fam[q].of };
+  const g = D.groups[q]; return { hand: false, f: g.g.map(x => ({ id: x.k, label: x.ex + " spellings", n: x.n })), of: g.of };
+}
+function styleGeo() {
+  if (!geo) return;
+  const lw = LY.lines ? .3 + LY.lineK / 100 * 1.4 : 0, op = LY.colour / 100;
+  geo.eachLayer(l => { const i = l.feature.properties.i, sel = S.sel === D.countries[i].q || (S.mode === "country" && S.target === D.countries[i].q);
+    l.setStyle({ fillColor: fillOf(i), fillOpacity: op, color: sel ? css("--fg") : (isDark() ? "#0d0c10" : "#fff"), weight: sel ? 2.4 : lw, opacity: sel ? 1 : Math.min(1, .25 + LY.lineK / 100) }); if (sel) l.bringToFront(); });
+}
+function labelFor(qi) {
+  const c = D.countries[qi];
+  if (S.mode === "lang") {
+    const n = nameOf(S.lang, qi); if (!n) return null;
+    const rom = romOf(S.lang, qi);
+    let gl = "";
+    if (S.lang.startsWith("zh") || S.lang === "yue" || S.lang === "lzh") gl = zhGloss(c.q, true);
+    else if (S.lang === "ja") gl = jaGloss(c.q);
+    return { n, rom: S.lang.startsWith("zh") || S.lang === "ja" || S.lang === "ko" ? (S.lang.startsWith("zh") ? (D.zh[c.q] || {}).py || rom : rom) : rom, gl };
+  }
+  const n = nameOf(c.lang, CI[S.target]); if (!n) return null;
+  return { n, rom: romOf(c.lang, CI[S.target]), gl: "" };
+}
+function placeNames() {
+  if (!lmap || !nameL) return;
+  nameL.clearLayers(); if (!LY.names) return;
+  const z = lmap.getZoom(), bb = lmap.getBounds().pad(.02), off = [1.2, 0, -1.6][LY.nameLvl];
+  const minZ = r => (r <= 2 ? 1 : r === 3 ? 1.5 : r === 4 ? 2.2 : r === 5 ? 3 : 3.8) + off;
+  const boxes = [], out = [];
+  for (const qi of ORDER) {
+    const c = D.countries[qi]; if (z < minZ(c.r) && S.sel !== c.q) continue;
+    if (!bb.contains([c.ly, c.lx])) continue;
+    const lb = labelFor(qi); if (!lb) continue;
+    const px = c.r <= 2 ? 14 : c.r <= 4 ? 12 : c.r <= 5 ? 11 : 10;
+    const w = Math.max(textW(lb.n, px) * 1.08, lb.rom ? textW(lb.rom, 9.5, 400) : 0, lb.gl ? textW(lb.gl, 10, 400) : 0) + 10;
+    const h = px * 1.15 + (lb.rom ? 11 : 0) + (lb.gl ? 11.5 : 0);
+    const pt = lmap.latLngToContainerPoint([c.ly, c.lx]);
+    const bx = [pt.x - w / 2, pt.y - h / 2, pt.x + w / 2, pt.y + h / 2];
+    if (S.sel !== c.q && boxes.some(o => bx[0] < o[2] && bx[2] > o[0] && bx[1] < o[3] && bx[3] > o[1])) continue;
+    boxes.push(bx); out.push([qi, lb, px]);
+  }
+  for (const [qi, lb, px] of out) {
+    const c = D.countries[qi], cls = "nm r" + (px >= 14 ? 1 : px >= 12 ? 2 : px >= 11 ? 3 : 5) + (S.sel === c.q ? " sel" : "");
+    L.marker([c.ly, c.lx], { interactive: false, keyboard: false, icon: L.divIcon({ className: "", html: `<div class="${cls}"><b>${esc(lb.n)}</b>${lb.rom ? `<i>${esc(lb.rom)}</i>` : ""}${lb.gl ? `<em>${esc(lb.gl)}</em>` : ""}</div>`, iconSize: [0, 0] }) }).addTo(nameL);
+  }
+}
+function setTiles() {
+  [base, hills, refs].forEach(l => { if (l) lmap.removeLayer(l); });
+  base = null;
+  const t = isDark() ? "Dark" : "Light";
+  if (LY.base !== "none") base = L.tileLayer(LY.base === "relief" ? ESRI + "World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}" : `${ESRI}Canvas/World_${t}_Gray_Base/MapServer/tile/{z}/{y}/{x}`, { maxZoom: 9, maxNativeZoom: LY.base === "relief" ? 13 : 16, attribution: ESRI_ATT }).addTo(lmap);
+  hills = L.tileLayer(ESRI + "Elevation/World_Hillshade/MapServer/tile/{z}/{y}/{x}", { maxZoom: 9, pane: "hills", attribution: ESRI_ATT });
+  refs = L.tileLayer(`${ESRI}Canvas/World_${t}_Gray_Reference/MapServer/tile/{z}/{y}/{x}`, { maxZoom: 9, minZoom: 5, pane: "refs", attribution: ESRI_ATT });
+  applyLayers();
+}
+function applyLayers() {
+  if (!lmap) return;
+  if (LY.hills) { hills.addTo(lmap); hills.setOpacity(Math.min(1, .2 + LY.hillK / 100 * .8)); } else lmap.removeLayer(hills);
+  if (LY.refs) { refs.addTo(lmap); refs.setOpacity(LY.refK / 100); } else lmap.removeLayer(refs);
+  if (LY.names) nameL.addTo(lmap); else lmap.removeLayer(nameL);
+  styleGeo(); placeNames();
+}
+function initLayers() {
+  const Ctl = L.Control.extend({ options: { position: "topright" }, onAdd() {
+    const d = L.DomUtil.create("div"); L.DomEvent.disableClickPropagation(d); L.DomEvent.disableScrollPropagation(d);
+    d.innerHTML = `<button class="lyrBtn" aria-expanded="false" aria-controls="lyrPanel">Map layers</button>
+<div class="lyrPanel" id="lyrPanel" hidden>
+ <div class="row"><label for="lyBase" style="font-weight:600">Base map</label><div class="sub"><select id="lyBase" aria-label="Base map"><option value="plain">Plain grey</option><option value="relief">Shaded relief</option><option value="none">None (outlines only)</option></select></div></div>
+ <div class="row"><label><input type="checkbox" id="lyHills"> Hills and mountains</label><div class="sub"><span>strength</span><input type="range" id="lyHillK" min="10" max="100" step="5" aria-label="Hill shading strength"></div></div>
+ <div class="row"><label><input type="checkbox" id="lyNames"> Country names</label><div class="sub"><span>how many</span><select id="lyNameLvl" aria-label="How many country names"><option value="0">Fewer</option><option value="1">Some</option><option value="2">As many as fit</option></select></div></div>
+ <div class="row"><label><input type="checkbox" id="lyRefs"> Cities and places</label><div class="sub"><span>strength</span><input type="range" id="lyRefK" min="20" max="100" step="5" aria-label="City label strength"></div><div class="sub">appear when you zoom in</div></div>
+ <div class="row"><label><input type="checkbox" id="lyLines"> Borders</label><div class="sub"><span>strength</span><input type="range" id="lyLineK" min="10" max="100" step="5" aria-label="Border strength"></div></div>
+ <div class="row"><label style="font-weight:600">Colour</label><div class="sub"><span>strength</span><input type="range" id="lyColour" min="20" max="100" step="5" aria-label="Colour strength"></div></div>
+ <button class="reset" id="lyReset">Reset layers</button>
+</div>`;
+    return d; } });
+  lmap.addControl(new Ctl());
+  const q = id => document.getElementById(id), btn = lmap.getContainer().querySelector(".lyrBtn"), pan = q("lyrPanel");
+  btn.onclick = () => { const o = pan.hidden; pan.hidden = !o; btn.setAttribute("aria-expanded", o); };
+  const sync = () => { q("lyBase").value = LY.base; q("lyHills").checked = LY.hills; q("lyHillK").value = LY.hillK; q("lyRefs").checked = LY.refs; q("lyRefK").value = LY.refK; q("lyNames").checked = LY.names; q("lyNameLvl").value = LY.nameLvl; q("lyLines").checked = LY.lines; q("lyLineK").value = LY.lineK; q("lyColour").value = LY.colour; };
+  const on = (id, ev, f, retile) => q(id).addEventListener(ev, e => { f(e.target); saveLY(); retile ? setTiles() : applyLayers(); });
+  on("lyBase", "change", t => LY.base = t.value, true);
+  on("lyHills", "change", t => LY.hills = t.checked); on("lyHillK", "input", t => { LY.hillK = +t.value; LY.hills = q("lyHills").checked = true; });
+  on("lyRefs", "change", t => LY.refs = t.checked); on("lyRefK", "input", t => { LY.refK = +t.value; LY.refs = q("lyRefs").checked = true; });
+  on("lyNames", "change", t => LY.names = t.checked); on("lyNameLvl", "change", t => { LY.nameLvl = +t.value; LY.names = q("lyNames").checked = true; });
+  on("lyLines", "change", t => LY.lines = t.checked); on("lyLineK", "input", t => { LY.lineK = +t.value; LY.lines = q("lyLines").checked = true; });
+  on("lyColour", "input", t => LY.colour = +t.value);
+  q("lyReset").onclick = () => { Object.assign(LY, LYDEF); saveLY(); sync(); setTiles(); };
+  sync();
+}
+function initMap() {
+  if (!window.L) { document.getElementById("lmap").innerHTML = '<p style="padding:16px">The map library did not load.</p>'; return; }
+  lmap = L.map("lmap", { zoomSnap: .25, zoomDelta: .5, minZoom: 1, maxZoom: 9, scrollWheelZoom: false, worldCopyJump: false, maxBounds: [[-80, -220], [88, 220]], renderer: cvR });
+  lmap.fitBounds([[-50, -150], [72, 165]], { padding: [4, 4] });
+  lmap.attributionControl.setPrefix('<a href="https://leafletjs.com">Leaflet</a> | Natural Earth');
+  lmap.createPane("hills").style.zIndex = 420; lmap.getPane("hills").style.pointerEvents = "none";
+  lmap.createPane("refs").style.zIndex = 450; lmap.getPane("refs").style.pointerEvents = "none";
+  nameL = L.layerGroup();
+  geo = L.geoJSON(WORLD, { renderer: cvR, style: () => ({ weight: .8, fillOpacity: .85 }),
+    onEachFeature: (f, l) => {
+      l.on("mousemove", e => hover(f.properties.i, e.originalEvent));
+      l.on("mouseout", hideTip);
+      l.on("click", () => select(D.countries[f.properties.i].q, false));
+    } }).addTo(lmap);
+  initLayers(); setTiles();
+  lmap.on("zoomend moveend", placeNames);
+  lmap.on("click", () => lmap.scrollWheelZoom.enable());
+}
+function hover(qi, ev) {
+  const c = D.countries[qi]; let h;
+  if (S.mode === "lang") {
+    const n = nameOf(S.lang, qi), L0 = D.langs[LI[S.lang]];
+    h = `<b>${esc(n || "no name")}</b>${romOf(S.lang, qi) ? " · " + esc(romOf(S.lang, qi)) : ""}<br>${esc(c.n)} in ${esc(L0.n)}${S.lang.startsWith("zh") && D.zh[c.q] ? "<br>characters: " + esc(zhGloss(c.q)) : ""}`;
+  } else {
+    const li = LI[c.lang], L0 = li != null ? D.langs[li] : null, n = L0 ? nameOf(c.lang, CI[S.target]) : "";
+    h = `<b>${esc(n || "no name")}</b><br>${esc(D.countries[CI[S.target]].n)} in ${esc(L0 ? L0.n : c.lang)}, the main language of ${esc(c.n)}`;
+  }
+  document.getElementById("hov").innerHTML = h;
+  if (ev && ev.pageX != null && matchMedia("(hover:hover)").matches) showTip(h, ev.clientX, ev.clientY);
+}
+
+/* ===== side panel ===== */
+function sideLang() {
+  const L0 = D.langs[LI[S.lang]], n = D.names[S.lang].filter(Boolean).length;
+  let a = 0, u = 0, hm = 0;
+  D.countries.forEach((c, i) => { if (!nameOf(S.lang, i)) return; if (c.lang === S.lang || (c.off || []).includes(S.lang)) hm++; else if (D.alike[S.lang][i] === "1") a++; else u++; });
+  let key;
+  if (S.col === "how" && (S.lang.startsWith("zh") || S.lang === "ja" || S.lang === "yue" || S.lang === "lzh")) {
+    if (S.lang === "ja") {
+      const k = D.countries.filter(c => D.ja[c.q]).reduce((o, c) => (o[D.ja[c.q].s.startsWith("katakana") ? 0 : 1]++, o), [0, 0]);
+      key = `<div class="key"><span class="sw" style="background:#CFC8BA"></span><span>katakana: sound only</span><span class="c">${k[0]}</span><span class="sw" style="background:${css("--seal")}"></span><span>kanji or mixed</span><span class="c">${k[1]}</span></div>`;
+    } else {
+      const cnt = {}; D.countries.forEach(c => { const z = D.zh[c.q]; if (z) cnt[z.k] = (cnt[z.k] || 0) + 1; });
+      const cols = { "sound": "#CFC8BA", "sound and meaning": "#E7A98F", "short form": "#C96A4E", "translation": css("--seal"), "own name": css("--plum") };
+      key = `<div class="key">${Object.keys(cols).map(k => `<span class="sw" style="background:${cols[k]}"></span><span>${KIND_ZH[k]}</span><span class="c">${cnt[k] || 0}</span>`).join("")}</div><div class="src" style="margin-top:0">Counts are for all ${D.countries.length} places; the Chinese colours follow the simplified names.</div>`;
+    }
+  } else {
+    key = `<div class="key"><span class="sw" style="background:${css("--alike")}"></span><span>sounds like the country's own name</span><span class="c">${a}</span><span class="sw" style="background:${css("--unlike")}"></span><span>a different name</span><span class="c">${u}</span><span class="sw" style="background:${css("--home")}"></span><span>an official language there</span><span class="c">${hm}</span><span class="sw" style="background:${css("--none")}"></span><span>no name in Wikidata</span><span class="c">${D.countries.length - n}</span></div>`;
+  }
+  return `<h4>${esc(L0.n)} · ${L0.sp ? spk(L0.sp) + " speakers (Wikidata)" : "speakers not in Wikidata"}</h4>${key}`;
+}
+function sideCountry() {
+  const t = famInfo(S.target), c = D.countries[CI[S.target]];
+  const mapN = {}; D.countries.forEach(x => { const li = LI[x.lang]; if (li == null) return; const k = t.of[li]; if (k && k !== " ") mapN[k] = (mapN[k] || 0) + 1; });
+  const rows = t.f.map((f, i) => f.id === "other" ? "" : `<span class="sw fam" data-k="${i}" style="background:${FAMC[i % FAMC.length]}"></span><span>${esc(f.label)}</span><span class="c">${f.n}</span>${t.hand ? `<span class="o">${esc(f.origin)}${f.src ? " · " + esc(f.src) : ""}</span>` : ""}`).join("");
+  const oth = t.hand ? (t.f.find(f => f.id === "other") || { n: 0 }).n : null;
+  return `<h4>What the world calls ${esc(c.n)}</h4><div class="key">${rows}<span class="sw" style="background:#BDB6A8"></span><span>${t.hand ? "other or unclear" : "other spellings"}</span><span class="c">${oth == null ? "" : oth}</span></div><div class="src" style="margin-top:0">Numbers: how many of the ${D.langs.length} languages use each family. ${t.hand ? "Families and origins from Wikipedia." : "No hand-built families for this country: names are grouped automatically by their first consonant sounds, which says nothing about origins."}</div>`;
+}
+function card(q) {
+  const qi = CI[q], c = D.countries[qi]; if (qi == null) return "";
+  const e = c.e, z = D.zh[q], j = D.ja[q];
+  let h = `<div class="card"><div class="t">${esc(c.n)}</div><div class="own">${c.own.map(esc).join(" · ")}</div>`;
+  if (c.sh != null) h += `<div class="src" style="margin-top:2px">${pct(c.sh)} of other core languages use a name that sounds like this.</div>`;
+  if (e) h += `<span class="tag">${esc(KINDS[e.kind] || e.kind)}</span><div class="ety">${esc(e.en)}</div>${(e.own || []).map(o => `<div class="ety" style="font-size:13.5px;color:var(--muted)">${esc(o)}</div>`).join("")}<div class="src" style="margin-top:0">Wikipedia, List of country-name etymologies.</div>`;
+  else h += `<div class="src">No etymology entry for this place in the list I used.</div>`;
+  if (z) h += `<h4 style="margin-top:12px">Chinese · ${esc(KIND_ZH[z.k])}</h4><div class="hz">${z.p.map(([ch, role, g], k) => `<span class="${role === "sound" ? "s" : "m"}"><b>${esc(ch)}</b><small>${esc(role)}${g ? ": " + esc(g) : ""}</small></span>`).join("")}</div><div class="src" style="margin-top:0">${esc(z.py)}${z.note ? " · " + esc(z.note) : ""}</div>`;
+  if (j) h += `<h4 style="margin-top:12px">Japanese</h4><div style="font:500 18px var(--label)">${esc(j.n)} <span style="font:400 12px var(--mono);color:var(--muted)">${esc(j.s)}${j.r ? ", " + esc(j.r) : ""}</span></div>${(j.f.length || j.a.length) ? `<div class="src" style="margin-top:2px">Kanji forms: ${esc(j.f.concat(j.a.filter(a => !j.f.includes(a))).join(", "))}${Object.keys(j.g).length ? " · " + Object.entries(j.g).map(([k, v]) => esc(k + " " + v.split(",")[0])).join("; ") : ""}</div>` : ""}${j.note ? `<div class="src" style="margin-top:2px">${esc(j.note)}</div>` : ""}`;
+  const sn = D.sino.filter(r => r[0] === q);
+  if (sn.length) h += `<div class="src">Read from characters: ${sn.map(r => esc(`${r[1] === "ko" ? "Korean" : "Vietnamese"} ${r[2]} = ${r[3]}`)).join("; ")}</div>`;
+  h += `<h4 style="margin-top:12px">In the twenty biggest languages</h4><table>${BIG20().map(l => { const n = nameOf(l.c, qi), r = romOf(l.c, qi), al = D.alike[l.c][qi] === "1"; return n ? `<tr><td class="n">${esc(n)}${r ? `<small>${esc(r)}</small>` : ""}</td><td><span class="dot" style="background:${al ? css("--jade") : css("--seal")}"></span>${esc(l.n)}</td></tr>` : ""; }).join("")}</table>`;
+  h += `<div class="controls" style="margin-top:8px"><button class="btn" id="cardRev">What the world calls ${esc(c.n)}</button></div></div>`;
+  return h;
+}
+function drawSide() {
+  const s = document.getElementById("side");
+  s.innerHTML = (S.mode === "lang" ? sideLang() : sideCountry()) + (S.sel ? card(S.sel) : `<div class="src">Click a country on the map for its card.</div>`);
+  const b = document.getElementById("cardRev"); if (b) b.onclick = () => setTarget(S.sel, true);
+}
+function drawTitle() {
+  const t = document.getElementById("nowTitle");
+  if (S.mode === "lang") { const L0 = D.langs[LI[S.lang]]; t.innerHTML = `The world in ${esc(L0.n)}<span>${D.names[S.lang].filter(Boolean).length} of ${D.countries.length} places named · script: ${esc(L0.s)}${S.lang.startsWith("zh") || S.lang === "ja" ? " · red lines under names: what the characters mean on their own" : ""}</span>`; }
+  else { const c = D.countries[CI[S.target]]; t.innerHTML = `What the world calls ${esc(c.n)}<span>Each country labelled with the name in its main language</span>`; }
+}
+function refresh() { styleGeo(); placeNames(); drawSide(); drawTitle(); chips(); }
+function select(q, fly) {
+  S.sel = q; refresh();
+  if (fly && lmap) { const c = D.countries[CI[q]]; lmap.setView([c.ly, c.lx], Math.max(lmap.getZoom(), c.r <= 3 ? 3 : 4.5)); }
+}
+function setLang(code) { S.lang = code; S.mode = "lang"; tabs(); document.getElementById("lq").value = ""; refresh(); }
+function setTarget(q, scroll) { S.target = q; S.mode = "country"; tabs(); refresh(); if (scroll) document.getElementById("nowTitle").scrollIntoView({ behavior: "smooth", block: "start" }); }
+function tabs() {
+  document.getElementById("tabLang").setAttribute("aria-selected", S.mode === "lang"); document.getElementById("tabCountry").setAttribute("aria-selected", S.mode === "country");
+  document.getElementById("langCtl").hidden = S.mode !== "lang"; document.getElementById("ctyCtl").hidden = S.mode !== "country";
+  const zj = S.lang.startsWith("zh") || S.lang === "ja" || S.lang === "yue" || S.lang === "lzh";
+  const hb = document.querySelector('#colSeg [data-c="how"]'); hb.disabled = !zj; if (!zj && S.col === "how") S.col = "alike";
+  document.querySelectorAll("#colSeg .btn").forEach(b => b.setAttribute("aria-pressed", b.dataset.c === S.col));
+}
+const LCHIPS = ["zh-hans", "ja", "ar", "ru", "hi", "es", "fr", "de", "pl", "fi", "tr", "ko", "cy", "sw"];
+const CCHIPS = ["Q183", "Q148", "Q41", "Q55", "Q17", "Q28", "Q33", "Q79", "Q230", "Q145", "Q30"];
+function chips() {
+  document.getElementById("langChips").innerHTML = LCHIPS.filter(c => LI[c] != null).map(c => `<button class="chip" data-l="${c}" aria-pressed="${S.lang === c}">${esc(D.langs[LI[c]].n)}</button>`).join("");
+  document.getElementById("ctyChips").innerHTML = CCHIPS.map(q => `<button class="chip" data-t="${q}" aria-pressed="${S.target === q}">${esc(D.countries[CI[q]].n)}</button>`).join("");
+}
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-l],[data-t],[data-rev],[data-q]"); if (!b || !D) return;
+  if (b.dataset.l) setLang(b.dataset.l);
+  else if (b.dataset.t) setTarget(b.dataset.t, false);
+  else if (b.dataset.rev) setTarget(b.dataset.rev, true);
+  else if (b.dataset.q) { document.getElementById("nowTitle").scrollIntoView({ behavior: "smooth", block: "start" }); select(b.dataset.q, true); }
+});
+
+/* ===== search boxes ===== */
+function combo(inp, list, search, pick) {
+  let items = [], k = -1;
+  const render = () => { list.innerHTML = items.map((it, i) => it.grp ? `<li class="grp">${esc(it.grp)}</li>` : `<li role="option" data-i="${i}" aria-selected="${i === k}">${it.html}</li>`).join(""); list.style.display = items.length ? "block" : "none"; inp.setAttribute("aria-expanded", items.length > 0); };
+  inp.addEventListener("input", () => { items = search(inp.value.trim()); k = -1; render(); });
+  inp.addEventListener("focus", () => { items = search(inp.value.trim()); k = -1; render(); });
+  inp.addEventListener("keydown", e => {
+    const sel = items.map((it, i) => it.grp ? -1 : i).filter(i => i >= 0);
+    if (e.key === "ArrowDown") { k = sel[Math.min(sel.length - 1, sel.indexOf(k) + 1)]; render(); e.preventDefault(); }
+    else if (e.key === "ArrowUp") { k = sel[Math.max(0, sel.indexOf(k) - 1)]; render(); e.preventDefault(); }
+    else if (e.key === "Enter") { const i = k >= 0 ? k : sel[0]; if (i != null) { pick(items[i].v); list.style.display = "none"; inp.blur(); } }
+    else if (e.key === "Escape") list.style.display = "none";
+  });
+  list.addEventListener("mousedown", e => { const li = e.target.closest("li[data-i]"); if (li) { pick(items[+li.dataset.i].v); list.style.display = "none"; inp.blur(); } });
+  inp.addEventListener("blur", () => setTimeout(() => list.style.display = "none", 150));
+}
+const GRP = { "100m": "100 million speakers or more", "10m": "10 to 100 million", "1m": "1 to 10 million", small: "Under a million", unknown: "Speakers not in Wikidata" };
+const norm = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+function langSearch(s) {
+  const n = norm(s), out = [];
+  for (const g of Object.keys(GRP)) {
+    const ls = D.langs.filter(l => l.g === g && (!n || norm(l.n).includes(n) || l.c === n));
+    if (!ls.length) continue;
+    out.push({ grp: GRP[g] }); for (const l of ls.slice(0, n ? 40 : 60)) out.push({ v: l.c, html: `${esc(l.n)} <span>${esc(l.c)}${l.sp ? " · " + (l.sp >= 1e6 ? Math.round(l.sp / 1e6) + "m" : fmtN(l.sp)) : ""}</span>` });
+  }
+  return out;
+}
+function ctySearch(s) {
+  const n = norm(s); if (!n) return D.countries.map((c, i) => i).filter(i => D.countries[i].sov).sort((a, b) => D.countries[a].n.localeCompare(D.countries[b].n)).slice(0, 300).map(i => ({ v: D.countries[i].q, html: esc(D.countries[i].n) }));
+  const hit = new Map();
+  D.countries.forEach((c, i) => { if (norm(c.n).includes(n)) hit.set(i, ""); });
+  if (n.length >= 3) for (const l of D.langs) { const a = D.names[l.c]; for (let i = 0; i < a.length; i++) if (!hit.has(i) && a[i] && norm(a[i]).includes(n)) { hit.set(i, `${a[i]} (${l.n})`); if (hit.size > 40) break; } }
+  return [...hit].slice(0, 40).map(([i, via]) => ({ v: D.countries[i].q, html: `${esc(D.countries[i].n)}${via ? ` <span>${esc(via)}</span>` : ""}` }));
+}
+
+/* ===== charts ===== */
+function famChart() {
+  resp(document.getElementById("famChart"), (W, narrow) => {
+    const qs = Object.keys(R.families), rh = narrow ? 44 : 34, lw = narrow ? 0 : 120, top = 6;
+    const H = top + qs.length * rh + 8, svg = svgEl("svg", { viewBox: `0 0 ${W} ${H}` }, document.getElementById("famChart"));
+    const x0 = lw, x1 = W - 4;
+    qs.forEach((q, r) => {
+      const F = R.families[q], y = top + r * rh + (narrow ? 14 : 0);
+      if (narrow) txt(svg, 0, y - 3, F.country.replace("People's Republic of China", "China"), { class: "lab", "font-size": 11.5, "font-weight": 500 });
+      else txt(svg, lw - 8, y + 15, F.country.replace("People's Republic of China", "China"), { "text-anchor": "end", "font-size": 12, "font-weight": 500 });
+      const fs = F.families.slice(), own = fs[0];
+      let x = x0;
+      fs.forEach((f, i) => {
+        const w = (x1 - x0) * f.n / F.total; if (w <= 0) return;
+        const col = f.id === "other" ? "#BDB6A8" : FAMC[i % FAMC.length];
+        const rc = svgEl("rect", { x, y, width: Math.max(.5, w - 1), height: rh - (narrow ? 20 : 12), fill: col, style: "cursor:pointer" }, svg);
+        rc.addEventListener("mousemove", ev => showTip(`<b>${esc(f.label)}</b><br>${f.n} of ${F.total} languages (${pct(f.share)})<br>${esc(f.origin)}${f.examples ? "<br>e.g. " + esc(f.examples.split(" / ").slice(0, 4).join(", ")) : ""}`, ev.clientX, ev.clientY));
+        rc.addEventListener("mouseout", hideTip); rc.addEventListener("click", () => setTarget(q, true));
+        const lb = f.label.replace(" family", ""); if (w > lb.length * 6.6 + 10) txt(svg, x + 5, y + (rh - (narrow ? 20 : 12)) / 2 + 4, lb, { "font-size": 10.5, fill: "#fff", style: "pointer-events:none" });
+        x += w;
+      });
+    });
+  });
+}
+function lowChart() {
+  resp(document.getElementById("lowChart"), (W, narrow) => {
+    const rows = R.alike.lowest.slice(0, 22), rh = 22, lw = narrow ? 118 : 190, H = rows.length * rh + 26;
+    const svg = svgEl("svg", { viewBox: `0 0 ${W} ${H}` }, document.getElementById("lowChart")), x0 = lw, x1 = W - 40;
+    [0, .25, .5, .75, 1].forEach(v => { const x = x0 + (x1 - x0) * v; svgEl("line", { x1: x, x2: x, y1: 0, y2: H - 18, stroke: css("--rule") }, svg); txt(svg, x, H - 4, pct(v), { "text-anchor": "middle", "font-size": 10.5, fill: css("--muted") }); });
+    rows.forEach((r, i) => {
+      const y = i * rh + 3;
+      txt(svg, lw - 8, y + 13, (narrow || r.own.length > 14 ? "" : r.own + "  ") + r.name.replace("People's Republic of China", "China").replace("Central African Republic", "Central African Rep."), { "text-anchor": "end", "font-size": 11.5 });
+      const w = Math.max(1.5, (x1 - x0) * r.share);
+      svgEl("rect", { x: x0, y, width: w, height: rh - 7, fill: r.share < .25 ? css("--seal") : css("--unlike") }, svg);
+      txt(svg, x0 + w + 4, y + 12, pct(r.share), { "font-size": 10.5, fill: css("--muted") });
+    });
+  });
+}
+function etyChart() {
+  resp(document.getElementById("etyChart"), (W, narrow) => {
+    const ks = Object.entries(R.etymology.kinds), rh = 30, lw = narrow ? 150 : 210, H = ks.length * rh + 6;
+    const svg = svgEl("svg", { viewBox: `0 0 ${W} ${H}` }, document.getElementById("etyChart")), mx = Math.max(...ks.map(k => k[1])), x1 = W - 34;
+    ks.forEach(([k, v], i) => {
+      const y = i * rh + 3; txt(svg, lw - 8, y + 15, KINDS[k] || k, { "text-anchor": "end", "font-size": 12 });
+      const w = (x1 - lw) * v / mx; const r = svgEl("rect", { x: lw, y, width: w, height: rh - 9, fill: k === "uncertain" || k === "other" ? "#BDB6A8" : css("--jade") }, svg);
+      r.addEventListener("mousemove", ev => showTip(`<b>${esc(KINDS[k])}</b><br>e.g. ${esc((R.etymology.examples[k] || []).slice(0, 8).join(", "))}`, ev.clientX, ev.clientY)); r.addEventListener("mouseout", hideTip);
+      txt(svg, lw + w + 5, y + 15, v, { "font-size": 12, "font-weight": 500 });
+    });
+  });
+}
+function etyTable() {
+  const sel = document.getElementById("ek"); Object.keys(R.etymology.kinds).forEach(k => sel.insertAdjacentHTML("beforeend", `<option value="${k}">${esc(KINDS[k] || k)}</option>`));
+  const rows = D.countries.map((c, i) => i).filter(i => D.countries[i].e && D.countries[i].sov).sort((a, b) => D.countries[a].n.localeCompare(D.countries[b].n));
+  const draw = () => {
+    const f = norm(document.getElementById("eq").value.trim()), k = sel.value;
+    const rs = rows.filter(i => { const c = D.countries[i]; return (!k || c.e.kind === k) && (!f || norm(c.n + " " + c.e.en + " " + (c.own || []).join(" ")).includes(f)); });
+    document.getElementById("etyTable").innerHTML = `<thead><tr><th>Country</th><th>Its own name</th><th class="wide">Kind</th><th>Where the English name comes from</th></tr></thead><tbody>${rs.map(i => { const c = D.countries[i]; return `<tr class="go" data-q="${c.q}"><td>${esc(c.n)}</td><td style="font-family:var(--label)">${esc(c.own[0])}</td><td class="wide">${esc(KINDS[c.e.kind] || c.e.kind)}</td><td class="ety">${esc(c.e.en)}</td></tr>`; }).join("")}</tbody>`;
+  };
+  document.getElementById("eq").addEventListener("input", draw); sel.addEventListener("change", draw); draw();
+}
+function zhGrid(kind) {
+  const want = { best: ["short form", "translation", "own name"], mix: ["sound and meaning"], sound: ["sound"] }[kind];
+  const qs = D.countries.filter(c => c.sov && D.zh[c.q] && want.includes(D.zh[c.q].k)).sort((a, b) => (b.pop || 0) - (a.pop || 0));
+  document.getElementById("zhGrid").innerHTML = qs.map(c => { const z = D.zh[c.q];
+    return `<div class="zc" data-q="${c.q}"><div class="ch">${z.p.map(([ch, role]) => `<span class="${role === "sound" ? "s" : role.startsWith("short") ? "a" : "m"}">${esc(ch)}</span>`).join("")}</div><div class="py">${esc(z.py)}</div><div class="gl">${esc(z.p.map(([ch, role, g]) => (g || "(name)").split(",")[0]).join(" · "))}</div><div class="en">${esc(c.n)} · ${esc(KIND_ZH[z.k])}</div></div>`; }).join("");
+  document.querySelectorAll("#zhSeg .btn").forEach(b => b.setAttribute("aria-pressed", b.dataset.k === kind));
+}
+document.getElementById("zhSeg").addEventListener("click", e => { const b = e.target.closest(".btn"); if (b && D) zhGrid(b.dataset.k); });
+function jaList() {
+  const rows = D.countries.filter(c => D.ja[c.q] && D.ja[c.q].a.length).map(c => { const j = D.ja[c.q];
+    return `<tr><td>${esc(c.n)}</td><td style="font:500 16px var(--label)">${esc(j.n)}</td><td style="font:500 18px var(--label);color:var(--seal)">${esc(j.a.join(", "))}</td><td>${esc(j.a.join("").split("").filter(ch => j.g[ch]).map(ch => ch + " " + j.g[ch].split(",")[0]).join("; "))}</td></tr>`; }).join("");
+  document.getElementById("jaList").innerHTML = `<div class="tablewrap" style="max-height:none"><table class="t"><thead><tr><th>Country</th><th>Usual name</th><th>Kanji short form</th><th>Character meanings</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+}
+
+/* ===== start ===== */
+(async function () {
+  try {
+    const [d, w] = await Promise.all([fetch("data/site.json").then(r => r.json()), fetch("data/world.json").then(r => r.json())]);
+    D = d; WORLD = w;
+  } catch (e) { document.getElementById("nowTitle").textContent = "The data did not load. Please reload the page."; return; }
+  D.countries.forEach((c, i) => CI[c.q] = i); D.langs.forEach((l, i) => LI[l.c] = i);
+  ORDER = D.countries.map((c, i) => i).sort((a, b) => D.countries[a].r - D.countries[b].r || D.countries[b].pop - D.countries[a].pop);
+  document.getElementById("revBtns").innerHTML = ["Q183", "Q148", "Q41", "Q55", "Q17", "Q28"].map(q => `<a href="#" class="${q === "Q183" ? "p" : ""}" data-rev="${q}" onclick="return false">Map ${esc(D.countries[CI[q]].n.replace("People's Republic of China", "China"))}</a>`).join("");
+  combo(document.getElementById("lq"), document.getElementById("lsug"), langSearch, setLang);
+  combo(document.getElementById("cq"), document.getElementById("csug"), ctySearch, q => setTarget(q, false));
+  document.getElementById("tabLang").onclick = () => { S.mode = "lang"; tabs(); refresh(); };
+  document.getElementById("tabCountry").onclick = () => { S.mode = "country"; tabs(); refresh(); };
+  document.getElementById("colSeg").addEventListener("click", e => { const b = e.target.closest(".btn"); if (!b || b.disabled) return; S.col = b.dataset.c; tabs(); refresh(); });
+  tabs(); initMap(); refresh();
+  redraws.push(() => { setTiles(); refresh(); });
+  famChart(); lowChart(); etyChart(); etyTable(); zhGrid("best"); jaList();
+})();
+</script>
+</body>
+</html>
