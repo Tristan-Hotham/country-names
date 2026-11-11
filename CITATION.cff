@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this data or code, please cite it as below."
+title: "What the World Calls Each Other: Country Names in 262 Languages, and What They Mean"
+type: dataset
+authors:
+  - family-names: Hotham
+    given-names: Tristan
+    orcid: "https://orcid.org/0000-0003-4931-9349"
+    affiliation: "Independent researcher"
+doi: "10.5281/zenodo.23739847"
+url: "https://maps.tristanhotham.com/country-names/"
+repository-code: "https://github.com/Tristan-Hotham/country-names"
+license: CC-BY-SA-4.0
+keywords:
+  - "toponymy"
+  - "exonyms"
+  - "endonyms"
+  - "country names"
+  - "Wikidata"
+  - "etymology"
+  - "Chinese characters"
+  - "Japanese"
+  - "multilingual data"
+  - "open data"
